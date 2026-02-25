@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI-Архитектор · Olshanskiy AI</title>
+    <meta name="description"
+        content="Автоматизация маркетинга и продаж с помощью AI. Чат-боты, авто-воронки, AI-аналитика.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: 20px;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #22d3ee, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-btn {
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn.active {
+            background-color: #334155;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            font-weight: 600;
+        }
+
+        .nav-btn.inactive {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .memo-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Product card */
+        .product-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.1));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            border-color: rgba(6, 182, 212, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #06b6d4, #6366f1);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= TOP NAVIGATION (FIXED) ================= -->
+    <nav
+        class="fixed top-0 left-0 w-full z-[9999] bg-slate-900/95 backdrop-blur-md border-b border-slate-800 pt-3 pb-3 px-4 shadow-lg">
+        <div class="max-w-md mx-auto bg-slate-800/80 p-1 rounded-xl flex relative border border-slate-700">
+            <button id="nav-profile" class="nav-btn active w-1/2 py-2 rounded-lg text-sm text-center">
+                👨‍💻 Профиль
+            </button>
+            <button id="nav-memo" class="nav-btn inactive w-1/2 py-2 rounded-lg text-sm text-center">
+                📄 Меморандум
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= TAB 1: PROFILE ================= -->
+    <main id="tab-profile" class="mt-20 px-4 pt-4 fade-in flex flex-col items-center w-full max-w-5xl mx-auto">
+
+        <!-- Header / Avatar -->
+        <div class="mb-6 relative text-center">
+            <div
+                class="inline-block p-1 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 shadow-2xl shadow-cyan-900/30">
+                <div class="bg-slate-900 rounded-full p-1">
+                    <div class="w-28 h-28 rounded-full bg-slate-800 overflow-hidden relative mx-auto">
+                        <img src="avatar.jpg"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                            class="w-full h-full object-cover" alt="Avatar">
+                        <div
+                            class="w-full h-full flex items-center justify-center hidden absolute top-0 left-0 bg-slate-800">
+                            <span class="text-4xl">👨‍💻</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-3xl font-extrabold text-white mb-2 mt-4">
+                AI-Архитектор
+            </h1>
+            <p class="text-cyan-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+                Автоматизация маркетинга и продаж
+            </p>
+        </div>
+
+        <!-- Intro Text -->
+        <div class="glass-card p-5 rounded-2xl mb-8 w-full text-center border-t border-slate-700/50">
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Здравствуйте! Я помогаю бизнесу масштабироваться, внедряя AI-решения, которые работают на базе глубокой
+                маркетинговой стратегии.
+            </p>
+        </div>
+
+        <!-- Block: Why Choose Me -->
+        <div class="w-full mb-10">
+            <h2 class="text-lg font-bold text-white mb-5 flex items-center justify-center">
+                <span class="bg-cyan-500 w-2 h-2 rounded-full mr-2"></span>
+                Почему выбирают меня
+            </h2>
+
+            <div class="space-y-3">
+                <div
+                    class="glass-card p-5 rounded-xl border-l-4 border-l-cyan-500 flex flex-col md:flex-row md:items-center gap-3 text-left">
+                    <div class="flex items-center gap-3 mb-1 md:mb-0">
+                        <div class="bg-cyan-500/10 p-2 rounded-lg min-w-[40px] text-center text-cyan-400 text-xl">📈
+                        </div>
+                        <h3 class="text-white font-bold text-base md:w-48 flex-shrink-0">10 лет в маркетинге</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Знаю, как строятся воронки, как считается ROI и что нужно вашему клиенту. Внедряю ИИ не «ради
+                        технологий», а для роста ваших показателей.
+                    </p>
+                </div>
+
+                <div
+                    class="glass-card p-5 rounded-xl border-l-4 border-l-indigo-500 flex flex-col md:flex-row md:items-center gap-3 text-left">
+                    <div class="flex items-center gap-3 mb-1 md:mb-0">
+                        <div class="bg-indigo-500/10 p-2 rounded-lg min-w-[40px] text-center text-indigo-400 text-xl">⚙️
+                        </div>
+                        <h3 class="text-white font-bold text-base md:w-48 flex-shrink-0">Глубокая автоматизация</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Не просто пишу промпты для ChatGPT, а создаю автономные системы на базе n8n, Make и API.
+                    </p>
+                </div>
+
+                <div
+                    class="glass-card p-5 rounded-xl border-l-4 border-l-emerald-500 flex flex-col md:flex-row md:items-center gap-3 text-left">
+                    <div class="flex items-center gap-3 mb-1 md:mb-0">
+                        <div class="bg-emerald-500/10 p-2 rounded-lg min-w-[40px] text-center text-emerald-400 text-xl">
+                            💰</div>
+                        <h3 class="text-white font-bold text-base md:w-48 flex-shrink-0">Фокус на окупаемость</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Мои решения экономят от 100 часов рутины в месяц и снижают стоимость лида.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block: What I Implement -->
+        <div class="w-full mb-8">
+            <h2 class="text-lg font-bold text-white mb-5 flex items-center justify-center">
+                <span class="bg-indigo-500 w-2 h-2 rounded-full mr-2"></span>
+                Что я внедряю
+            </h2>
+
+            <div class="grid grid-cols-2 gap-3 w-full text-left">
+                <div
+                    class="bg-slate-800/50 p-4 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <div class="text-2xl mb-3">✍️</div>
+                    <h3 class="text-indigo-400 font-bold text-sm mb-2 leading-tight">AI-отделы контента</h3>
+                    <p class="text-slate-400 text-[11px] leading-snug">
+                        Автономная генерация SEO-статей и постов, неотличимых от человека.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-slate-800/50 p-4 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <div class="text-2xl mb-3">🤖</div>
+                    <h3 class="text-indigo-400 font-bold text-sm mb-2 leading-tight">Умные AI-агенты</h3>
+                    <p class="text-slate-400 text-[11px] leading-snug">
+                        Чат-боты с памятью и базой знаний для продаж и поддержки 24/7.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-slate-800/50 p-4 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <div class="text-2xl mb-3">⚡</div>
+                    <h3 class="text-indigo-400 font-bold text-sm mb-2 leading-tight">Авто-воронки</h3>
+                    <p class="text-slate-400 text-[11px] leading-snug">
+                        Связки n8n + CRM для прогрева лидов без участия менеджера.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-slate-800/50 p-4 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-colors">
+                    <div class="text-2xl mb-3">📊</div>
+                    <h3 class="text-indigo-400 font-bold text-sm mb-2 leading-tight">AI-аналитика</h3>
+                    <p class="text-slate-400 text-[11px] leading-snug">
+                        Сбор данных о конкурентах и анализ эффективности каналов.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== NEW: My Solutions ===== -->
+        <div class="w-full mb-8">
+            <h2 class="text-lg font-bold text-white mb-5 flex items-center justify-center">
+                <span class="bg-emerald-500 w-2 h-2 rounded-full mr-2"></span>
+                Мои решения
+            </h2>
+
+            <a href="leadhunter/" class="product-card">
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl flex-shrink-0 mt-1">🎯</div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <h3 class="text-white font-bold text-base">LeadHunter Bot</h3>
+                            <span class="product-badge">Новинка</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                            AI-бот для автоматического поиска клиентов в Telegram-чатах. Мониторит сообщения, находит
+                            целевые запросы и генерирует персонализированные ответы.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-slate-500">
+                            <span>⚡ Работает 24/7</span>
+                            <span>🤖 AI-ответы</span>
+                            <span>📊 Аналитика</span>
+                        </div>
+                        <div class="mt-3 text-cyan-400 text-sm font-semibold flex items-center gap-1">
+                            Подробнее →
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="w-full pb-4">
+            <button id="cta-button"
+                class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-900/40 active:scale-95 transition-all">
+                Связаться со мной
+            </button>
+            <p class="text-[10px] text-slate-500 text-center mt-3">Нажмите, чтобы вернуться в чат</p>
+        </div>
+    </main>
+
+
+    <!-- ================= TAB 2: MEMORANDUM ================= -->
+    <main id="tab-memo" class="mt-20 hidden fade-in p-8 md:p-12 w-full max-w-5xl mx-auto"
+        style="animation-delay: 0.1s;">
+
+        <header class="mb-12 text-center break-inside-avoid">
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+                Меморандум о <span class="gradient-text">Внедрении ИИ</span>
+            </h1>
+            <p class="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto">
+                Памятка для Заказчика: Возможности, Ограничения и Технические Требования
+            </p>
+        </header>
+
+        <section class="mb-12 break-inside-avoid">
+            <div
+                class="bg-gradient-to-r from-red-900/40 to-slate-900 border-l-4 border-red-500 rounded-r-xl p-6 md:p-8 shadow-lg">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Главный Закон Автоматизации</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            <strong class="text-red-400">«Автоматизация хаоса масштабирует хаос».</strong><br>
+                            Искусственный интеллект не может придумать бизнес-процесс за вас. Он может только ускорить
+                            существующий. Если у вас нет четкого скрипта продаж или регламента, ИИ будет совершать
+                            ошибки со скоростью света. Сначала мы описываем процесс на бумаге, потом переносим его в
+                            код.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 break-inside-avoid">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-blue-600 w-2 h-8 mr-3 rounded-full"></span>
+                1. Матрица Реальности
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        ИИ-Агент МОЖЕТ
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 mr-2 mt-1">➜</span>
+                            <span class="text-slate-300 text-sm"><strong>Работать по скрипту:</strong> Задать 5
+                                вопросов, квалифицировать лида, записать в CRM.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 mr-2 mt-1">➜</span>
+                            <span class="text-slate-300 text-sm"><strong>Быть на связи 24/7:</strong> Ответить в 3 ночи,
+                                дать справку по прайсу, забронировать слот.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 mr-2 mt-1">➜</span>
+                            <span class="text-slate-300 text-sm"><strong>Интегрироваться:</strong> Переносить данные
+                                между сайтом, CRM и мессенджерами.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pink-600">
+                    <h3 class="text-xl font-bold text-pink-500 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        ИИ-Агент НЕ МОЖЕТ
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2 mt-1">✕</span>
+                            <span class="text-slate-300 text-sm"><strong>«Продавать как бог»:</strong> Использовать
+                                харизму и интуицию для уговоров. У ИИ нет чувств.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2 mt-1">✕</span>
+                            <span class="text-slate-300 text-sm"><strong>Давать 100% гарантию:</strong> ИИ —
+                                вероятностная модель. Нужен контроль и дообучение.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2 mt-1">✕</span>
+                            <span class="text-slate-300 text-sm"><strong>Чинить ваш хаос:</strong> Если в CRM дубли и
+                                бардак, ИИ не разберет это сам.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 break-inside-avoid">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-blue-600 w-2 h-8 mr-3 rounded-full"></span>
+                2. Workflow (Этапы работы)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="glass-card p-5 rounded-xl relative overflow-hidden group">
+                    <div
+                        class="absolute -right-4 -top-4 bg-slate-800 text-slate-600 font-bold text-6xl opacity-20 group-hover:text-cyan-500 transition-colors">
+                        01</div>
+                    <h4 class="text-lg font-bold text-cyan-400 mb-2">Аудит</h4>
+                    <p class="text-xs text-slate-400 mb-2 font-mono">1-3 дня</p>
+                    <p class="text-sm text-slate-300">Разбираем один процесс. Вы даете скрипты и доступы. Фиксируем
+                        логику.</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl relative overflow-hidden group">
+                    <div
+                        class="absolute -right-4 -top-4 bg-slate-800 text-slate-600 font-bold text-6xl opacity-20 group-hover:text-cyan-500 transition-colors">
+                        02</div>
+                    <h4 class="text-lg font-bold text-cyan-400 mb-2">MVP</h4>
+                    <p class="text-xs text-slate-400 mb-2 font-mono">3-7 дней</p>
+                    <p class="text-sm text-slate-300">Сборка прототипа. Он работает, но требует присмотра оператора.</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl relative overflow-hidden group">
+                    <div
+                        class="absolute -right-4 -top-4 bg-slate-800 text-slate-600 font-bold text-6xl opacity-20 group-hover:text-cyan-500 transition-colors">
+                        03</div>
+                    <h4 class="text-lg font-bold text-cyan-400 mb-2">Тесты</h4>
+                    <p class="text-xs text-slate-400 mb-2 font-mono">3-5 дней</p>
+                    <p class="text-sm text-slate-300">Прогоняем 50-100 диалогов. Ловим баги, калибруем промпты.</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl relative overflow-hidden group border border-cyan-500/30">
+                    <div
+                        class="absolute -right-4 -top-4 bg-slate-800 text-slate-600 font-bold text-6xl opacity-20 group-hover:text-cyan-500 transition-colors">
+                        04</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Запуск</h4>
+                    <p class="text-xs text-slate-400 mb-2 font-mono">Production</p>
+                    <p class="text-sm text-slate-300">Подключение на реальный трафик. Переход на поддержку.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 break-inside-avoid">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-blue-600 w-2 h-8 mr-3 rounded-full"></span>
+                3. Технические Требования
+            </h2>
+            <p class="text-slate-400 mb-6">ИИ — это цифровой сотрудник. Его "жилье" (сервер) и "мысли" (LLM)
+                оплачиваются заказчиком отдельно.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 01-2 2v4a2 2 0 012 2h14a2 2 0 012-2v-4a2 2 0 01-2-2m-2-4h.01M17 16h.01">
+                            </path>
+                        </svg>
+                        Инфраструктура (Расходы Заказчика)
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-slate-900 p-4 rounded-lg flex justify-between items-center">
+                            <div>
+                                <div class="text-indigo-300 font-bold text-sm">VPS Сервер</div>
+                                <div class="text-slate-500 text-xs">РФ|Зарубежный|Свой</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-white font-mono text-sm">~$5-15/mo</div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-lg flex justify-between items-center">
+                            <div>
+                                <div class="text-indigo-300 font-bold text-sm">LLM API (Мозги)</div>
+                                <div class="text-slate-500 text-xs">OpenAI|Anthropic|Gemini и др.</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-white font-mono text-sm">~$10-50/mo</div>
+                                <div class="text-slate-600 text-[10px]">зависит от нагрузки</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
+                            </path>
+                        </svg>
+                        Доступы (API Keys)
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start bg-slate-900/50 p-3 rounded">
+                            <span class="text-blue-500 mr-2">●</span>
+                            <span class="text-slate-300 text-sm"><strong>CRM:</strong> Права Admin или API Key.</span>
+                        </li>
+                        <li class="flex items-start bg-slate-900/50 p-3 rounded">
+                            <span class="text-blue-500 mr-2">●</span>
+                            <span class="text-slate-300 text-sm"><strong>WABA / Telegram:</strong> Доступ к токенам
+                                официальных каналов.</span>
+                        </li>
+                        <li class="flex items-start bg-red-900/20 p-3 rounded border border-red-900/30">
+                            <span class="text-red-500 mr-2">!</span>
+                            <span class="text-slate-200 text-sm font-bold">ЛПР (Контакт):</span>
+                            <span class="text-slate-400 text-sm ml-1">Человек, утверждающий тексты за 24ч.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 border-t border-slate-800 break-inside-avoid">
+            <p class="text-slate-400 italic mb-4">
+                «Мы строим системы, которые работают, пока вы спите. Но сначала — порядок.»
+            </p>
+        </footer>
+
+    </main>
+
+
+    <!-- ================= LOGIC ================= -->
+    <script>
+        // Защита от ошибок Telegram API
+        let tg;
+        try {
+            tg = window.Telegram.WebApp;
+            tg.expand();
+        } catch (e) {
+            console.log('Telegram Web App not detected, running in browser mode.');
+            tg = {
+                close: () => console.log('Close app triggered'),
+                HapticFeedback: null
+            };
+        }
+
+        function switchTab(tabId) {
+            document.getElementById('tab-profile').classList.add('hidden');
+            document.getElementById('tab-memo').classList.add('hidden');
+
+            const btnProfile = document.getElementById('nav-profile');
+            const btnMemo = document.getElementById('nav-memo');
+
+            btnProfile.className = 'nav-btn inactive w-1/2 py-2 rounded-lg text-sm text-center';
+            btnMemo.className = 'nav-btn inactive w-1/2 py-2 rounded-lg text-sm text-center';
+
+            const selectedTab = document.getElementById('tab-' + tabId);
+            selectedTab.classList.remove('hidden');
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            activeBtn.className = 'nav-btn active w-1/2 py-2 rounded-lg text-sm text-center';
+
+            window.scrollTo(0, 0);
+
+            if (tg && tg.HapticFeedback) {
+                try {
+                    tg.HapticFeedback.impactOccurred('light');
+                } catch (e) { }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('profile');
+
+            document.getElementById('nav-profile').addEventListener('click', () => switchTab('profile'));
+            document.getElementById('nav-memo').addEventListener('click', () => switchTab('memo'));
+
+            const ctaBtn = document.getElementById('cta-button');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', () => tg.close());
+            }
+        });
+    </script>
+</body>
+
+</html>
