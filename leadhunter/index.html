@@ -1,10 +1,316 @@
-﻿<!doctype html>
-<html lang="ru">
+<!doctype html>
+<html lang="ru" data-lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=../leadhunter.html">
-  <title>LeadHunter · Nodalio</title>
-  <script>location.replace('../leadhunter.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>LeadHunter Bot В· Nodalio</title>
+  <meta name="description" content="LeadHunter Bot monitors Telegram chats and channels, catches hot leads, and sends a ready response in seconds.">
+  <link rel="stylesheet" href="preview.css">
+  <script defer src="preview.js"></script>
+  <style>
+    .product-hero{padding-top:92px}
+    .product-hero .hero-grid{align-items:start}
+    .product-hero .hero-visual-stats .stat{min-height:92px}
+    .product-section .section-head{margin-bottom:18px}
+    .product-panel{padding:22px}
+    .product-note{color:var(--muted);font-size:14px;line-height:1.7}
+    .problem-panel{padding:24px}
+    .problem-list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+    .problem-list li{padding-left:18px;position:relative;color:var(--text)}
+    .problem-list li::before{content:"вЂў";position:absolute;left:0;color:var(--accent)}
+    .flow-wrap{display:grid;gap:14px}
+    .flow-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .flow-card{padding:14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.02);font-size:13px;color:var(--muted)}
+    .flow-card strong{display:block;color:var(--text);margin-bottom:4px;font-size:14px}
+    .comparison-table{overflow:hidden;border-radius:18px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .pricing-card{padding:22px}
+    .pricing-card h3{margin-top:4px}
+    .trust-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .trust-box{padding:20px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(180deg, rgba(16,19,32,.94), rgba(12,15,24,.92))}
+    .trust-box h3{margin:0 0 10px;font-family:'Syne',sans-serif;letter-spacing:-.04em}
+    .niche-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .niche-card{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .niche-card h3{margin:0 0 8px;font-family:'Syne',sans-serif;letter-spacing:-.04em}
+    .final-cta{padding:26px;border-radius:28px;border:1px solid rgba(36,231,208,.18);background:linear-gradient(135deg, rgba(36,231,208,.12), rgba(111,124,255,.10))}
+    .final-cta h2{margin:0 0 10px;font-family:'Syne',sans-serif;letter-spacing:-.05em}
+    @media (max-width: 1024px){
+      .flow-row,.trust-strip,.niche-grid,.pricing-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .product-hero{padding-top:88px}
+      .flow-row,.trust-strip,.niche-grid,.pricing-grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
-<body></body>
+<body>
+  <header class="nav">
+    <div class="container">
+      <a class="brand" href="prototype-preview.html">Noda<b>lio</b></a>
+      <div class="nav-actions">
+        <div class="lang">
+          <button type="button" class="active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a class="ghost" href="prototype-preview.html">
+          <span data-ru>РќР°Р·Р°Рґ РЅР° РіР»Р°РІРЅСѓСЋ</span>
+          <span data-en>Back to home</span>
+        </a>
+        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+          <span data-ru>РќР°РїРёСЃР°С‚СЊ РІ Telegram</span>
+          <span data-en>Contact via Telegram</span>
+        </a>
+        <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
+          <span data-ru>Email</span>
+          <span data-en>Email</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero product-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-aos>
+          <div class="hero-kicker"><span data-ru>AI-Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ РґР»СЏ Р±РёР·РЅРµСЃР°</span><span data-en>AI automation for business</span></div>
+          <h1 class="hero-title">
+            <span data-ru>LeadHunter Bot<br><span class="accent">РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ РїРѕРёСЃРє РєР»РёРµРЅС‚РѕРІ</span><br>РІ Telegram</span>
+            <span data-en>LeadHunter Bot<br><span class="accent">Automatic client search</span><br>in Telegram</span>
+          </h1>
+          <p class="hero-sub">
+            <span data-ru>Р‘РѕС‚ РјРѕРЅРёС‚РѕСЂРёС‚ РЅСѓР¶РЅС‹Рµ С‡Р°С‚С‹, РЅР°С…РѕРґРёС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… РєР»РёРµРЅС‚РѕРІ Рё РјРіРЅРѕРІРµРЅРЅРѕ СѓРІРµРґРѕРјР»СЏРµС‚ РІР°СЃ СЃ РіРѕС‚РѕРІС‹Рј РѕС‚РІРµС‚РѕРј РѕС‚ AI.</span>
+            <span data-en>The bot monitors relevant chats, finds potential clients, and instantly alerts you with an AI-generated reply.</span>
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>РќР°РїРёСЃР°С‚СЊ РІ Telegram</span><span data-en>Contact via Telegram</span></a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com"><span data-ru>Email</span><span data-en>Email</span></a>
+          </div>
+          <div class="hero-meta">
+            <span class="chip"><b>24/7</b> <span data-ru>РјРѕРЅРёС‚РѕСЂРёРЅРі</span><span data-en>monitoring</span></span>
+            <span class="chip"><b>&lt; 3 СЃРµРє</b> <span data-ru>СЃРєРѕСЂРѕСЃС‚СЊ СЂРµР°РєС†РёРё</span><span data-en>response speed</span></span>
+            <span class="chip"><b>в€ћ</b> <span data-ru>С‡Р°С‚РѕРІ Рё РєР°РЅР°Р»РѕРІ</span><span data-en>chats and channels</span></span>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-aos>
+          <div class="hero-visual-top panel">
+            <div class="label">
+              <span data-ru>РљР°Рє СЂР°Р±РѕС‚Р°РµС‚ СЃРёСЃС‚РµРјР°</span>
+              <span data-en>How the system works</span>
+            </div>
+            <div class="flow-wrap" style="margin-top:12px">
+              <div class="flow-row">
+                <div class="flow-card"><strong>01</strong><span data-ru>Р§Р°С‚С‹ Рё РєР°РЅР°Р»С‹</span><span data-en>Chats and channels</span></div>
+                <div class="flow-card"><strong>02</strong><span data-ru>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°</span><span data-en>Keywords</span></div>
+                <div class="flow-card"><strong>03</strong><span data-ru>AI-РєРІР°Р»РёС„РёРєР°С†РёСЏ</span><span data-en>AI qualification</span></div>
+                <div class="flow-card"><strong>04</strong><span data-ru>РЈРІРµРґРѕРјР»РµРЅРёРµ</span><span data-en>Notification</span></div>
+                <div class="flow-card"><strong>05</strong><span data-ru>Р“РѕС‚РѕРІС‹Р№ РѕС‚РІРµС‚</span><span data-en>Ready reply</span></div>
+              </div>
+              <div class="flow-card">
+                <strong><span data-ru>РџРѕР»СЊР·Р°</span><span data-en>Impact</span></strong>
+                <span data-ru>Р’С‹ РѕС‚РІРµС‡Р°РµС‚Рµ РїРµСЂРІС‹Рј, РЅРµ С‚РµСЂСЏРµС‚Рµ РіРѕСЂСЏС‡РёРµ Р·Р°РїСЂРѕСЃС‹ Рё СЃРѕР±РёСЂР°РµС‚Рµ Р»РёРґС‹ Р±С‹СЃС‚СЂРµРµ РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ.</span>
+                <span data-en>You reply first, avoid losing hot requests, and capture leads faster than competitors.</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual-stats">
+            <div class="stat"><b>24/7</b><span data-ru>Р±РµР· СЂСѓС‡РЅРѕРіРѕ СЂРµР¶РёРјР°</span><span data-en>no manual mode</span></div>
+            <div class="stat"><b>&lt; 3 СЃРµРє</b><span data-ru>РґРѕ СЃРёРіРЅР°Р»Р°</span><span data-en>to signal</span></div>
+            <div class="stat"><b>в€ћ</b><span data-ru>С‡Р°С‚С‹ Рё РєР°РЅР°Р»С‹</span><span data-en>unlimited sources</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="problem-panel panel" data-aos>
+          <span class="label"><span data-ru>Р—РЅР°РєРѕРјР°СЏ СЃРёС‚СѓР°С†РёСЏ?</span><span data-en>Sound familiar?</span></span>
+          <h2 class="offer-title" style="margin-top:10px">
+            <span data-ru>РџРѕС‚РµРЅС†РёР°Р»СЊРЅС‹Рµ РєР»РёРµРЅС‚С‹ СѓР¶Рµ РїРёС€СѓС‚ РІ Telegram, РЅРѕ РІС‹ РІРёРґРёС‚Рµ РёС… СЃР»РёС€РєРѕРј РїРѕР·РґРЅРѕ</span>
+            <span data-en>Potential clients are already writing in Telegram, but you see them too late</span>
+          </h2>
+          <p class="offer-copy">
+            <span data-ru>Р’ РїСЂРѕС„РёР»СЊРЅС‹С… Telegram-С‡Р°С‚Р°С… РїРѕСЃС‚РѕСЏРЅРЅРѕ РїРѕСЏРІР»СЏСЋС‚СЃСЏ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹Рµ РєР»РёРµРЅС‚С‹. РќРѕ:</span>
+            <span data-en>Potential clients constantly appear in niche Telegram chats. But:</span>
+          </p>
+          <ul class="problem-list">
+            <li><span data-ru>Р¤РёР·РёС‡РµСЃРєРё РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃР»РµРґРёС‚СЊ Р·Р° 10-20 С‡Р°С‚Р°РјРё РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ</span><span data-en>It is impossible to watch 10-20 chats at once</span></li>
+            <li><span data-ru>Р’С‹ РІРёРґРёС‚Рµ Р·Р°РїСЂРѕСЃ С‡РµСЂРµР· 3 С‡Р°СЃР° - РєРѕРіРґР° РєРѕРЅРєСѓСЂРµРЅС‚ СѓР¶Рµ РѕС‚РІРµС‚РёР»</span><span data-en>You see a request 3 hours later - when a competitor already answered</span></li>
+            <li><span data-ru>РџРѕРєР° РІС‹ СЃРїРёС‚Рµ, Р»РёРґС‹ СѓС…РѕРґСЏС‚ Рє РґСЂСѓРіРёРј</span><span data-en>While you sleep, leads go to someone else</span></li>
+            <li><span data-ru>Р СѓС‡РЅРѕР№ РјРѕРЅРёС‚РѕСЂРёРЅРі РѕС‚РЅРёРјР°РµС‚ 2-4 С‡Р°СЃР° РІ РґРµРЅСЊ</span><span data-en>Manual monitoring takes 2-4 hours a day</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Р§С‚Рѕ СѓРјРµРµС‚ Р±РѕС‚</span><span data-en>What the bot does</span></span>
+          <h2><span data-ru>РџРѕР»РЅРѕСЃС‚СЊСЋ Р°РІС‚РѕРјР°С‚РёР·РёСЂРѕРІР°РЅРЅР°СЏ СЃРёСЃС‚РµРјР°, РєРѕС‚РѕСЂР°СЏ СЂР°Р±РѕС‚Р°РµС‚ Р·Р° РІР°СЃ</span><span data-en>A fully automated system that works for you</span></h2>
+        </div>
+        <div class="impl-grid">
+          <article class="impl-card" data-aos><h3><span data-ru>РЈРјРЅС‹Р№ РјРѕРЅРёС‚РѕСЂРёРЅРі</span><span data-en>Smart monitoring</span></h3><p><span data-ru>РћС‚СЃР»РµР¶РёРІР°РµС‚ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°С‚РѕРІ Рё РєР°РЅР°Р»РѕРІ, РІРєР»СЋС‡Р°СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїРѕСЃС‚Р°Рј.</span><span data-en>Tracks unlimited chats and channels, including post comments.</span></p></article>
+          <article class="impl-card" data-aos><h3><span data-ru>Р¤РёР»СЊС‚СЂ РїРѕ РєР»СЋС‡РµРІС‹Рј СЃР»РѕРІР°Рј</span><span data-en>Keyword filter</span></h3><p><span data-ru>Р РµР°РіРёСЂСѓРµС‚ С‚РѕР»СЊРєРѕ РЅР° С†РµР»РµРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ. РўРѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ - Р±РµР· Р»РѕР¶РЅС‹С… СЃСЂР°Р±Р°С‚С‹РІР°РЅРёР№.</span><span data-en>Responds only to target messages. Exact matching with no false positives.</span></p></article>
+          <article class="impl-card" data-aos><h3><span data-ru>AI-РєРІР°Р»РёС„РёРєР°С†РёСЏ</span><span data-en>AI qualification</span></h3><p><span data-ru>РќРµР№СЂРѕСЃРµС‚СЊ Р°РЅР°Р»РёР·РёСЂСѓРµС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рё РѕРїСЂРµРґРµР»СЏРµС‚: СЂРµР°Р»СЊРЅС‹Р№ РєР»РёРµРЅС‚ РёР»Рё РЅРµС‚.</span><span data-en>The AI analyzes the message and decides whether it is a real client or not.</span></p></article>
+          <article class="impl-card" data-aos><h3><span data-ru>Р“РѕС‚РѕРІС‹Р№ РѕС‚РІРµС‚</span><span data-en>Ready reply</span></h3><p><span data-ru>AI С„РѕСЂРјРёСЂСѓРµС‚ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Р№ РѕС‚РІРµС‚ РІ РІР°С€РµРј СЃС‚РёР»Рµ. РљРѕРїРёСЂСѓРµС‚Рµ - РѕС‚РїСЂР°РІР»СЏРµС‚Рµ - РїРѕР»СѓС‡Р°РµС‚Рµ РєР»РёРµРЅС‚Р°.</span><span data-en>The AI drafts a personalized reply in your style. Copy - send - win the client.</span></p></article>
+          <article class="impl-card" data-aos><h3><span data-ru>РЈРІРµРґРѕРјР»РµРЅРёСЏ</span><span data-en>Notifications</span></h3><p><span data-ru>РњРіРЅРѕРІРµРЅРЅРѕРµ push-СѓРІРµРґРѕРјР»РµРЅРёРµ РІ Telegram СЃ С‚РµРєСЃС‚РѕРј, Р°РІС‚РѕСЂРѕРј Рё РїСЂСЏРјРѕР№ СЃСЃС‹Р»РєРѕР№ РЅР° СЃРѕРѕР±С‰РµРЅРёРµ.</span><span data-en>Instant Telegram push notification with the message text, author, and direct link.</span></p></article>
+          <article class="impl-card" data-aos><h3><span data-ru>РџСЂРѕСЃС‚РѕРµ СѓРїСЂР°РІР»РµРЅРёРµ</span><span data-en>Simple management</span></h3><p><span data-ru>Р’СЃС‘ РЅР°СЃС‚СЂР°РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СѓРґРѕР±РЅРѕРµ РјРµРЅСЋ РІ Telegram - Р±РµР· РґРѕСЃС‚СѓРїР° Рє СЃРµСЂРІРµСЂСѓ Рё РєРѕРґСѓ.</span><span data-en>Everything is configured through a convenient Telegram menu - no server or code access required.</span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>РљР°Рє СЌС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚</span><span data-en>How it works</span></span>
+          <p><span data-ru>РћС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РІ С‡Р°С‚Рµ РґРѕ СѓРІРµРґРѕРјР»РµРЅРёСЏ - РјРµРЅСЊС€Рµ 3 СЃРµРєСѓРЅРґ.</span><span data-en>From message to notification - under 3 seconds.</span></p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card" data-aos><div class="step-num">01</div><h3><span data-ru>РљС‚Рѕ-С‚Рѕ РїРёС€РµС‚ РІ С‡Р°С‚Рµ</span><span data-en>Someone posts in a chat</span></h3><p><span data-ru>Р’ РѕРґРЅРѕРј РёР· РѕС‚СЃР»РµР¶РёРІР°РµРјС‹С… С‡Р°С‚РѕРІ РїРѕСЏРІР»СЏРµС‚СЃСЏ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.</span><span data-en>A new message appears in one of the monitored chats.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">02</div><h3><span data-ru>Р‘РѕС‚ РїСЂРѕРІРµСЂСЏРµС‚ РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°</span><span data-en>The bot checks keywords</span></h3><p><span data-ru>Р•СЃР»Рё СЃРѕРѕР±С‰РµРЅРёРµ СЃРѕРґРµСЂР¶РёС‚ РІР°С€Рё РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° - РїСЂРѕРґРѕР»Р¶Р°РµС‚СЃСЏ РѕР±СЂР°Р±РѕС‚РєР°.</span><span data-en>If the message contains your keywords, it continues processing.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">03</div><h3><span data-ru>AI Р°РЅР°Р»РёР·РёСЂСѓРµС‚ РєРѕРЅС‚РµРєСЃС‚</span><span data-en>AI analyzes context</span></h3><p><span data-ru>РќРµР№СЂРѕСЃРµС‚СЊ РѕРїСЂРµРґРµР»СЏРµС‚: СЌС‚Рѕ СЂРµР°Р»СЊРЅС‹Р№ Р·Р°РїСЂРѕСЃ РёР»Рё РїСЂРѕСЃС‚Рѕ РѕР±СЃСѓР¶РґРµРЅРёРµ.</span><span data-en>The AI decides whether it is a real request or just a discussion.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">04</div><h3><span data-ru>Р’С‹ РїРѕР»СѓС‡Р°РµС‚Рµ СѓРІРµРґРѕРјР»РµРЅРёРµ</span><span data-en>You get a notification</span></h3><p><span data-ru>Push-СѓРІРµРґРѕРјР»РµРЅРёРµ СЃ С‚РµРєСЃС‚РѕРј СЃРѕРѕР±С‰РµРЅРёСЏ, СЃСЃС‹Р»РєРѕР№ РЅР° РѕСЂРёРіРёРЅР°Р» Рё РіРѕС‚РѕРІС‹Рј РѕС‚РІРµС‚РѕРј РѕС‚ AI.</span><span data-en>A push notification with the message, original link, and ready AI reply.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">05</div><h3><span data-ru>Р’С‹ РѕС‚РІРµС‡Р°РµС‚Рµ РїРµСЂРІС‹Рј</span><span data-en>You reply first</span></h3><p><span data-ru>РљРѕРїРёСЂСѓРµС‚Рµ РѕС‚РІРµС‚ AI Рё РѕС‚РІРµС‡Р°РµС‚Рµ - РїРѕРєР° РєРѕРЅРєСѓСЂРµРЅС‚С‹ РµС‰С‘ РЅРµ РІРёРґРµР»Рё СЃРѕРѕР±С‰РµРЅРёРµ.</span><span data-en>You copy the AI reply and answer before competitors even see the message.</span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="panel product-panel" data-aos>
+          <span class="label"><span data-ru>РџСЂРёРјРµСЂ</span><span data-en>Use case</span></span>
+          <h2 class="offer-title" style="margin-top:10px">
+            <span data-ru>Р‘СЂРѕРєРµСЂ РЅРµРґРІРёР¶РёРјРѕСЃС‚Рё</span>
+            <span data-en>Real estate broker</span>
+          </h2>
+          <div class="flow-wrap">
+            <div class="flow-row">
+              <div class="flow-card"><strong><span data-ru>20 С‡Р°С‚РѕРІ</span><span data-en>20 chats</span></strong><span data-ru>РїСЂРѕ РЅРµРґРІРёР¶РёРјРѕСЃС‚СЊ</span><span data-en>about real estate</span></div>
+              <div class="flow-card"><strong><span data-ru>РЎР»РѕРІР°</span><span data-en>Keywords</span></strong><span data-ru>РєРІР°СЂС‚РёСЂР°, Р°СЂРµРЅРґР°, РёС‰Сѓ Р¶РёР»СЊС‘</span><span data-en>apartment, rent, looking for housing</span></div>
+              <div class="flow-card"><strong><span data-ru>AI</span><span data-en>AI</span></strong><span data-ru>РѕС‚СЃРµРёРІР°РµС‚ РЅРµС†РµР»РµРІС‹Рµ</span><span data-en>filters non-target leads</span></div>
+              <div class="flow-card"><strong><span data-ru>РЎРёРіРЅР°Р»</span><span data-en>Signal</span></strong><span data-ru>СѓРІРµРґРѕРјР»РµРЅРёРµ + РѕС‚РІРµС‚</span><span data-en>notification + reply</span></div>
+              <div class="flow-card"><strong><span data-ru>Р РµР·СѓР»СЊС‚Р°С‚</span><span data-en>Result</span></strong><span data-ru>5-15 С†РµР»РµРІС‹С… Р»РёРґРѕРІ РёР· 500 СЃРѕРѕР±С‰РµРЅРёР№/РґРµРЅСЊ</span><span data-en>5-15 qualified leads from 500 messages/day</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>РЎСЂР°РІРЅРµРЅРёРµ РїРѕРґС…РѕРґРѕРІ</span><span data-en>Comparison</span></span>
+          <h2><span data-ru>РџРѕС‡РµРјСѓ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ РІС‹РёРіСЂС‹РІР°РµС‚</span><span data-en>Why automation wins</span></h2>
+        </div>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th><span data-ru>РџР°СЂР°РјРµС‚СЂ</span><span data-en>Parameter</span></th>
+              <th><span data-ru>Р’СЂСѓС‡РЅСѓСЋ</span><span data-en>Manual</span></th>
+              <th>LeadHunter Bot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span data-ru>РЎРєРѕСЂРѕСЃС‚СЊ СЂРµР°РєС†РёРё</span><span data-en>Response speed</span></td><td>10 РјРёРЅ - 3 С‡Р°СЃР°</td><td><span class="check">вњ“</span> 3 СЃРµРєСѓРЅРґС‹</td></tr>
+            <tr><td><span data-ru>Р Р°Р±РѕС‚Р° 24/7</span><span data-en>Works 24/7</span></td><td><span class="cross">вњ—</span></td><td><span class="check">вњ“</span></td></tr>
+            <tr><td><span data-ru>РљРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°С‚РѕРІ</span><span data-en>Number of chats</span></td><td>3-5 РјР°РєСЃРёРјСѓРј</td><td><span class="check">вњ“</span> Р‘РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№</td></tr>
+            <tr><td><span data-ru>Р’СЂРµРјСЏ РЅР° РјРѕРЅРёС‚РѕСЂРёРЅРі</span><span data-en>Monitoring time</span></td><td>2-4 С‡Р°СЃР°/РґРµРЅСЊ</td><td><span class="check">вњ“</span> 0 РјРёРЅСѓС‚</td></tr>
+            <tr><td><span data-ru>AI-РєРІР°Р»РёС„РёРєР°С†РёСЏ</span><span data-en>AI qualification</span></td><td><span class="cross">вњ—</span></td><td><span class="check">вњ“</span></td></tr>
+            <tr><td><span data-ru>Р“РѕС‚РѕРІС‹Р№ РѕС‚РІРµС‚</span><span data-en>Ready reply</span></td><td><span class="cross">вњ—</span> РџРёСЃР°С‚СЊ СЃР°РјРѕРјСѓ</td><td><span class="check">вњ“</span> AI РіРµРЅРµСЂРёСЂСѓРµС‚</td></tr>
+            <tr><td><span data-ru>РџСЂРѕРїСѓС‰РµРЅРЅС‹Рµ Р»РёРґС‹</span><span data-en>Missed leads</span></td><td>Р”Рѕ 70%</td><td><span class="check">вњ“</span> 0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Р”РІР° С„РѕСЂРјР°С‚Р° СЂР°Р±РѕС‚С‹</span><span data-en>Two delivery modes</span></span>
+          <h2><span data-ru>Р’С‹Р±РµСЂРёС‚Рµ СѓРґРѕР±РЅС‹Р№ РІР°СЂРёР°РЅС‚</span><span data-en>Choose the format that fits</span></h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="pricing-card popular" data-aos>
+            <div class="pricing-label">РџРѕРїСѓР»СЏСЂРЅРѕРµ</div>
+            <h3>РђСЂРµРЅРґР°</h3>
+            <p class="pricing-period"><span data-ru>РћРїР»Р°С‚Р°: 7 РґРЅРµР№ РёР»Рё 30 РґРЅРµР№</span><span data-en>Payment: 7 days or 30 days</span></p>
+            <ul class="pricing-includes">
+              <li><span data-ru>Р’С‹ СЃРѕР·РґР°С‘С‚Рµ Р±РѕС‚Р° С‡РµСЂРµР· BotFather Р·Р° 2 РјРёРЅСѓС‚С‹</span><span data-en>Create a bot via BotFather in 2 minutes</span></li>
+              <li><span data-ru>РџРµСЂРµРґР°С‘С‚Рµ С‚РѕРєРµРЅ - РјС‹ РІСЃС‘ РїРѕРґРєР»СЋС‡Р°РµРј</span><span data-en>Share the token - we connect everything</span></li>
+              <li><span data-ru>РќР°СЃС‚СЂРѕР№РєР° AI-РїСЂРѕРјРїС‚Р° РїРѕРґ РІР°С€Сѓ РЅРёС€Сѓ</span><span data-en>AI prompt setup for your niche</span></li>
+              <li><span data-ru>Р”РѕР±Р°РІР»РµРЅРёРµ С‡Р°С‚РѕРІ Рё РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ</span><span data-en>Add chats and keywords</span></li>
+              <li><span data-ru>РЈРїСЂР°РІР»РµРЅРёРµ С‡РµСЂРµР· Telegram-РјРµРЅСЋ</span><span data-en>Manage through Telegram menu</span></li>
+              <li><span data-ru>РўРµС…РїРѕРґРґРµСЂР¶РєР° РЅР° РІРµСЃСЊ РїРµСЂРёРѕРґ</span><span data-en>Support for the full period</span></li>
+            </ul>
+            <p class="pricing-note"><span data-ru>РќРёРєР°РєРёС… С‚РµС…РЅРёС‡РµСЃРєРёС… Р·РЅР°РЅРёР№ РЅРµ РЅСѓР¶РЅРѕ. РЈ РєР°Р¶РґРѕРіРѕ РєР»РёРµРЅС‚Р° РѕС‚РґРµР»СЊРЅР°СЏ Р‘Р”. РњРѕР¶РЅРѕ РѕС‚РјРµРЅРёС‚СЊ РІ Р»СЋР±РѕР№ РјРѕРјРµРЅС‚.</span><span data-en>No technical knowledge needed. Each client has a separate database. You can cancel anytime.</span></p>
+          </article>
+          <article class="pricing-card" data-aos>
+            <div class="pricing-label">РџРѕРґ РєР»СЋС‡</div>
+            <h3>РќР° РІР°С€РµРј СЃРµСЂРІРµСЂРµ</h3>
+            <p class="pricing-period"><span data-ru>РќР°СЃС‚СЂРѕР№РєР° Р·Р° 3 РґРЅСЏ В· СЂР°Р·РѕРІР°СЏ РѕРїР»Р°С‚Р°</span><span data-en>Setup in 3 days В· one-time payment</span></p>
+            <ul class="pricing-includes">
+              <li><span data-ru>РЈСЃС‚Р°РЅРѕРІРєР° РЅР° РІР°С€ VPS/СЃРµСЂРІРµСЂ</span><span data-en>Install on your VPS/server</span></li>
+              <li><span data-ru>РќР°СЃС‚СЂРѕР№РєР° AI-РїСЂРѕРјРїС‚Р° РїРѕРґ РЅРёС€Сѓ</span><span data-en>Set up the AI prompt for your niche</span></li>
+              <li><span data-ru>РћР±СѓС‡РµРЅРёРµ AI РІР°С€РµРјСѓ СЃС‚РёР»СЋ РѕР±С‰РµРЅРёСЏ</span><span data-en>Train the AI to match your tone</span></li>
+              <li><span data-ru>Р”РѕР±Р°РІР»РµРЅРёРµ С‡Р°С‚РѕРІ Рё РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ</span><span data-en>Add chats and keywords</span></li>
+              <li><span data-ru>РРЅСЃС‚СЂСѓРєС†РёСЏ РїРѕ СѓРїСЂР°РІР»РµРЅРёСЋ</span><span data-en>Usage instructions</span></li>
+              <li><span data-ru>РўРµС…РїРѕРґРґРµСЂР¶РєР° РїРµСЂРІС‹Рµ 14 РґРЅРµР№</span><span data-en>14 days of support</span></li>
+            </ul>
+            <p class="pricing-note"><span data-ru>РџРѕР»РЅР°СЏ Р°РІС‚РѕРЅРѕРјРЅРѕСЃС‚СЊ - РґР°РЅРЅС‹Рµ С‚РѕР»СЊРєРѕ Сѓ РІР°СЃ. Р Р°СЃС…РѕРґС‹ РЅР° AI: ~$0.10/РґРµРЅСЊ. РЎРµСЂРІРµСЂ: РѕС‚ $5/РјРµСЃ.</span><span data-en>Full autonomy - data stays with you. AI costs: about $0.10/day. Server: from $5/month.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="trust-strip" data-aos>
+          <div class="trust-box">
+            <span class="label"><span data-ru>Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ РґР°РЅРЅС‹С…</span><span data-en>Data security</span></span>
+            <h3><span data-ru>РљР°Р¶РґС‹Р№ РєР»РёРµРЅС‚ СЂР°Р±РѕС‚Р°РµС‚ РІ РёР·РѕР»РёСЂРѕРІР°РЅРЅРѕР№ СЃСЂРµРґРµ</span><span data-en>Each client works in an isolated environment</span></h3>
+            <p class="product-note"><span data-ru>РЎРІРѕСЏ Р±Р°Р·Р° РґР°РЅРЅС‹С…, СЃРІРѕРё РЅР°СЃС‚СЂРѕР№РєРё, СЃРІРѕР№ bot-token. РќРёРєС‚Рѕ РЅРµ РІРёРґРёС‚ С‡СѓР¶РёРµ РґР°РЅРЅС‹Рµ. РџСЂРё Р°СЂРµРЅРґРµ - РІСЃС‘ РЅР° РЅР°С€РµРј Р·Р°С‰РёС‰С‘РЅРЅРѕРј СЃРµСЂРІРµСЂРµ. РџСЂРё СѓСЃС‚Р°РЅРѕРІРєРµ РїРѕРґ РєР»СЋС‡ - РґР°РЅРЅС‹Рµ С‚РѕР»СЊРєРѕ Сѓ РІР°СЃ.</span><span data-en>Own database, own settings, own bot token. Nobody sees anyone elseвЂ™s data. With rental, everything stays on our secure server. With dedicated setup, data stays only with you.</span></p>
+          </div>
+          <div class="trust-box">
+            <span class="label"><span data-ru>РљРѕРјСѓ РїРѕРґС…РѕРґРёС‚</span><span data-en>Who it fits</span></span>
+            <h3><span data-ru>Р›СЋР±РѕР№ Р±РёР·РЅРµСЃ, РіРґРµ РєР»РёРµРЅС‚С‹ РѕР±С‰Р°СЋС‚СЃСЏ РІ Telegram</span><span data-en>Any business where clients communicate in Telegram</span></h3>
+            <div class="niche-grid" style="margin-top:14px">
+              <div class="niche-card"><h3>РќРµРґРІРёР¶РёРјРѕСЃС‚СЊ</h3><p class="product-note"><span data-ru>РљРІР°СЂС‚РёСЂС‹, Р°СЂРµРЅРґР°, РєРѕРјРјРµСЂС‡РµСЃРєР°СЏ РЅРµРґРІРёР¶РёРјРѕСЃС‚СЊ.</span><span data-en>Apartments, rent, commercial real estate.</span></p></div>
+              <div class="niche-card"><h3>IT Рё СЂР°Р·СЂР°Р±РѕС‚РєР°</h3><p class="product-note"><span data-ru>Р—Р°РєР°Р·С‹ РЅР° СЂР°Р·СЂР°Р±РѕС‚РєСѓ, РёРЅС‚РµРіСЂР°С†РёРё, Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЋ.</span><span data-en>Development, integrations, automation requests.</span></p></div>
+              <div class="niche-card"><h3>РћР±СЂР°Р·РѕРІР°РЅРёРµ</h3><p class="product-note"><span data-ru>РљСѓСЂСЃС‹, СЂРµРїРµС‚РёС‚РѕСЂСЃС‚РІРѕ, РјРµРЅС‚РѕСЂСЃС‚РІРѕ.</span><span data-en>Courses, tutoring, mentoring.</span></p></div>
+              <div class="niche-card"><h3>РЈСЃР»СѓРіРё</h3><p class="product-note"><span data-ru>Р РµРјРѕРЅС‚, РґРёР·Р°Р№РЅ, СЋСЂРёСЃС‚С‹, Р±СѓС…РіР°Р»С‚РµСЂС‹.</span><span data-en>Repairs, design, legal, accounting.</span></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="final-cta panel" data-aos>
+          <span class="label"><span data-ru>Р“РѕС‚РѕРІС‹ РїРѕР»СѓС‡Р°С‚СЊ РєР»РёРµРЅС‚РѕРІ РЅР° Р°РІС‚РѕРїРёР»РѕС‚Рµ?</span><span data-en>Ready to get clients on autopilot?</span></span>
+          <h2>
+            <span data-ru>РџРѕРїСЂРѕР±СѓР№С‚Рµ Р±РµСЃРїР»Р°С‚РЅС‹Р№ 7-РґРЅРµРІРЅС‹Р№ С‚СЂРёР°Р» РёР»Рё Р·Р°РєР°Р¶РёС‚Рµ СѓСЃС‚Р°РЅРѕРІРєСѓ РїРѕРґ РєР»СЋС‡</span>
+            <span data-en>Try a free 7-day trial or order a turnkey installation</span>
+          </h2>
+          <div class="hero-actions">
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>РќР°РїРёСЃР°С‚СЊ РІ Telegram</span><span data-en>Contact via Telegram</span></a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com"><span data-ru>Email</span><span data-en>Email</span></a>
+            <a class="ghost" href="prototype-preview.html"><span data-ru>РќР°Р·Р°Рґ РЅР° РіР»Р°РІРЅСѓСЋ</span><span data-en>Back to home</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small>Nodalio В· <span data-ru>РР-Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ Р±РёР·РЅРµСЃР°</span><span data-en>AI automation for business</span></small>
+      <small><a href="mailto:olshanskiy.ad@gmail.com">olshanskiy.ad@gmail.com</a></small>
+    </div>
+  </footer>
+</body>
 </html>
