@@ -1,4 +1,4 @@
-﻿const PRODUCTS = {
+const PRODUCTS = {
   leadhunter: {
     ru: {
       title: 'LeadHunter',
@@ -145,13 +145,142 @@
     en: {
       title: 'AI Backoffice',
       subtitle: 'Operations, documents, and approvals',
-      intro: 'Connects document flow, notifications, approvals, reporting, and internal services into one workflow.',
+      intro: 'Connects document flow, notifications, approvals, reporting, and operational workflows into one workflow.',
       problem: 'Backoffice often lives in spreadsheets, chats, and manual forwarding instead of a single process.',
       capabilities: ['Documents', 'Approval flow', 'Reporting', 'System sync'],
       steps: ['1. Map the process', '2. Remove manual steps', '3. Connect systems', '4. Test under load'],
       usecase: 'For teams that need operational clarity inside the company.',
       result: 'Fewer errors, more control, less manual chaos.',
     }
+  }
+};
+
+const PRODUCT_SECTIONS = {
+  'digital-broker': {
+    problem: [
+      { ru: 'Заявки приходят из разных каналов и теряют контекст.', en: 'Requests arrive from different channels and lose context.' },
+      { ru: 'Менеджеры вручную сравнивают условия и пересылают их дальше.', en: 'Managers compare offers manually and forward them by hand.' },
+      { ru: 'Сделки тормозятся там, где нужен единый маршрут и прозрачные правила.', en: 'Deals slow down where a single route and clear rules are needed.' }
+    ],
+    comparison: [
+      { label: { ru: 'Скорость', en: 'Speed' }, manual: { ru: 'Ручная сортировка и пересылка', en: 'Manual sorting and forwarding' }, nodalio: { ru: 'Авторазбор и быстрый маршрут', en: 'Auto-triage and fast routing' } },
+      { label: { ru: 'Контекст', en: 'Context' }, manual: { ru: 'Теряется в чатах и таблицах', en: 'Lost in chats and sheets' }, nodalio: { ru: 'Сохраняется в одном контуре', en: 'Kept in one loop' } },
+      { label: { ru: 'Решение', en: 'Decision' }, manual: { ru: 'Нужны ручные касания', en: 'Needs manual touches' }, nodalio: { ru: 'Работают правила и сценарии', en: 'Rules and scenarios are already working' } }
+    ],
+    delivery: [
+      { title: { ru: 'Настройка под сделку', en: 'Built for your deal flow' }, text: { ru: 'Подстраиваем сценарий под нишу, тип предложения и способ согласования.', en: 'We adapt the flow to your niche, offer type, and approval path.' } },
+      { title: { ru: 'Контроль и ручной fallback', en: 'Control and human fallback' }, text: { ru: 'Сложные кейсы уходят человеку без потери истории.', en: 'Complex cases are handed off to a human without losing history.' } }
+    ],
+    trust: [
+      { ru: 'Маршрутизация на основе правил, а не догадок.', en: 'Routing based on rules, not guesses.' },
+      { ru: 'Понятные точки согласования и прозрачный контроль.', en: 'Clear approval points and transparent control.' },
+      { ru: 'Подходит для команд с потоком предложений и заявок.', en: 'Fits teams with a constant flow of offers and requests.' }
+    ]
+  },
+  'lead-classifier': {
+    problem: [
+      { ru: 'Хорошие лиды смешиваются с нецелевыми и теряются в общем потоке.', en: 'Good leads get mixed with irrelevant ones and get lost in the flow.' },
+      { ru: 'Один и тот же ответ уходит и горячим, и холодным заявкам.', en: 'The same response goes to both hot and cold leads.' },
+      { ru: 'Менеджеры тратят время на разбор вместо быстрого контакта.', en: 'Managers spend time triaging instead of responding fast.' }
+    ],
+    comparison: [
+      { label: { ru: 'Приоритет', en: 'Priority' }, manual: { ru: 'Решает человек по памяти', en: 'Decided from memory by a person' }, nodalio: { ru: 'Считает score по сигналам', en: 'Scores leads by signals' } },
+      { label: { ru: 'Handoff', en: 'Handoff' }, manual: { ru: 'Непрозрачные пересылки', en: 'Opaque handoffs' }, nodalio: { ru: 'Лид уходит нужному менеджеру', en: 'Lead goes to the right manager' } },
+      { label: { ru: 'Скорость', en: 'Speed' }, manual: { ru: 'Ответ зависит от загрузки', en: 'Reply depends on workload' }, nodalio: { ru: 'Скорость задаёт система', en: 'Speed is set by the system' } }
+    ],
+    delivery: [
+      { title: { ru: 'Сигналы и score', en: 'Signals and score' }, text: { ru: 'Определяем, какие сигналы говорят о горячем лиде именно в вашем бизнесе.', en: 'We define which signals indicate a hot lead in your business.' } },
+      { title: { ru: 'Интеграция в CRM', en: 'CRM integration' }, text: { ru: 'Сразу подключаем маршрутизацию и уведомления к текущей CRM.', en: 'We connect routing and notifications directly to your CRM.' } }
+    ],
+    trust: [
+      { ru: 'Порог уверенности можно настроить под ваш риск-профиль.', en: 'Confidence thresholds can be tuned to your risk profile.' },
+      { ru: 'Человек всегда может перехватить решение.', en: 'A human can always override the decision.' },
+      { ru: 'Подходит для активных отделов продаж и лид-генерации.', en: 'Fits active sales and lead-gen teams.' }
+    ]
+  },
+  'content-factory': {
+    problem: [
+      { ru: 'Публикации рвутся, когда команда занята операционкой.', en: 'Publishing stalls when the team is busy with operations.' },
+      { ru: 'Тон бренда расползается между авторами и каналами.', en: 'Brand tone drifts across authors and channels.' },
+      { ru: 'Контент-план живёт в таблице, а не в рабочем потоке.', en: 'The content plan lives in a sheet, not in a live workflow.' }
+    ],
+    comparison: [
+      { label: { ru: 'Исследование', en: 'Research' }, manual: { ru: 'Собирается вручную и долго', en: 'Collected manually and slowly' }, nodalio: { ru: 'Подхватывается системой', en: 'Handled by the system' } },
+      { label: { ru: 'Черновики', en: 'Drafts' }, manual: { ru: 'Пишутся от случая к случаю', en: 'Written case by case' }, nodalio: { ru: 'Выходят по правилам бренда', en: 'Produced by brand rules' } },
+      { label: { ru: 'Публикация', en: 'Publishing' }, manual: { ru: 'Нужны постоянные напоминания', en: 'Needs constant reminders' }, nodalio: { ru: 'Идёт по расписанию', en: 'Runs on schedule' } }
+    ],
+    delivery: [
+      { title: { ru: 'Тон бренда', en: 'Brand tone' }, text: { ru: 'Фиксируем правила языка и задаём редакционный контроль.', en: 'We lock language rules and set editorial control.' } },
+      { title: { ru: 'Поток публикаций', en: 'Publishing flow' }, text: { ru: 'Строим цепочку от идеи и ресёрча до выпуска и дистрибуции.', en: 'We build the flow from idea and research to release and distribution.' } }
+    ],
+    trust: [
+      { ru: 'Контент остаётся под редакторским контролем.', en: 'Content stays under editorial control.' },
+      { ru: 'Генерация не ломает тон бренда.', en: 'Generation does not break brand tone.' },
+      { ru: 'Подходит брендам с регулярным выпуском материалов.', en: 'Fits brands with a regular publishing cadence.' }
+    ]
+  },
+  'ai-hr': {
+    problem: [
+      { ru: 'Рекрутеры отвечают на одни и те же вопросы снова и снова.', en: 'Recruiters answer the same questions again and again.' },
+      { ru: 'Первый контакт с кандидатом часто слишком медленный.', en: 'The first contact with a candidate is often too slow.' },
+      { ru: 'Скрининг отнимает время у людей, которые должны закрывать найм.', en: 'Screening eats time from people who should be closing hires.' }
+    ],
+    comparison: [
+      { label: { ru: 'Скрининг', en: 'Screening' }, manual: { ru: 'Зависит от загрузки рекрутера', en: 'Depends on recruiter load' }, nodalio: { ru: 'Идёт по единым вопросам', en: 'Runs on a single question set' } },
+      { label: { ru: 'FAQ', en: 'FAQ' }, manual: { ru: 'Отвечают в переписке вручную', en: 'Answered manually in chat' }, nodalio: { ru: 'Отвечает сразу в потоке', en: 'Answered right in the flow' } },
+      { label: { ru: 'Handoff', en: 'Handoff' }, manual: { ru: 'История теряется по дороге', en: 'History gets lost along the way' }, nodalio: { ru: 'Передаёт кандидата с контекстом', en: 'Hands off the candidate with context' } }
+    ],
+    delivery: [
+      { title: { ru: 'Роль и вопросы', en: 'Role and questions' }, text: { ru: 'Настраиваем сценарий под вакансию и стандарт компании.', en: 'We set up the flow for the role and your company standard.' } },
+      { title: { ru: 'Передача человеку', en: 'Human handoff' }, text: { ru: 'Сложные кандидаты сразу уходят рекрутеру с полным контекстом.', en: 'Complex candidates go to the recruiter with full context.' } }
+    ],
+    trust: [
+      { ru: 'Система не заменяет рекрутера, а снимает рутину.', en: 'The system does not replace recruiters; it removes routine.' },
+      { ru: 'Оставляем понятный человеческий контроль на ключевых шагах.', en: 'We keep a clear human control layer on key steps.' },
+      { ru: 'Подходит для найма с большим входящим потоком.', en: 'Fits hiring flows with high incoming volume.' }
+    ]
+  },
+  'support-agent': {
+    problem: [
+      { ru: 'Поддержка повторяет одинаковые ответы и теряет темп.', en: 'Support repeats the same answers and loses pace.' },
+      { ru: 'Клиент ждёт, пока оператор освободится и найдёт контекст.', en: 'Customers wait while an operator frees up and finds context.' },
+      { ru: 'Сложные кейсы смешиваются с типовыми вопросами.', en: 'Complex cases get mixed with routine questions.' }
+    ],
+    comparison: [
+      { label: { ru: 'Ответ', en: 'Reply' }, manual: { ru: 'Зависит от смены и загрузки', en: 'Depends on shift and workload' }, nodalio: { ru: 'Даёт ответ сразу', en: 'Replies immediately' } },
+      { label: { ru: 'Контекст', en: 'Context' }, manual: { ru: 'Лежит в голове у оператора', en: 'Lives in the operator’s head' }, nodalio: { ru: 'Берётся из базы знаний', en: 'Pulled from the knowledge base' } },
+      { label: { ru: 'Эскалация', en: 'Escalation' }, manual: { ru: 'Не всегда заметна вовремя', en: 'Not always noticed in time' }, nodalio: { ru: 'Идёт по правилам и порогам', en: 'Follows rules and thresholds' } }
+    ],
+    delivery: [
+      { title: { ru: 'База знаний', en: 'Knowledge base' }, text: { ru: 'Собираем основу ответов и обучаем агента на реальных сценариях.', en: 'We build the answer base and train the agent on real scenarios.' } },
+      { title: { ru: 'Порог эскалации', en: 'Escalation threshold' }, text: { ru: 'Сложные запросы уходят человеку без потери истории.', en: 'Complex requests go to a human without losing history.' } }
+    ],
+    trust: [
+      { ru: 'Соблюдаем единый тон и правила ответа.', en: 'We keep one tone and reply rules.' },
+      { ru: 'Снижаем нагрузку, не ломая сервис.', en: 'We reduce load without breaking service.' },
+      { ru: 'Подходит для продуктовой и сервисной поддержки.', en: 'Fits product and service support teams.' }
+    ]
+  },
+  backoffice: {
+    problem: [
+      { ru: 'Документы, согласования и отчётность живут в разных местах.', en: 'Documents, approvals, and reporting live in different places.' },
+      { ru: 'Команда тратит время на пересылки и ручные напоминания.', en: 'The team wastes time on forwarding and manual reminders.' },
+      { ru: 'Операции теряют прозрачность, когда нет единого маршрута.', en: 'Operations lose clarity without a single route.' }
+    ],
+    comparison: [
+      { label: { ru: 'Документы', en: 'Documents' }, manual: { ru: 'Хранятся в разных чатах и папках', en: 'Stored in chats and folders' }, nodalio: { ru: 'Идут по одному маршруту', en: 'Move through one route' } },
+      { label: { ru: 'Согласования', en: 'Approvals' }, manual: { ru: 'Нужны ручные напоминания', en: 'Need manual reminders' }, nodalio: { ru: 'Есть понятные статусы и правила', en: 'Have clear statuses and rules' } },
+      { label: { ru: 'Отчётность', en: 'Reporting' }, manual: { ru: 'Собирается по кускам', en: 'Built in fragments' }, nodalio: { ru: 'Сводится автоматически', en: 'Aggregated automatically' } }
+    ],
+    delivery: [
+      { title: { ru: 'Операционный маршрут', en: 'Operational route' }, text: { ru: 'Строим единый маршрут для задач, документов и уведомлений.', en: 'We build one route for tasks, documents, and notifications.' } },
+      { title: { ru: 'Контроль доступа', en: 'Access control' }, text: { ru: 'Фиксируем роли, ответственных и точки проверки.', en: 'We define roles, owners, and review points.' } }
+    ],
+    trust: [
+      { ru: 'Хаос в бэкофисе превращаем в понятный процесс.', en: 'We turn backoffice chaos into a clear process.' },
+      { ru: 'Убираем ручные касания там, где они не нужны.', en: 'We remove manual touches where they are unnecessary.' },
+      { ru: 'Подходит для внутренних сервисов и операционных команд.', en: 'Fits internal services and operations teams.' }
+    ]
   }
 };
 
@@ -239,16 +368,20 @@ const CHAT_COPY = {
     pain: 'Что сейчас сильнее всего тормозит рост?',
     revenue: 'Какой у вас примерный оборот?',
     recommend: flow => `Рекомендация: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
+    connect: 'Если всё совпадает с задачей, я передам краткую сводку CEO и открою прямой контакт.',
     final: 'Напишите в Telegram — и мы коротко сверим детали с CEO.',
-    telegram: 'Написать в Telegram'
+    telegram: 'Написать в Telegram',
+    connectBtn: 'Показать коннект'
   },
   en: {
     greet: 'Hi. I’ll quickly understand your request and prepare a short brief for Andrey. Let’s start with the niche: what segment does your business operate in?',
     pain: 'What is currently slowing growth the most?',
     revenue: 'What is your approximate revenue?',
     recommend: flow => `Recommendation: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} for your task.`,
+    connect: 'If it fits your goal, I’ll hand the short summary to the CEO and open a direct connection.',
     final: 'Message us on Telegram and we’ll quickly review the details with the CEO.',
-    telegram: 'Message on Telegram'
+    telegram: 'Message on Telegram',
+    connectBtn: 'Show connection'
   }
 };
 
@@ -309,6 +442,19 @@ function handleChat(value) {
     CHAT.revenue = value; CHAT.step = 3;
     addMsg(value, 'user');
     addMsg(c.recommend(CHAT), 'bot');
+    renderChatOptions([c.connectBtn]);
+    return;
+  }
+  if (CHAT.step === 3) {
+    CHAT.step = 4;
+    addMsg(value, 'user');
+    addMsg(c.connect, 'bot');
+    renderChatOptions([c.final]);
+    return;
+  }
+  if (CHAT.step === 4) {
+    CHAT.step = 5;
+    addMsg(value, 'user');
     addMsg(c.final, 'bot');
     const wrap = chatActions();
     wrap.innerHTML = '';
@@ -327,9 +473,12 @@ function renderProductPage() {
   if (!root) return;
   const key = document.body.dataset.product;
   const p = PRODUCTS[key];
+  const s = PRODUCT_SECTIONS[key] || PRODUCT_SECTIONS.backoffice;
   if (!p) return;
   const c = p[lang()];
   document.title = `${c.title} · Nodalio`;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', c.intro);
   root.innerHTML = `
     <section class="hero">
       <div class="container hero-grid">
@@ -339,6 +488,7 @@ function renderProductPage() {
           <p class="hero-sub">${c.intro}</p>
           <div class="hero-actions">
             <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Написать email' : 'Email us'}</a>
             <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
           </div>
           <div class="hero-meta">
@@ -365,6 +515,17 @@ function renderProductPage() {
         </div>
       </div>
     </section>
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label">${lang() === 'ru' ? 'Проблема' : 'Problem'}</span>
+          <h2>${lang() === 'ru' ? 'Что именно решает этот продукт' : 'What this product solves'}</h2>
+        </div>
+        <div class="problem-grid">
+          ${s.problem.map(item => `<article class="memo-card" data-aos><p>${item[lang()]}</p></article>`).join('')}
+        </div>
+      </div>
+    </section>
     <section class="section compact">
       <div class="container">
         <div class="section-head" data-aos>
@@ -377,6 +538,28 @@ function renderProductPage() {
       </div>
     </section>
     <section class="section compact">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label">${lang() === 'ru' ? 'Сравнение' : 'Comparison'}</span>
+          <h2>${lang() === 'ru' ? 'Ручной сценарий против Nodalio' : 'Manual flow vs Nodalio'}</h2>
+        </div>
+        <div class="comparison-table" data-aos>
+          <div class="comparison-head">
+            <span>${lang() === 'ru' ? 'Что сравниваем' : 'What we compare'}</span>
+            <span>${lang() === 'ru' ? 'Вручную' : 'Manual'}</span>
+            <span>Nodalio</span>
+          </div>
+          ${s.comparison.map(row => `
+            <div class="comparison-row">
+              <strong>${row.label[lang()]}</strong>
+              <span>${row.manual[lang()]}</span>
+              <span>${row.nodalio[lang()]}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    <section class="section compact">
       <div class="container memo-grid">
         <article class="memo-card" data-aos>
           <span class="label">${lang() === 'ru' ? 'Use case' : 'Use case'}</span>
@@ -384,10 +567,23 @@ function renderProductPage() {
           <p>${c.usecase}</p>
         </article>
         <article class="memo-card" data-aos>
-          <span class="label">${lang() === 'ru' ? 'Результат' : 'Result'}</span>
-          <h3>${lang() === 'ru' ? 'Эффект для бизнеса' : 'Business effect'}</h3>
-          <p>${c.result}</p>
+          <span class="label">${lang() === 'ru' ? 'Что входит' : 'What’s included'}</span>
+          <h3>${lang() === 'ru' ? 'Формат внедрения' : 'Delivery format'}</h3>
+          <div class="mini-list">
+            ${s.delivery.map(item => `<div class="mini-item"><strong>${item.title[lang()]}</strong><p>${item.text[lang()]}</p></div>`).join('')}
+          </div>
         </article>
+      </div>
+    </section>
+    <section class="section compact">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label">${lang() === 'ru' ? 'Доверие' : 'Trust'}</span>
+          <h2>${lang() === 'ru' ? 'На чём держится решение' : 'What makes the solution reliable'}</h2>
+        </div>
+        <div class="trust-grid">
+          ${s.trust.map(item => `<article class="case-card" data-aos><p>${item[lang()]}</p></article>`).join('')}
+        </div>
       </div>
     </section>
     <section class="section compact">
@@ -396,13 +592,19 @@ function renderProductPage() {
           <span class="label">${lang() === 'ru' ? 'Дальше' : 'Next step'}</span>
           <h3>${lang() === 'ru' ? 'Можно обсудить задачу сразу в Telegram' : 'We can discuss the task directly in Telegram'}</h3>
           <p class="contact-line">${lang() === 'ru' ? 'Без длинных форм и лишних шагов. Коротко сверяем задачу и формат внедрения.' : 'No long forms or extra steps. We quickly align on the task and delivery format.'}</p>
-          <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</a>
+          <div class="hero-actions">
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Написать email' : 'Email us'}</a>
+          </div>
         </article>
         <article class="contact-card" data-aos>
           <span class="label">${lang() === 'ru' ? 'Навигация' : 'Navigation'}</span>
           <h3>${lang() === 'ru' ? 'Назад к общей странице' : 'Back to the main page'}</h3>
-          <p class="contact-line">${lang() === 'ru' ? 'Главная — это кастомный анализ процессов и AI-автоматизация. Продукт — только доп. опция.' : 'The homepage is about custom process analysis and AI automation. Products are only a secondary option.'}</p>
-          <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
+          <p class="contact-line">${lang() === 'ru' ? 'Главная — это анализ процессов и автоматизация под задачу. Продукты — только доп. опция.' : 'The homepage is about process analysis and task-specific automation. Products are only a secondary option.'}</p>
+          <div class="hero-actions">
+            <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Email' : 'Email'}</a>
+          </div>
         </article>
       </div>
     </section>
