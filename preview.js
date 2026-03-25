@@ -1,4 +1,4 @@
-const PRODUCTS = {
+﻿const PRODUCTS = {
   leadhunter: {
     ru: {
       title: 'LeadHunter',
@@ -364,24 +364,33 @@ const CHAT = {
 
 const CHAT_COPY = {
   ru: {
-    greet: 'Привет. Я быстро пойму ваш запрос и подготовлю короткий brief для Андрея. Начнём с ниши: в каком сегменте работает бизнес?',
+    greet: 'Привет. Я быстро пойму задачу и подготовлю короткий brief для Андрея. Начнём с ниши: в каком сегменте работает бизнес?',
     pain: 'Что сейчас сильнее всего тормозит рост?',
     revenue: 'Какой у вас примерный оборот?',
-    recommend: flow => `Рекомендация: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
-    connect: 'Если всё совпадает с задачей, я передам краткую сводку CEO и открою прямой контакт.',
-    final: 'Напишите в Telegram — и мы коротко сверим детали с CEO.',
-    telegram: 'Написать в Telegram',
-    connectBtn: 'Показать коннект'
+    recommend: flow => `Рекомендация: ${flow.niche === 'Интернет-магазин' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / услуги' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Недвижимость' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
+    final: 'Подготовил короткий brief. Нажмите Telegram, и мы сверим детали с CEO.',
+    telegram: 'Написать в Telegram'
   },
   en: {
-    greet: 'Hi. I’ll quickly understand your request and prepare a short brief for Andrey. Let’s start with the niche: what segment does your business operate in?',
+    greet: 'Hi. I’ll quickly understand the task and prepare a short brief for Andrey. Let’s start with the niche: what segment does your business operate in?',
     pain: 'What is currently slowing growth the most?',
     revenue: 'What is your approximate revenue?',
     recommend: flow => `Recommendation: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} for your task.`,
-    connect: 'If it fits your goal, I’ll hand the short summary to the CEO and open a direct connection.',
-    final: 'Message us on Telegram and we’ll quickly review the details with the CEO.',
-    telegram: 'Message on Telegram',
-    connectBtn: 'Show connection'
+    final: 'I’ve prepared a short brief. Tap Telegram and we’ll review the details with the CEO.',
+    telegram: 'Message on Telegram'
+  }
+};
+
+const CHAT_OPTIONS = {
+  ru: {
+    niche: ['Интернет-магазин', 'B2B / услуги', 'Недвижимость', 'Другое'],
+    pain: ['Медленно отвечаем', 'Лиды теряются', 'Много ручной рутины', 'Сложно масштабировать'],
+    revenue: ['До 1 млн ₽/мес', '1–5 млн ₽/мес', '5–20 млн ₽/мес', '20+ млн ₽/мес']
+  },
+  en: {
+    niche: ['E-commerce', 'B2B / Services', 'Real Estate', 'Other'],
+    pain: ['Slow replies', 'Leads are lost', 'Too much manual work', 'Hard to scale'],
+    revenue: ['$0–10K/mo', '$10K–50K/mo', '$50K–100K/mo', '$100K+/mo']
   }
 };
 
@@ -396,6 +405,39 @@ function addMsg(text, role='bot') {
   el.textContent = text;
   chatMessages().appendChild(el);
   chatMessages().scrollTop = chatMessages().scrollHeight;
+}
+
+function showTyping() {
+  const wrap = chatMessages();
+  if (!wrap) return null;
+  const el = document.createElement('div');
+  el.className = 'msg bot typing-msg';
+  el.innerHTML = '<span class="typing" aria-hidden="true"><span></span><span></span><span></span></span>';
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+
+function botReply(text, nextItems, done = false) {
+  const typing = showTyping();
+  setTimeout(() => {
+    if (typing && typing.parentNode) typing.remove();
+    addMsg(text, 'bot');
+    const wrap = chatActions();
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    if (done) {
+      const a = document.createElement('a');
+      a.className = 'chat-link';
+      a.href = 'https://t.me/olshanskiy_ad';
+      a.target = '_blank';
+      a.rel = 'noreferrer';
+      a.innerHTML = `<span class="btn-icon" aria-hidden="true">✈</span><span>${CHAT_COPY[lang()].telegram}</span>`;
+      wrap.appendChild(a);
+      return;
+    }
+    renderChatOptions(nextItems);
+  }, 280);
 }
 
 function renderChatOptions(items) {
@@ -419,7 +461,7 @@ function resetChat() {
   const c = CHAT_COPY[lang()];
   const greet = document.getElementById('chatGreeting');
   if (greet) greet.textContent = c.greet;
-  renderChatOptions(['E-commerce', 'B2B / Services', 'Real Estate', 'Other']);
+  renderChatOptions(CHAT_OPTIONS[lang()].niche);
 }
 
 function handleChat(value) {
@@ -427,44 +469,19 @@ function handleChat(value) {
   if (CHAT.step === 0) {
     CHAT.niche = value; CHAT.step = 1;
     addMsg(value, 'user');
-    addMsg(c.pain, 'bot');
-    renderChatOptions(['Not enough leads', 'Slow response', 'Manual routine', 'Hard to scale']);
+    botReply(c.pain, CHAT_OPTIONS[lang()].pain);
     return;
   }
   if (CHAT.step === 1) {
     CHAT.pain = value; CHAT.step = 2;
     addMsg(value, 'user');
-    addMsg(c.revenue, 'bot');
-    renderChatOptions(['Under $10K/mo', '$10K-$50K/mo', '$50K-$100K/mo', 'Over $100K/mo']);
+    botReply(c.revenue, CHAT_OPTIONS[lang()].revenue);
     return;
   }
   if (CHAT.step === 2) {
     CHAT.revenue = value; CHAT.step = 3;
     addMsg(value, 'user');
-    addMsg(c.recommend(CHAT), 'bot');
-    renderChatOptions([c.connectBtn]);
-    return;
-  }
-  if (CHAT.step === 3) {
-    CHAT.step = 4;
-    addMsg(value, 'user');
-    addMsg(c.connect, 'bot');
-    renderChatOptions([c.final]);
-    return;
-  }
-  if (CHAT.step === 4) {
-    CHAT.step = 5;
-    addMsg(value, 'user');
-    addMsg(c.final, 'bot');
-    const wrap = chatActions();
-    wrap.innerHTML = '';
-    const a = document.createElement('a');
-    a.className = 'chat-link';
-    a.href = 'https://t.me/olshanskiy_ad';
-    a.target = '_blank';
-    a.rel = 'noreferrer';
-    a.textContent = c.telegram;
-    wrap.appendChild(a);
+    botReply(c.recommend(CHAT), [], true);
   }
 }
 
@@ -487,8 +504,8 @@ function renderProductPage() {
           <h1 class="hero-title">${c.subtitle}</h1>
           <p class="hero-sub">${c.intro}</p>
           <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Написать email' : 'Email us'}</a>
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span>${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</span></a>
+            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
             <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
           </div>
           <div class="hero-meta">
@@ -593,8 +610,8 @@ function renderProductPage() {
           <h3>${lang() === 'ru' ? 'Можно обсудить задачу сразу в Telegram' : 'We can discuss the task directly in Telegram'}</h3>
           <p class="contact-line">${lang() === 'ru' ? 'Без длинных форм и лишних шагов. Коротко сверяем задачу и формат внедрения.' : 'No long forms or extra steps. We quickly align on the task and delivery format.'}</p>
           <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Написать email' : 'Email us'}</a>
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span>${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</span></a>
+            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
           </div>
         </article>
         <article class="contact-card" data-aos>
@@ -603,7 +620,7 @@ function renderProductPage() {
           <p class="contact-line">${lang() === 'ru' ? 'Главная — это анализ процессов и автоматизация под задачу. Продукты — только доп. опция.' : 'The homepage is about process analysis and task-specific automation. Products are only a secondary option.'}</p>
           <div class="hero-actions">
             <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">${lang() === 'ru' ? 'Email' : 'Email'}</a>
+            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
           </div>
         </article>
       </div>
