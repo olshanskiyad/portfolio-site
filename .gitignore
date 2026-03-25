@@ -1,0 +1,11 @@
+.next/
+node_modules/
+*.tsbuildinfo
+memory/
+comments*.docx
+comments*.txt
+tmp/
+tmp_*
+report*.json
+*.zip
+*.ps1
