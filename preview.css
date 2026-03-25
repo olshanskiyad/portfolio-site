@@ -180,6 +180,7 @@ button,input,textarea{font:inherit}
   margin:0;
   font-family:'Syne',sans-serif;font-size:clamp(2.25rem,4.6vw,4.45rem);line-height:.92;letter-spacing:-.07em;
 }
+.hero-title br{display:block}
 .hero-title .accent{color:var(--accent)}
 .hero-sub{
   margin:0;max-width:62ch;font-size:1.03rem;color:var(--muted);line-height:1.68;
