@@ -114,6 +114,28 @@ button,input,textarea{font:inherit}
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1.16fr) minmax(340px,.84fr);gap:18px;align-items:stretch;
 }
+.hero-grid-home{
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.hero-grid-home .hero-copy{
+  max-width:100%;
+}
+.hero-grid-home .hero-title{
+  max-width:12.5ch;
+}
+.hero-grid-home .hero-visual{
+  width:100%;
+}
+.hero-grid-home .hero-visual-top{
+  padding:18px;
+}
+.hero-grid-home .hero-graph{
+  min-height:240px;
+}
+.hero-grid-home .hero-visual-stats{
+  margin-top:2px;
+}
 .hero-copy,.hero-visual,.offer-grid,.why-grid,.impl-grid,.cases-grid,.products-grid,.memo-grid,.chat-grid,.faq-grid,.steps-grid,.contact-grid{
   display:grid;
 }
