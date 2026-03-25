@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru" data-lang="ru">
 <head>
   <meta charset="utf-8">
@@ -13,19 +13,19 @@
 <body>
   <header class="nav">
     <div class="container">
-      <a class="brand" href="#hero">Noda<b>lio</b></a>
+      <a class="brand" href="#hero">Nodalio</a>
       <div class="nav-actions">
         <div class="lang">
           <button type="button" class="active" data-lang="ru" onclick="setLang('ru')">RU</button>
           <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
         </div>
         <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+          <span class="btn-icon" aria-hidden="true">✈</span>
           <span data-ru>Написать в Telegram</span>
           <span data-en>Contact via Telegram</span>
         </a>
         <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
-          <span data-ru>Email</span>
-          <span data-en>Email</span>
+          <span class="btn-icon" aria-hidden="true">✉</span>
         </a>
       </div>
     </div>
@@ -44,41 +44,42 @@
             <span data-en>We analyze processes<br><span class="accent">and build AI automation</span><br>for any task</span>
           </h1>
           <p class="hero-sub">
-            <span data-ru>Nodalio начинает с аналитики бизнес-процессов: находим, где бизнес теряет время, лиды и контроль, затем проектируем сценарий работы и доводим решение до рабочей нагрузки.</span>
-            <span data-en>Nodalio starts with business-process analytics: we find where you lose time, leads, and control, then design the workflow and bring it to production load.</span>
+            <span data-ru>Мы начинаем с аналитики бизнес-процессов: находим, где бизнес теряет время, лиды и контроль, затем проектируем сценарий работы и доводим решение до рабочей нагрузки.</span>
+            <span data-en>We start with business-process analytics: we find where you lose time, leads, and control, then design the workflow and bring it to production load.</span>
           </p>
           <div class="hero-actions">
             <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+              <span class="btn-icon" aria-hidden="true">✈</span>
               <span data-ru>Обсудить задачу</span>
               <span data-en>Discuss your task</span>
             </a>
             <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
-              <span data-ru>Написать email</span>
-              <span data-en>Email us</span>
+              <span class="btn-icon" aria-hidden="true">✉</span>
             </a>
             <a class="ghost" href="#products">
               <span data-ru>Смотреть решения</span>
               <span data-en>See solutions</span>
             </a>
           </div>
-          <div class="hero-meta">
-            <span class="chip"><b data-ru>Аудит</b><b data-en>Audit</b> <span data-ru>→ сценарий → MVP → запуск</span><span data-en>→ workflow → MVP → launch</span></span>
-            <span class="chip"><b data-ru>Фокус</b><b data-en>Focus</b> <span data-ru>кастом под ваш процесс</span><span data-en>custom for your process</span></span>
-            <span class="chip"><b>RU / EN</b> <span data-ru>двуязычный сайт</span><span data-en>bilingual site</span></span>
-          </div>
         </div>
 
         <div class="hero-visual" data-aos>
           <div class="hero-visual-top panel">
             <div class="label">
-              <span data-ru>Схема системы</span>
-              <span data-en>System graph</span>
+              <span data-ru>Как мы работаем</span>
+              <span data-en>How we work</span>
             </div>
-            <div class="hero-graph" style="margin-top:12px">
-              <div class="graph-node a"><strong>01</strong><span data-ru>Процесс</span><span data-en>Process</span></div>
-              <div class="graph-node b"><strong>02</strong><span data-ru>AI</span><span data-en>AI</span></div>
-              <div class="graph-node c"><strong>03</strong><span data-ru>Интеграции</span><span data-en>Integrations</span></div>
-              <div class="graph-node d"><strong>04</strong><span data-ru>Результат</span><span data-en>Result</span></div>
+            <div class="process-strip" style="margin-top:12px">
+              <div class="process-step"><strong>01</strong><span data-ru>Аудит</span><span data-en>Audit</span></div>
+              <div class="process-step"><strong>02</strong><span data-ru>Сценарий</span><span data-en>Workflow</span></div>
+              <div class="process-step"><strong>03</strong><span data-ru>MVP</span><span data-en>MVP</span></div>
+              <div class="process-step"><strong>04</strong><span data-ru>Запуск</span><span data-en>Launch</span></div>
+            </div>
+            <div class="hero-graph" id="heroGraphWrap" style="margin-top:12px">
+              <div class="graph-node a"><strong>Signal</strong><span data-ru>лиды, обращения, задачи</span><span data-en>leads, requests, tasks</span></div>
+              <div class="graph-node b"><strong>AI</strong><span data-ru>квалификация и routing</span><span data-en>qualification and routing</span></div>
+              <div class="graph-node c"><strong>Workflow</strong><span data-ru>CRM, Telegram, API</span><span data-en>CRM, Telegram, API</span></div>
+              <div class="graph-node d"><strong>Result</strong><span data-ru>быстрее ответ и контроль</span><span data-en>faster reply and control</span></div>
               <div class="graph-line l1"></div>
               <div class="graph-line l2"></div>
               <canvas id="heroGraph" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
@@ -105,7 +106,17 @@
       </div>
     </section>
 
-    <section class="section compact">
+    <nav class="mini-nav" aria-label="Section navigation">
+      <div class="container">
+        <a href="#offer"><span data-ru>Предложение</span><span data-en>Offer</span></a>
+        <a href="#cases"><span data-ru>Кейсы</span><span data-en>Cases</span></a>
+        <a href="#products"><span data-ru>Продукты</span><span data-en>Products</span></a>
+        <a href="#chat"><span data-ru>Чат</span><span data-en>Chat</span></a>
+        <a href="#contact"><span data-ru>Контакт</span><span data-en>Contact</span></a>
+      </div>
+    </nav>
+
+    <section class="section compact" id="offer">
       <div class="container">
         <div class="offer-panel" data-aos>
           <div>
@@ -140,47 +151,20 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="implement">
       <div class="container">
         <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Почему выбирают</span><span data-en>Why choose</span></span>
-          <h2><span data-ru>Сильнее, чем просто “сделать бота”</span><span data-en>Stronger than “just build a bot”</span></h2>
-            <p><span data-ru>Мы совмещаем бизнес-логику, интеграции и аккуратное внедрение, чтобы автоматизация не ломала процесс, а усиливала его.</span><span data-en>We combine business logic, integrations, and precise delivery so automation strengthens the process instead of breaking it.</span></p>
-        </div>
-        <div class="why-grid">
-          <article class="why-card" data-aos>
-            <div class="kpi">01</div>
-            <h3><span data-ru>Бизнес-логика</span><span data-en>Business logic</span></h3>
-            <p><span data-ru>Сначала понимаем воронку, поддержку, бэкофис или HR-процесс, затем автоматизируем. Никакого AI ради AI.</span><span data-en>We start with your funnel, support, backoffice, or HR flow, then automate it. No AI for AI's sake.</span></p>
-          </article>
-          <article class="why-card" data-aos>
-            <div class="kpi">02</div>
-            <h3><span data-ru>Интеграционная глубина</span><span data-en>Integration depth</span></h3>
-            <p><span data-ru>Telegram, CRM, формы, API, аналитика, таблицы, базы знаний и внешние сервисы в одном контуре.</span><span data-en>Telegram, CRM, forms, APIs, analytics, sheets, knowledge bases, and external services in one loop.</span></p>
-          </article>
-          <article class="why-card" data-aos>
-            <div class="kpi">03</div>
-            <h3><span data-ru>Прозрачное внедрение</span><span data-en>Transparent delivery</span></h3>
-            <p><span data-ru>Понятный путь от аудита к MVP и запуску. Вы заранее видите, что будет сделано, как и когда.</span><span data-en>A clear path from audit to MVP and launch. You know what gets built, how, and when.</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Что внедряем</span><span data-en>What we implement</span></span>
+          <span class="label"><span data-ru>Что внедряем ✨</span><span data-en>What we implement ✨</span></span>
           <h2><span data-ru>От кастомных задач до готовых AI-систем</span><span data-en>From custom tasks to ready AI systems</span></h2>
           <p><span data-ru>Мы подбираем автоматизацию под ваш процесс: от продаж и поддержки до операционки и HR. Смысл не в услугах, а в том, где именно бизнес теряет время и контроль.</span><span data-en>We match automation to your process: from sales and support to operations and HR. The focus is not on services, but on where your business loses time and control.</span></p>
         </div>
         <div class="impl-grid">
-          <article class="impl-card" data-aos><h3><span data-ru>Продажи и лиды</span><span data-en>Sales and leads</span></h3><p><span data-ru>Квалификация заявок, автоответы, маршрутизация лидов и краткая сводка для CEO и менеджеров.</span><span data-en>Lead qualification, auto-replies, routing, and a short brief for the CEO and sales team.</span></p><div class="tag-row"><span class="tag">Lead scoring</span><span class="tag">CRM</span><span class="tag">Telegram</span></div></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Поддержка и CS</span><span data-en>Support and CS</span></h3><p><span data-ru>AI-агент поддержки, база знаний, передача сложных кейсов и ответы на типовые запросы.</span><span data-en>Support AI agent, knowledge base, escalations, common request handling, and quality control.</span></p><div class="tag-row"><span class="tag">Helpdesk</span><span class="tag">Knowledge base</span><span class="tag">Escalation</span></div></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Операции и бэкофис</span><span data-en>Operations and backoffice</span></h3><p><span data-ru>Документооборот, уведомления, согласования, повторяющиеся задачи, отчётность и синхронизация систем.</span><span data-en>Document flow, notifications, approvals, repeated tasks, reporting, and system sync.</span></p><div class="tag-row"><span class="tag">n8n</span><span class="tag">Automation</span><span class="tag">Reporting</span></div></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Контент и маркетинг</span><span data-en>Content and marketing</span></h3><p><span data-ru>Контент-фабрики, ресёрч, генерация, публикация и редакционный контроль под ваш тон бренда.</span><span data-en>Content factories, research, generation, publishing, and editorial control for your brand tone.</span></p><div class="tag-row"><span class="tag">SEO</span><span class="tag">Editorial</span><span class="tag">Distribution</span></div></article>
-          <article class="impl-card" data-aos><h3><span data-ru>HR и онбординг</span><span data-en>HR and onboarding</span></h3><p><span data-ru>Скрининг кандидатов, первичный диалог, ответы на вопросы, сбор данных и сценарий адаптации.</span><span data-en>Candidate screening, first contact, FAQ handling, data capture, and onboarding flow.</span></p><div class="tag-row"><span class="tag">Hiring</span><span class="tag">Onboarding</span><span class="tag">Screening</span></div></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Аналитика и маршрутизация</span><span data-en>Analytics and routing</span></h3><p><span data-ru>Сводки, алерты, разбор, приоритизация и передача лучших лидов и событий нужному человеку.</span><span data-en>Summaries, alerts, triage, prioritization, and handing the best leads and events to the right person.</span></p><div class="tag-row"><span class="tag">Monitoring</span><span class="tag">Routing</span><span class="tag">Signals</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">🎯</span><span data-ru>Продажи и лиды</span><span data-en>Sales and leads</span></h3><p><span data-ru>Квалификация заявок, автоответы, маршрутизация лидов и краткая сводка для CEO и менеджеров.</span><span data-en>Lead qualification, auto-replies, routing, and a short brief for the CEO and sales team.</span></p><div class="tag-row"><span class="tag">Lead scoring</span><span class="tag">CRM</span><span class="tag">Telegram</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">🤝</span><span data-ru>Поддержка и CS</span><span data-en>Support and CS</span></h3><p><span data-ru>AI-агент поддержки, база знаний, передача сложных кейсов и ответы на типовые запросы.</span><span data-en>Support AI agent, knowledge base, escalations, common request handling, and quality control.</span></p><div class="tag-row"><span class="tag">Helpdesk</span><span class="tag">Knowledge base</span><span class="tag">Escalation</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">⚙️</span><span data-ru>Операции и бэкофис</span><span data-en>Operations and backoffice</span></h3><p><span data-ru>Документооборот, уведомления, согласования, повторяющиеся задачи, отчётность и синхронизация систем.</span><span data-en>Document flow, notifications, approvals, repeated tasks, reporting, and system sync.</span></p><div class="tag-row"><span class="tag">n8n</span><span class="tag">Automation</span><span class="tag">Reporting</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">📝</span><span data-ru>Контент и маркетинг</span><span data-en>Content and marketing</span></h3><p><span data-ru>Контент-фабрики, ресёрч, генерация, публикация и редакционный контроль под ваш тон бренда.</span><span data-en>Content factories, research, generation, publishing, and editorial control for your brand tone.</span></p><div class="tag-row"><span class="tag">SEO</span><span class="tag">Editorial</span><span class="tag">Distribution</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">👤</span><span data-ru>HR и онбординг</span><span data-en>HR and onboarding</span></h3><p><span data-ru>Скрининг кандидатов, первичный диалог, ответы на вопросы, сбор данных и сценарий адаптации.</span><span data-en>Candidate screening, first contact, FAQ handling, data capture, and onboarding flow.</span></p><div class="tag-row"><span class="tag">Hiring</span><span class="tag">Onboarding</span><span class="tag">Screening</span></div></article>
+          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">📊</span><span data-ru>Аналитика и маршрутизация</span><span data-en>Analytics and routing</span></h3><p><span data-ru>Сводки, алерты, разбор, приоритизация и передача лучших лидов и событий нужному человеку.</span><span data-en>Summaries, alerts, triage, prioritization, and handing the best leads and events to the right person.</span></p><div class="tag-row"><span class="tag">Monitoring</span><span class="tag">Routing</span><span class="tag">Signals</span></div></article>
         </div>
       </div>
     </section>
@@ -203,43 +187,28 @@
     <section class="section" id="products">
       <div class="container">
         <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Готовые продукты</span><span data-en>Ready products</span></span>
+          <span class="label"><span data-ru>Готовые продукты ⚡</span><span data-en>Ready products ⚡</span></span>
           <h2><span data-ru>Быстрый старт для типовых задач</span><span data-en>A fast start for standard tasks</span></h2>
           <p><span data-ru>Главная опора Nodalio — персонализированный анализ и автоматизация процессов. Готовые продукты нужны там, где задача повторяемая и важно быстро запуститься.</span><span data-en>Nodalio’s core is personalized analysis and automation. Ready-made products are for repeatable tasks when speed matters.</span></p>
         </div>
         <div class="products-grid">
-          <a class="product-card" data-aos href="leadhunter.html"><div class="eyebrow">LeadHunter</div><h3><span data-ru>Горячие лиды из Telegram</span><span data-en>Hot leads from Telegram</span></h3><p><span data-ru>Отслеживание, фильтрация и ответ в одном контуре.</span><span data-en>Tracking, filtering, and reply in one loop.</span></p><div class="mini"><span class="tag">24/7</span><span class="tag">Telegram</span><span class="tag">Reply flow</span></div></a>
-          <a class="product-card" data-aos href="digital-broker.html"><div class="eyebrow">Digital Broker</div><h3><span data-ru>Брокер заявок и предложений</span><span data-en>Broker for requests and offers</span></h3><p><span data-ru>Квалификация, сравнение и подготовка сделки.</span><span data-en>Qualification, comparison, and deal prep.</span></p><div class="mini"><span class="tag">CRM</span><span class="tag">Маршрутизация</span><span class="tag">Сделка</span></div></a>
-          <a class="product-card" data-aos href="lead-classifier.html"><div class="eyebrow">AI Lead Classifier</div><h3><span data-ru>Скоринг и маршрутизация лидов</span><span data-en>Lead scoring and routing</span></h3><p><span data-ru>Приоритеты, сегментация и передача в нужный канал.</span><span data-en>Priorities, segmentation, and channel handoff.</span></p><div class="mini"><span class="tag">Score</span><span class="tag">CRM</span><span class="tag">Signals</span></div></a>
-          <a class="product-card" data-aos href="content-factory.html"><div class="eyebrow">AI Content Factory</div><h3><span data-ru>Контент с редакционным контролем</span><span data-en>Content with editorial control</span></h3><p><span data-ru>SEO, посты и рассылки по правилам бренда.</span><span data-en>SEO, posts, and newsletters by brand rules.</span></p><div class="mini"><span class="tag">SEO</span><span class="tag">Editorial</span><span class="tag">Distribution</span></div></a>
-          <a class="product-card" data-aos href="ai-hr.html"><div class="eyebrow">AI HR</div><h3><span data-ru>Поиск, скрининг и онбординг</span><span data-en>Search, screening, onboarding</span></h3><p><span data-ru>Снимает рутину у рекрутера и ускоряет первый контакт.</span><span data-en>Removes recruiter routine and speeds up first contact.</span></p><div class="mini"><span class="tag">Hiring</span><span class="tag">FAQ</span><span class="tag">Передача</span></div></a>
-          <a class="product-card" data-aos href="support-agent.html"><div class="eyebrow">AI Support Agent</div><h3><span data-ru>Агент службы поддержки</span><span data-en>Support agent</span></h3><p><span data-ru>Типовые ответы, база знаний и эскалации.</span><span data-en>Common answers, knowledge base, and escalations.</span></p><div class="mini"><span class="tag">Helpdesk</span><span class="tag">24/7</span><span class="tag">Эскалация</span></div></a>
-          <a class="product-card" data-aos href="backoffice.html"><div class="eyebrow">AI Backoffice</div><h3><span data-ru>Операции и бэкофис</span><span data-en>Operations and backoffice</span></h3><p><span data-ru>Документы, согласования, отчётность и операционные сценарии.</span><span data-en>Documents, approvals, reporting, and operational workflows.</span></p><div class="mini"><span class="tag">Ops</span><span class="tag">Approvals</span><span class="tag">Reporting</span></div></a>
+          <a class="product-card" data-aos href="leadhunter.html"><div class="eyebrow">LeadHunter</div><div class="product-emoji" aria-hidden="true">🎯</div><h3><span data-ru>Горячие лиды из Telegram</span><span data-en>Hot leads from Telegram</span></h3><p><span data-ru>Отслеживание, фильтрация и ответ в одном контуре.</span><span data-en>Tracking, filtering, and reply in one loop.</span></p><div class="mini"><span class="tag">24/7</span><span class="tag">Telegram</span><span class="tag">Reply flow</span></div></a>
+          <a class="product-card" data-aos href="digital-broker.html"><div class="eyebrow">Digital Broker</div><div class="product-emoji" aria-hidden="true">🤝</div><h3><span data-ru>Брокер заявок и предложений</span><span data-en>Broker for requests and offers</span></h3><p><span data-ru>Квалификация, сравнение и подготовка сделки.</span><span data-en>Qualification, comparison, and deal prep.</span></p><div class="mini"><span class="tag">CRM</span><span class="tag">Маршрутизация</span><span class="tag">Сделка</span></div></a>
+          <a class="product-card" data-aos href="lead-classifier.html"><div class="eyebrow">AI Lead Classifier</div><div class="product-emoji" aria-hidden="true">📊</div><h3><span data-ru>Скоринг и маршрутизация лидов</span><span data-en>Lead scoring and routing</span></h3><p><span data-ru>Приоритеты, сегментация и передача в нужный канал.</span><span data-en>Priorities, segmentation, and channel handoff.</span></p><div class="mini"><span class="tag">Score</span><span class="tag">CRM</span><span class="tag">Signals</span></div></a>
+          <a class="product-card" data-aos href="content-factory.html"><div class="eyebrow">AI Content Factory</div><div class="product-emoji" aria-hidden="true">✍️</div><h3><span data-ru>Контент с редакционным контролем</span><span data-en>Content with editorial control</span></h3><p><span data-ru>SEO, посты и рассылки по правилам бренда.</span><span data-en>SEO, posts, and newsletters by brand rules.</span></p><div class="mini"><span class="tag">SEO</span><span class="tag">Editorial</span><span class="tag">Distribution</span></div></a>
+          <a class="product-card" data-aos href="ai-hr.html"><div class="eyebrow">AI HR</div><div class="product-emoji" aria-hidden="true">👤</div><h3><span data-ru>Поиск, скрининг и онбординг</span><span data-en>Search, screening, onboarding</span></h3><p><span data-ru>Снимает рутину у рекрутера и ускоряет первый контакт.</span><span data-en>Removes recruiter routine and speeds up first contact.</span></p><div class="mini"><span class="tag">Hiring</span><span class="tag">FAQ</span><span class="tag">Передача</span></div></a>
+          <a class="product-card" data-aos href="support-agent.html"><div class="eyebrow">AI Support Agent</div><div class="product-emoji" aria-hidden="true">🤖</div><h3><span data-ru>Агент службы поддержки</span><span data-en>Support agent</span></h3><p><span data-ru>Типовые ответы, база знаний и эскалации.</span><span data-en>Common answers, knowledge base, and escalations.</span></p><div class="mini"><span class="tag">Helpdesk</span><span class="tag">24/7</span><span class="tag">Эскалация</span></div></a>
+          <a class="product-card" data-aos href="backoffice.html"><div class="eyebrow">AI Backoffice</div><div class="product-emoji" aria-hidden="true">⚙️</div><h3><span data-ru>Операции и бэкофис</span><span data-en>Operations and backoffice</span></h3><p><span data-ru>Документы, согласования, отчётность и операционные сценарии.</span><span data-en>Documents, approvals, reporting, and operational workflows.</span></p><div class="mini"><span class="tag">Ops</span><span class="tag">Approvals</span><span class="tag">Reporting</span></div></a>
         </div>
       </div>
     </section>
 
-    <section class="section compact">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Методология</span><span data-en>Methodology</span></span>
-          <h2><span data-ru>Как мы внедряем автоматизацию в процессы</span><span data-en>How we deploy automation into processes</span></h2>
-        </div>
-        <div class="steps-grid">
-          <article class="step-card" data-aos><div class="step-num">01</div><h3><span data-ru>Аудит</span><span data-en>Audit</span></h3><p><span data-ru>Смотрим путь лидов, заявок или внутренних операций и находим потери.</span><span data-en>We map the path of leads, requests, or internal operations and find losses.</span></p><div class="step-row"><span>1-3 days</span><span>analysis</span></div></article>
-          <article class="step-card" data-aos><div class="step-num">02</div><h3><span data-ru>Сценарий работы</span><span data-en>Workflow design</span></h3><p><span data-ru>Собираем логику, сценарии, передачи и точки интеграции.</span><span data-en>We define logic, scenarios, escalations, and integration points.</span></p><div class="step-row"><span>2-4 days</span><span>design</span></div></article>
-          <article class="step-card" data-aos><div class="step-num">03</div><h3><span data-ru>MVP</span><span data-en>MVP</span></h3><p><span data-ru>Делаем рабочую версию с понятным сценарием и качественным контролем.</span><span data-en>We build a working version with a clear scenario and quality control.</span></p><div class="step-row"><span>3-7 days</span><span>build</span></div></article>
-          <article class="step-card" data-aos><div class="step-num">04</div><h3><span data-ru>Запуск</span><span data-en>Testing + launch</span></h3><p><span data-ru>Тестируем на реальных диалогах, исправляем слабые места и выводим в работу.</span><span data-en>We test on real dialogues, fix weak spots, and move to production.</span></p><div class="step-row"><span>Go live</span><span>support</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section" id="chat">
       <div class="container">
         <div class="section-head" data-aos>
           <span class="label"><span data-ru>Чат-бот</span><span data-en>Chatbot</span></span>
-          <h2><span data-ru>5 шагов до коннекта с CEO</span><span data-en>5 steps before connecting with the CEO</span></h2>
-          <p><span data-ru>Это встроенный сценарий без внешнего API на первом этапе: ниша, боль, оборот, рекомендация, потом отдельный шаг на коннект с CEO и только затем Telegram.</span><span data-en>This is a built-in flow without an external API at v1: niche, pain, revenue, recommendation, then a separate step for the CEO handoff and only then Telegram.</span></p>
+          <h2><span data-ru>3 ответа и короткая рекомендация</span><span data-en>3 answers and a short recommendation</span></h2>
+          <p><span data-ru>Встроенный сценарий без внешнего API: ниша, боль, оборот, короткая рекомендация и один финальный шаг в Telegram.</span><span data-en>A built-in flow without an external API: niche, pain, revenue, a short recommendation, and one final step in Telegram.</span></p>
         </div>
         <div class="chat-grid">
           <article class="chat-shell panel" data-aos id="chatRoot">
@@ -249,41 +218,29 @@
                 <h3>Nodalio AI</h3>
                 <p><span data-ru>Квалификация заявки</span><span data-en>Lead qualification</span></p>
               </div>
-              <div class="online"></div>
+              <div class="online" aria-label="typing"></div>
             </div>
             <div class="chat-body" id="chatMessages">
               <div class="msg" id="chatGreeting"></div>
             </div>
             <div class="chat-actions" id="chatActions"></div>
           </article>
-        <article class="contact-card" data-aos>
-          <span class="label"><span data-ru>Что получит CEO</span><span data-en>What the CEO gets</span></span>
-          <h3><span data-ru>Короткий brief перед личным контактом</span><span data-en>A short brief before the personal handoff</span></h3>
-          <p><span data-ru>Чат-бот помогает не терять время на общий разговор и сразу привести к сути: ниша, проблема, масштаб и возможная рекомендация.</span><span data-en>The chatbot avoids a generic conversation and gets straight to the point: niche, pain, scale, and a likely recommendation.</span></p>
-          <div class="hero-actions">
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com"><span data-ru>Email</span><span data-en>Email</span></a>
-          </div>
-        </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact">
-      <div class="container">
-        <div class="contact-grid">
-          <article class="contact-card" data-aos>
-            <span class="label"><span data-ru>Founder</span><span data-en>Founder</span></span>
-            <h3>Andrey Olshanskiy</h3>
-            <p class="contact-line"><span data-ru>Founder и CEO Nodalio. Вы можете писать напрямую в Telegram без дополнительных форм и менеджеров.</span><span data-en>Founder and CEO of Nodalio. You can message directly on Telegram without extra forms or managers.</span></p>
-          </article>
-        <article class="contact-card" data-aos>
-          <span class="label"><span data-ru>Связь</span><span data-en>Contact</span></span>
-          <h3><span data-ru>Переход к реальному разговору</span><span data-en>Move to a real conversation</span></h3>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com"><span data-ru>Email</span><span data-en>Email</span></a>
-          </div>
-        </article>
+          <aside class="chat-aside panel" data-aos>
+            <div>
+              <span class="label"><span data-ru>Founder & contact</span><span data-en>Founder & contact</span></span>
+              <h3 style="margin-top:10px"><span data-ru>Андрей Ольшанский</span><span data-en>Andrey Olshanskiy</span></h3>
+              <p class="contact-line"><span data-ru>Квалификация остаётся в чате. Для прямой связи используйте Telegram или email здесь, без лишних шагов.</span><span data-en>Qualification stays in the chat. For direct contact, use Telegram or email here without extra steps.</span></p>
+            </div>
+            <div class="mini-list">
+              <div class="mini-item"><strong>01</strong><p><span data-ru>Сначала короткая квалификация.</span><span data-en>First, short qualification.</span></p></div>
+              <div class="mini-item"><strong>02</strong><p><span data-ru>Потом прямой контакт с founder.</span><span data-en>Then direct founder contact.</span></p></div>
+              <div class="mini-item"><strong>03</strong><p><span data-ru>Telegram и email видны сразу.</span><span data-en>Telegram and email stay visible.</span></p></div>
+            </div>
+            <div class="hero-actions">
+              <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
+              <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -295,7 +252,6 @@
       <small>© 2026 · Andrey Olshanskiy</small>
     </div>
   </footer>
-  <!-- build: 2 -->
 </body>
 </html>
 
