@@ -692,3 +692,54 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-5px)}
 }
+
+/* Clean overrides for the home page product grid and chat aside */
+.products-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.chat-grid{align-items:stretch}
+.chat-shell,
+.chat-aside{height:470px}
+.chat-aside{
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:16px;
+  align-content:stretch;
+}
+.chat-benefits{
+  display:grid;
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.chat-benefit{
+  display:grid;
+  grid-template-columns:56px 1fr;
+  gap:14px;
+  align-items:center;
+  min-height:76px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.02);
+}
+.benefit-icon{
+  width:56px;height:56px;border-radius:14px;
+  display:grid;place-items:center;
+  background:linear-gradient(180deg, rgba(17,33,54,.96), rgba(11,18,32,.96));
+  border:1px solid rgba(36,231,208,.12);
+  font-size:1.25rem;
+}
+.chat-benefit p{
+  margin:0;
+  color:var(--text);
+  font-size:1.02rem;
+  line-height:1.35;
+}
+.chat-aside .hero-actions{
+  margin-top:0;
+  align-self:end;
+}
+.chat-aside .hero-actions .cta{min-width:214px}
+
+@media (max-width: 1024px){
+  .chat-aside{height:auto}
+  .chat-benefits{grid-template-rows:none}
+}
