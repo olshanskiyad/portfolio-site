@@ -310,6 +310,27 @@ function initReveal() {
   document.querySelectorAll('[data-aos]').forEach(el => io.observe(el));
 }
 
+function initMiniNavSpy() {
+  const nav = document.querySelector('.mini-nav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const setActive = id => {
+    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+  };
+  if (sections.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      const hit = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (hit && hit.target && hit.target.id) setActive(hit.target.id);
+    }, { rootMargin: '-34% 0px -48% 0px', threshold: [0.18, 0.3, 0.5] });
+    sections.forEach(section => observer.observe(section));
+  }
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.replace('#', '');
+    if (id) setActive(id);
+  });
+}
+
 function initGraph() {
   const canvas = document.getElementById('heroGraph');
   if (!canvas) return;
@@ -636,6 +657,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-lang', localStorage.getItem('nodalio-lang') || 'ru');
   document.querySelectorAll('.lang button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang()));
   initReveal();
+  initMiniNavSpy();
   initGraph();
   renderProductPage();
   resetChat();
