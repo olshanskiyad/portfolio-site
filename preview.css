@@ -182,6 +182,7 @@ button,input,textarea{font:inherit}
 }
 .hero-title br{display:block}
 .hero-title .accent{color:var(--accent)}
+.hero-title .accent-wide{letter-spacing:.012em}
 .hero-sub{
   margin:0;max-width:62ch;font-size:1.03rem;color:var(--muted);line-height:1.68;
 }
