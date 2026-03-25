@@ -459,7 +459,13 @@ function resetChat() {
   CHAT.step = 0; CHAT.niche = ''; CHAT.pain = ''; CHAT.revenue = '';
   const c = CHAT_COPY[lang()];
   const greet = document.getElementById('chatGreeting');
-  if (greet) greet.textContent = c.greet;
+  if (greet) {
+    const wrap = chatMessages();
+    if (wrap) {
+      wrap.innerHTML = '<div class="msg" id="chatGreeting"></div>';
+    }
+    document.getElementById('chatGreeting').textContent = c.greet;
+  }
   renderChatOptions(CHAT_OPTIONS[lang()].niche);
 }
 
