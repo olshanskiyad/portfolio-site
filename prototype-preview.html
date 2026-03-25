@@ -33,7 +33,7 @@
 
   <main>
     <section class="hero" id="hero">
-      <div class="container hero-grid">
+      <div class="container hero-grid hero-grid-home">
         <div class="hero-copy" data-aos>
           <div class="hero-kicker">
             <span data-ru>ИИ-автоматизация бизнеса</span>
@@ -75,20 +75,15 @@
               <div class="process-step"><strong>03</strong><span data-ru>MVP</span><span data-en>MVP</span></div>
               <div class="process-step"><strong>04</strong><span data-ru>Запуск</span><span data-en>Launch</span></div>
             </div>
-          </div>
-          <div class="hero-visual-stack">
-            <article class="hero-mini panel">
-              <div class="label"><span data-ru>Почему выбирают</span><span data-en>Why choose</span></div>
-              <p><span data-ru>Начинаем с процесса, а не с инструмента. Это даёт понятный ROI до запуска.</span><span data-en>We start with the process, not the tool. That keeps ROI clear before launch.</span></p>
-            </article>
-            <article class="hero-mini panel">
-              <div class="label"><span data-ru>Что получаете</span><span data-en>What you get</span></div>
-              <p><span data-ru>Краткий бриф, сценарий работы, рабочий MVP и прозрачный handoff.</span><span data-en>A short brief, a workflow plan, a working MVP, and a clear handoff.</span></p>
-            </article>
-            <article class="hero-mini panel">
-              <div class="label"><span data-ru>Когда нужны продукты</span><span data-en>When products fit</span></div>
-              <p><span data-ru>Готовые решения подключаем для типовых задач, где важен быстрый старт.</span><span data-en>Ready-made products fit repeatable tasks when speed matters most.</span></p>
-            </article>
+            <div class="hero-graph" id="heroGraphWrap" style="margin-top:12px">
+              <div class="graph-node a"><strong>Signal</strong><span data-ru>лиды, обращения, задачи</span><span data-en>leads, requests, tasks</span></div>
+              <div class="graph-node b"><strong>AI</strong><span data-ru>квалификация и routing</span><span data-en>qualification and routing</span></div>
+              <div class="graph-node c"><strong>Workflow</strong><span data-ru>CRM, Telegram, API</span><span data-en>CRM, Telegram, API</span></div>
+              <div class="graph-node d"><strong>Result</strong><span data-ru>быстрее ответ и контроль</span><span data-en>faster reply and control</span></div>
+              <div class="graph-line l1"></div>
+              <div class="graph-line l2"></div>
+              <canvas id="heroGraph" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+            </div>
           </div>
           <div class="hero-visual-stats">
             <div class="stat">
