@@ -34,7 +34,7 @@
   <main>
     <section class="hero" id="hero">
       <div class="container hero-grid hero-grid-home">
-        <div class="hero-copy" data-aos>
+        <div class="hero-copy hero-copy-home" data-aos>
           <div class="hero-kicker">
             <span data-ru>ИИ-автоматизация бизнеса</span>
             <span data-en>AI automation for business</span>
@@ -63,26 +63,33 @@
           </div>
         </div>
 
-        <div class="hero-visual" data-aos>
+        <div class="hero-visual hero-visual-home" data-aos>
           <div class="hero-visual-top panel">
             <div class="label">
               <span data-ru>Как мы работаем</span>
               <span data-en>How we work</span>
             </div>
-            <div class="process-strip" style="margin-top:12px">
-              <div class="process-step"><strong>01</strong><span data-ru>Аудит</span><span data-en>Audit</span></div>
-              <div class="process-step"><strong>02</strong><span data-ru>Сценарий</span><span data-en>Workflow</span></div>
-              <div class="process-step"><strong>03</strong><span data-ru>MVP</span><span data-en>MVP</span></div>
-              <div class="process-step"><strong>04</strong><span data-ru>Запуск</span><span data-en>Launch</span></div>
+            <div class="hero-workflow" style="margin-top:14px">
+              <article class="workflow-card">
+                <strong>01 / Аудит</strong>
+                <p><span data-ru>Находим потери времени, лидов и контроля в процессах.</span><span data-en>We find losses of time, leads, and control in the process.</span></p>
+              </article>
+              <article class="workflow-card">
+                <strong>02 / Сценарий</strong>
+                <p><span data-ru>Собираем логику работы под нишу, стек и цели.</span><span data-en>We shape the logic for your niche, stack, and goals.</span></p>
+              </article>
+              <article class="workflow-card">
+                <strong>03 / MVP</strong>
+                <p><span data-ru>Делаем рабочую версию и проверяем на реальных задачах.</span><span data-en>We build a working version and test it on real tasks.</span></p>
+              </article>
+              <article class="workflow-card">
+                <strong>04 / Запуск</strong>
+                <p><span data-ru>Доводим систему до рабочей нагрузки и прозрачного контроля.</span><span data-en>We bring it to production load and clear control.</span></p>
+              </article>
             </div>
-            <div class="hero-graph" id="heroGraphWrap" style="margin-top:12px">
-              <div class="graph-node a"><strong>Signal</strong><span data-ru>лиды, обращения, задачи</span><span data-en>leads, requests, tasks</span></div>
-              <div class="graph-node b"><strong>AI</strong><span data-ru>квалификация и routing</span><span data-en>qualification and routing</span></div>
-              <div class="graph-node c"><strong>Workflow</strong><span data-ru>CRM, Telegram, API</span><span data-en>CRM, Telegram, API</span></div>
-              <div class="graph-node d"><strong>Result</strong><span data-ru>быстрее ответ и контроль</span><span data-en>faster reply and control</span></div>
-              <div class="graph-line l1"></div>
-              <div class="graph-line l2"></div>
-              <canvas id="heroGraph" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+            <div class="hero-workflow-result">
+              <span class="workflow-pill">AI workflow</span>
+              <p><span data-ru>Короткий путь от анализа до системы, которая работает каждый день.</span><span data-en>A short path from analysis to a system that works every day.</span></p>
             </div>
           </div>
           <div class="hero-visual-stats">
