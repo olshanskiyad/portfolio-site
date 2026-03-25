@@ -75,6 +75,15 @@
               <div class="process-step"><strong>03</strong><span data-ru>MVP</span><span data-en>MVP</span></div>
               <div class="process-step"><strong>04</strong><span data-ru>Запуск</span><span data-en>Launch</span></div>
             </div>
+            <div class="hero-graph" id="heroGraphWrap" style="margin-top:12px">
+              <div class="graph-node a"><strong>Signal</strong><span data-ru>лиды, обращения, задачи</span><span data-en>leads, requests, tasks</span></div>
+              <div class="graph-node b"><strong>AI</strong><span data-ru>квалификация и routing</span><span data-en>qualification and routing</span></div>
+              <div class="graph-node c"><strong>Workflow</strong><span data-ru>CRM, Telegram, API</span><span data-en>CRM, Telegram, API</span></div>
+              <div class="graph-node d"><strong>Result</strong><span data-ru>быстрее ответ и контроль</span><span data-en>faster reply and control</span></div>
+              <div class="graph-line l1"></div>
+              <div class="graph-line l2"></div>
+              <canvas id="heroGraph" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+            </div>
           </div>
           <div class="hero-visual-stats">
             <div class="stat">
@@ -138,33 +147,6 @@
               <span data-en>Not a template, but a workflow for your niche, stack, and goals.</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact" id="why">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Почему выбирают</span><span data-en>Why choose</span></span>
-          <h2><span data-ru>Бизнес-логика, интеграции и прозрачный запуск</span><span data-en>Business logic, integrations, and a clear launch</span></h2>
-          <p><span data-ru>Мы не перегружаем страницу повтором методологии. Вместо этого показываем три причины доверять Nodalio и один короткий маршрут от аудита к запуску.</span><span data-en>We do not repeat the methodology twice. Instead, we show three reasons to trust Nodalio and one short path from audit to launch.</span></p>
-        </div>
-        <div class="why-grid">
-          <article class="why-card" data-aos>
-            <div class="kpi">01</div>
-            <h3><span data-ru>Бизнес-логика</span><span data-en>Business logic</span></h3>
-            <p><span data-ru>Сначала понимаем воронку, поддержку, бэкофис или HR-процесс, затем автоматизируем. Никакого AI ради AI.</span><span data-en>We start with your funnel, support, backoffice, or HR flow, then automate it. No AI for AI's sake.</span></p>
-          </article>
-          <article class="why-card" data-aos>
-            <div class="kpi">02</div>
-            <h3><span data-ru>Интеграционная глубина</span><span data-en>Integration depth</span></h3>
-            <p><span data-ru>Telegram, CRM, формы, API, аналитика, таблицы, базы знаний и внешние сервисы в одном контуре.</span><span data-en>Telegram, CRM, forms, APIs, analytics, sheets, knowledge bases, and external services in one loop.</span></p>
-          </article>
-          <article class="why-card" data-aos>
-            <div class="kpi">03</div>
-            <h3><span data-ru>Прозрачное внедрение</span><span data-en>Transparent delivery</span></h3>
-            <p><span data-ru>Понятный путь от аудита к MVP и запуску. Вы заранее видите, что будет сделано, как и когда.</span><span data-en>A clear path from audit to MVP and launch. You know what gets built, how, and when.</span></p>
-          </article>
         </div>
       </div>
     </section>
@@ -245,39 +227,20 @@
           </article>
           <aside class="chat-aside panel" data-aos>
             <div>
-              <span class="label"><span data-ru>Что получает CEO</span><span data-en>What the CEO gets</span></span>
-              <h3 style="margin-top:10px"><span data-ru>Короткий brief без лишнего шума</span><span data-en>A short brief without noise</span></h3>
+              <span class="label"><span data-ru>Founder & contact</span><span data-en>Founder & contact</span></span>
+              <h3 style="margin-top:10px"><span data-ru>Андрей Ольшанский</span><span data-en>Andrey Olshanskiy</span></h3>
+              <p class="contact-line"><span data-ru>Квалификация остаётся в чате. Для прямой связи используйте Telegram или email здесь, без лишних шагов.</span><span data-en>Qualification stays in the chat. For direct contact, use Telegram or email here without extra steps.</span></p>
             </div>
             <div class="mini-list">
-              <div class="mini-item"><strong>01</strong><p><span data-ru>Ниша, боль и масштаб задачи в одном месте.</span><span data-en>Niche, pain, and task scale in one place.</span></p></div>
-              <div class="mini-item"><strong>02</strong><p><span data-ru>Рекомендация по сценарию до личного контакта.</span><span data-en>A recommendation before the personal handoff.</span></p></div>
-              <div class="mini-item"><strong>03</strong><p><span data-ru>Telegram и email как быстрые пути связи.</span><span data-en>Telegram and email as fast contact paths.</span></p></div>
+              <div class="mini-item"><strong>01</strong><p><span data-ru>Сначала короткая квалификация.</span><span data-en>First, short qualification.</span></p></div>
+              <div class="mini-item"><strong>02</strong><p><span data-ru>Потом прямой контакт с founder.</span><span data-en>Then direct founder contact.</span></p></div>
+              <div class="mini-item"><strong>03</strong><p><span data-ru>Telegram и email видны сразу.</span><span data-en>Telegram and email stay visible.</span></p></div>
             </div>
             <div class="hero-actions">
               <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
               <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
             </div>
           </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact">
-      <div class="container">
-        <div class="contact-grid">
-          <article class="contact-card" data-aos>
-            <span class="label"><span data-ru>Founder</span><span data-en>Founder</span></span>
-            <h3>Andrey Olshanskiy</h3>
-            <p class="contact-line"><span data-ru>Founder и CEO Nodalio. Вы можете писать напрямую в Telegram без дополнительных форм и менеджеров.</span><span data-en>Founder and CEO of Nodalio. You can message directly on Telegram without extra forms or managers.</span></p>
-          </article>
-        <article class="contact-card" data-aos>
-          <span class="label"><span data-ru>Связь</span><span data-en>Contact</span></span>
-          <h3><span data-ru>Переход к реальному разговору</span><span data-en>Move to a real conversation</span></h3>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
-            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
-          </div>
-        </article>
         </div>
       </div>
     </section>
@@ -289,7 +252,6 @@
       <small>© 2026 · Andrey Olshanskiy</small>
     </div>
   </footer>
-  <!-- build: 2 -->
 </body>
 </html>
 
