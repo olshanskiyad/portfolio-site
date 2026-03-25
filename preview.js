@@ -385,11 +385,11 @@ const CHAT = {
 
 const CHAT_COPY = {
   ru: {
-    greet: 'Привет. Я быстро пойму задачу и подготовлю короткий brief для Андрея. Начнём с ниши: в каком сегменте работает бизнес?',
+    greet: 'Привет. Я быстро пойму задачу и подготовлю короткий бриф для Андрея. Начнём с ниши: в каком сегменте работает бизнес?',
     pain: 'Что сейчас сильнее всего тормозит рост?',
     revenue: 'Какой у вас примерный оборот?',
     recommend: flow => `Рекомендация: ${flow.niche === 'Интернет-магазин' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / услуги' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Недвижимость' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
-    final: 'Подготовил короткий brief. Дальше свяжемся через founder / contact блок.',
+    final: 'Подготовил короткий бриф. Дальше свяжемся через founder / contact блок.',
     telegram: 'Написать в Telegram'
   },
   en: {
@@ -451,7 +451,7 @@ function botReply(text, nextItems, done = false) {
       const note = document.createElement('div');
       note.className = 'chat-finish';
       note.textContent = lang() === 'ru'
-        ? 'Brief готов. Связь продолжаем через founder / contact блок.'
+        ? 'Бриф готов. Связь продолжаем через founder / contact блок.'
         : 'The brief is ready. Continue through the founder / contact block.';
       wrap.appendChild(note);
       return;
@@ -665,4 +665,5 @@ window.addEventListener('DOMContentLoaded', () => {
   renderProductPage();
   resetChat();
 });
+
 
