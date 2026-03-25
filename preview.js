@@ -389,7 +389,7 @@ const CHAT_COPY = {
     pain: 'Что сейчас сильнее всего тормозит рост?',
     revenue: 'Какой у вас примерный оборот?',
     recommend: flow => `Рекомендация: ${flow.niche === 'Интернет-магазин' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / услуги' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Недвижимость' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
-    final: 'Подготовил короткий brief. Нажмите Telegram, и мы сверим детали с CEO.',
+    final: 'Подготовил короткий brief. Дальше свяжемся через founder / contact блок.',
     telegram: 'Написать в Telegram'
   },
   en: {
@@ -397,7 +397,7 @@ const CHAT_COPY = {
     pain: 'What is currently slowing growth the most?',
     revenue: 'What is your approximate revenue?',
     recommend: flow => `Recommendation: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} for your task.`,
-    final: 'I’ve prepared a short brief. Tap Telegram and we’ll review the details with the CEO.',
+    final: 'I’ve prepared a short brief. We’ll continue through the founder / contact block.',
     telegram: 'Message on Telegram'
   }
 };
@@ -448,13 +448,12 @@ function botReply(text, nextItems, done = false) {
     if (!wrap) return;
     wrap.innerHTML = '';
     if (done) {
-      const a = document.createElement('a');
-      a.className = 'chat-link';
-      a.href = 'https://t.me/olshanskiy_ad';
-      a.target = '_blank';
-      a.rel = 'noreferrer';
-      a.innerHTML = `<span class="btn-icon" aria-hidden="true">✈</span><span>${CHAT_COPY[lang()].telegram}</span>`;
-      wrap.appendChild(a);
+      const note = document.createElement('div');
+      note.className = 'chat-finish';
+      note.textContent = lang() === 'ru'
+        ? 'Brief готов. Связь продолжаем через founder / contact блок.'
+        : 'The brief is ready. Continue through the founder / contact block.';
+      wrap.appendChild(note);
       return;
     }
     renderChatOptions(nextItems);
@@ -524,10 +523,14 @@ function renderProductPage() {
           <div class="hero-kicker">${c.title}</div>
           <h1 class="hero-title">${c.subtitle}</h1>
           <p class="hero-sub">${c.intro}</p>
+          <div class="product-strip">
+            ${c.capabilities.slice(0, 3).map(cap => `<span class="sales-pill">${cap}</span>`).join('')}
+            <span class="sales-pill sales-pill--soft">${lang() === 'ru' ? 'Быстрый старт' : 'Fast start'}</span>
+          </div>
           <div class="hero-actions">
             <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span>${lang() === 'ru' ? 'Написать в Telegram' : 'Contact via Telegram'}</span></a>
             <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
-            <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
+            <a class="ghost" href="index.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
           </div>
           <div class="hero-meta">
             <span class="chip"><b>${lang() === 'ru' ? 'Проблема:' : 'Problem:'}</b> ${c.problem}</span>
@@ -640,7 +643,7 @@ function renderProductPage() {
           <h3>${lang() === 'ru' ? 'Назад к общей странице' : 'Back to the main page'}</h3>
           <p class="contact-line">${lang() === 'ru' ? 'Главная — это анализ процессов и автоматизация под задачу. Продукты — только доп. опция.' : 'The homepage is about process analysis and task-specific automation. Products are only a secondary option.'}</p>
           <div class="hero-actions">
-            <a class="ghost" href="prototype-preview.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
+            <a class="ghost" href="index.html">${lang() === 'ru' ? 'Назад на главную' : 'Back to home'}</a>
             <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
           </div>
         </article>
