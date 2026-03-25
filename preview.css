@@ -89,6 +89,7 @@ button,input,textarea{font:inherit}
   letter-spacing:.12em;
   text-transform:uppercase;
   padding:8px 0;
+  white-space:nowrap;
 }
 .header-nav a::after{
   content:"";
@@ -137,7 +138,7 @@ button,input,textarea{font:inherit}
 }
 
 .hero{
-  padding:72px 0 18px;
+  padding:84px 0 28px;
 }
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1.16fr) minmax(340px,.84fr);gap:18px;align-items:stretch;
@@ -632,7 +633,7 @@ body[data-product="leadhunter"] .comparison-row strong{color:#e9eeff}
 body[data-product="leadhunter"] .comparison-row span:last-child{color:#f2fff8}
 
 .footer{
-  padding:32px 0 40px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)
+  padding:48px 0 44px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)
 }
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .footer small{font-size:13px}
@@ -658,7 +659,7 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 @media (max-width: 720px){
   .nav .container{min-height:70px}
   .nav .mail-cta{display:none}
-  .hero{padding:80px 0 24px}
+  .hero{padding:88px 0 30px}
   .section{padding:52px 0}
   .section.compact{padding:40px 0}
   .hero-title{font-size:clamp(2.15rem,11vw,3.8rem)}
