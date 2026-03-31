@@ -494,9 +494,15 @@ function initStickyProductCta() {
   const sync = () => {
     const y = window.scrollY || window.pageYOffset || 0;
     const footer = document.querySelector('.footer');
+    const pricing = document.getElementById('lh-pricing');
+    const finalCta = document.querySelector('.final-cta');
     const footerRect = footer ? footer.getBoundingClientRect() : null;
+    const pricingRect = pricing ? pricing.getBoundingClientRect() : null;
+    const finalRect = finalCta ? finalCta.getBoundingClientRect() : null;
     const nearFooter = footerRect ? footerRect.top < window.innerHeight : false;
-    bar.hidden = !(y > 720 && !nearFooter);
+    const nearPricing = pricingRect ? pricingRect.top < window.innerHeight * 0.78 && pricingRect.bottom > window.innerHeight * 0.1 : false;
+    const nearFinal = finalRect ? finalRect.top < window.innerHeight * 0.9 && finalRect.bottom > window.innerHeight * 0.1 : false;
+    bar.hidden = !(y > 720 && !nearFooter && !nearPricing && !nearFinal);
   };
   window.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
