@@ -1,4 +1,4 @@
-const PRODUCTS = {
+﻿const PRODUCTS = {
   leadhunter: {
     ru: {
       title: 'LeadHunter',
@@ -152,6 +152,28 @@ const PRODUCTS = {
       usecase: 'For teams that need operational clarity inside the company.',
       result: 'Fewer errors, more control, less manual chaos.',
     }
+  },
+  'ai-team-accelerator': {
+    ru: {
+      title: 'AI-акселератор команды',
+      subtitle: 'Внедрение AI в ежедневную работу команды',
+      intro: 'Помогаем командам перейти от хаотичных AI-экспериментов к повторяемым рабочим сценариям с измеримой экономией времени.',
+      problem: 'Команда уже слышала про AI, но использует его хаотично и без стандарта качества.',
+      capabilities: ['Role workflows', 'Prompt standards', 'Quality rules', 'Team enablement'],
+      steps: ['1. Разбираем роли и рутину', '2. Собираем сценарии', '3. Настраиваем правила качества', '4. Внедряем в повседневную работу'],
+      usecase: 'Подходит для B2B-команд, агентств и сервисных бизнесов, где уже есть повторяющаяся ручная нагрузка.',
+      result: 'Меньше рутины, больше полезной работы и предсказуемый результат от AI.',
+    },
+    en: {
+      title: 'AI Team Accelerator',
+      subtitle: 'AI embedded into daily team operations',
+      intro: 'We help teams move from chaotic AI experiments to repeatable workflows with measurable time savings.',
+      problem: 'The team already knows about AI but uses it chaotically and without a quality standard.',
+      capabilities: ['Role workflows', 'Prompt standards', 'Quality rules', 'Team enablement'],
+      steps: ['1. Map roles and routine', '2. Build workflows', '3. Set quality rules', '4. Embed into daily work'],
+      usecase: 'Fits B2B teams, agencies, and service businesses with repeatable manual load.',
+      result: 'Less routine, more useful work, and more predictable AI output.',
+    }
   }
 };
 
@@ -281,6 +303,27 @@ const PRODUCT_SECTIONS = {
       { ru: 'Убираем ручные касания там, где они не нужны.', en: 'We remove manual touches where they are unnecessary.' },
       { ru: 'Подходит для внутренних сервисов и операционных команд.', en: 'Fits internal services and operations teams.' }
     ]
+  },
+  'ai-team-accelerator': {
+    problem: [
+      { ru: 'Команда слышала про AI, но использует его бессистемно и от случая к случаю.', en: 'The team has heard about AI but uses it inconsistently and case by case.' },
+      { ru: 'Полезные сценарии не закреплены по ролям и не становятся частью ежедневной работы.', en: 'Useful workflows are not tied to roles and never become part of daily work.' },
+      { ru: 'Качество результата зависит от случайных экспериментов отдельных сотрудников.', en: 'Output quality depends on random experiments by individual employees.' }
+    ],
+    comparison: [
+      { label: { ru: 'Использование AI', en: 'AI usage' }, manual: { ru: 'Случайные попытки без системы', en: 'Random attempts without a system' }, nodalio: { ru: 'Ролевые сценарии и стандарты', en: 'Role-based workflows and standards' } },
+      { label: { ru: 'Качество', en: 'Quality' }, manual: { ru: 'Плавает от человека к человеку', en: 'Varies from person to person' }, nodalio: { ru: 'Есть единые правила и проверка', en: 'Shared rules and review are in place' } },
+      { label: { ru: 'Эффект', en: 'Impact' }, manual: { ru: 'Сложно измерить и масштабировать', en: 'Hard to measure and scale' }, nodalio: { ru: 'Понятные сценарии и экономия времени', en: 'Clear workflows and time savings' } }
+    ],
+    delivery: [
+      { title: { ru: 'Ролевые сценарии', en: 'Role-based workflows' }, text: { ru: 'Собираем сценарии отдельно для sales, support, marketing, HR, ops и team leads.', en: 'We build separate workflows for sales, support, marketing, HR, ops, and team leads.' } },
+      { title: { ru: 'Встраивание в работу', en: 'Embedded into work' }, text: { ru: 'Это не разовый тренинг, а внедрение AI в ежедневный ритм команды.', en: 'This is not a one-off training session, but AI embedded into the team’s daily rhythm.' } }
+    ],
+    trust: [
+      { ru: 'AI не заменяет команду, а усиливает её рабочий ритм.', en: 'AI does not replace the team; it strengthens the working rhythm.' },
+      { ru: 'Сценарии привязаны к реальным ролям и задачам.', en: 'Workflows are tied to real roles and tasks.' },
+      { ru: 'Подходит командам с повторяющейся операционной нагрузкой.', en: 'Fits teams with repeatable operational load.' }
+    ]
   }
 };
 
@@ -308,6 +351,27 @@ function initReveal() {
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('[data-aos]').forEach(el => io.observe(el));
+}
+
+function initMiniNavSpy() {
+  const nav = document.querySelector('.top-rail, .mini-nav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const setActive = id => {
+    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+  };
+  if (sections.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      const hit = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (hit && hit.target && hit.target.id) setActive(hit.target.id);
+    }, { rootMargin: '-34% 0px -48% 0px', threshold: [0.18, 0.3, 0.5] });
+    sections.forEach(section => observer.observe(section));
+  }
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.replace('#', '');
+    if (id) setActive(id);
+  });
 }
 
 function initGraph() {
@@ -355,6 +419,90 @@ function initGraph() {
   draw();
 }
 
+function initFloatingChat() {
+  const btn = document.getElementById('floatChatButton');
+  const panel = document.getElementById('floatChatPanel');
+  if (!btn || !panel) return;
+
+  const sync = () => {
+    const y = window.scrollY || window.pageYOffset || 0;
+    const hero = document.getElementById('hero');
+    const chat = document.getElementById('chat');
+    const footer = document.querySelector('.footer');
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 9999;
+    const chatRect = chat ? chat.getBoundingClientRect() : null;
+    const footerRect = footer ? footer.getBoundingClientRect() : null;
+    const nearChat = chatRect ? chatRect.top < window.innerHeight * 0.8 && chatRect.bottom > window.innerHeight * 0.2 : false;
+    const nearFooter = footerRect ? footerRect.top < window.innerHeight : false;
+    const pastThreshold = y > Math.max(260, window.innerHeight * 0.28);
+    const inHero = heroBottom > window.innerHeight * 0.45;
+    const visible = pastThreshold && !inHero && !nearChat && !nearFooter;
+    btn.classList.toggle('visible', visible);
+    if (!visible) {
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  btn.addEventListener('click', () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', event => {
+    if (panel.hidden) return;
+    if (!panel.contains(event.target) && !btn.contains(event.target)) {
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+}
+
+function initMailtoForms() {
+  document.querySelectorAll('[data-mailto-form]').forEach(form => {
+    if (form.dataset.bound === '1') return;
+    form.dataset.bound = '1';
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const currentLang = lang();
+      const formData = new FormData(form);
+      const subject = currentLang === 'ru'
+        ? (form.dataset.subjectRu || 'Запрос с сайта')
+        : (form.dataset.subjectEn || 'Website inquiry');
+      const labels = {
+        ru: { product: 'Продукт', name: 'Имя', niche: 'Ниша', contact: 'Контакт' },
+        en: { product: 'Product', name: 'Name', niche: 'Niche', contact: 'Contact' }
+      };
+      const bodyLines = [];
+      formData.forEach((value, key) => {
+        if (!value) return;
+        bodyLines.push(`${labels[currentLang][key] || key}: ${String(value)}`);
+      });
+      window.location.href = `mailto:olshanskiy.ad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    });
+  });
+}
+
+function initStickyProductCta() {
+  const bar = document.getElementById('stickyLeadhunterCta');
+  if (!bar) return;
+  const sync = () => {
+    const y = window.scrollY || window.pageYOffset || 0;
+    const footer = document.querySelector('.footer');
+    const footerRect = footer ? footer.getBoundingClientRect() : null;
+    const nearFooter = footerRect ? footerRect.top < window.innerHeight : false;
+    bar.hidden = !(y > 720 && !nearFooter);
+  };
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+}
+
 const CHAT = {
   step: 0,
   niche: '',
@@ -364,19 +512,19 @@ const CHAT = {
 
 const CHAT_COPY = {
   ru: {
-    greet: 'Привет. Я быстро пойму задачу и подготовлю короткий бриф для Андрея. Начнём с ниши: в каком сегменте работает бизнес?',
+    greet: 'Привет. Я быстро пойму задачу и дам короткую рекомендацию по сценарию. Начнём с ниши: в каком сегменте работает бизнес?',
     pain: 'Что сейчас сильнее всего тормозит рост?',
     revenue: 'Какой у вас примерный оборот?',
-    recommend: flow => `Рекомендация: ${flow.niche === 'Интернет-магазин' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / услуги' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Недвижимость' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} под вашу задачу.`,
-    final: 'Подготовил короткий бриф. Дальше свяжемся через founder / contact блок.',
+    recommend: flow => `Рекомендация: ${flow.niche === 'Интернет-магазин' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / услуги' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Недвижимость' ? 'Digital Broker + AI Backoffice' : 'кастомный AI-сценарий'} под вашу задачу.`,
+    final: 'Подготовил короткую рекомендацию. Дальше можно перейти в Telegram или обсудить задачу по почте.',
     telegram: 'Написать в Telegram'
   },
   en: {
-    greet: 'Hi. I’ll quickly understand the task and prepare a short brief for Andrey. Let’s start with the niche: what segment does your business operate in?',
+    greet: 'Hi. I’ll quickly understand the task and suggest the most relevant scenario. Let’s start with the niche: what segment does your business operate in?',
     pain: 'What is currently slowing growth the most?',
     revenue: 'What is your approximate revenue?',
-    recommend: flow => `Recommendation: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'Custom AI workflow'} for your task.`,
-    final: 'I’ve prepared a short brief. We’ll continue through the founder / contact block.',
+    recommend: flow => `Recommendation: ${flow.niche === 'E-commerce' ? 'LeadHunter + AI Support Agent' : flow.niche === 'B2B / Services' ? 'Digital Broker + AI Lead Classifier' : flow.niche === 'Real Estate' ? 'Digital Broker + AI Backoffice' : 'a custom AI scenario'} for your task.`,
+    final: 'I’ve prepared a short recommendation. You can continue in Telegram or by email.',
     telegram: 'Message on Telegram'
   }
 };
@@ -429,9 +577,7 @@ function botReply(text, nextItems, done = false) {
     if (done) {
       const note = document.createElement('div');
       note.className = 'chat-finish';
-      note.textContent = lang() === 'ru'
-        ? 'Бриф готов. Связь продолжаем через founder / contact блок.'
-        : 'The brief is ready. Continue through the founder / contact block.';
+      note.textContent = c.final;
       wrap.appendChild(note);
       return;
     }
@@ -459,13 +605,7 @@ function resetChat() {
   CHAT.step = 0; CHAT.niche = ''; CHAT.pain = ''; CHAT.revenue = '';
   const c = CHAT_COPY[lang()];
   const greet = document.getElementById('chatGreeting');
-  if (greet) {
-    const wrap = chatMessages();
-    if (wrap) {
-      wrap.innerHTML = '<div class="msg" id="chatGreeting"></div>';
-    }
-    document.getElementById('chatGreeting').textContent = c.greet;
-  }
+  if (greet) greet.textContent = c.greet;
   renderChatOptions(CHAT_OPTIONS[lang()].niche);
 }
 
@@ -645,9 +785,12 @@ window.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-lang', localStorage.getItem('nodalio-lang') || 'ru');
   document.querySelectorAll('.lang button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang()));
   initReveal();
+  initMiniNavSpy();
   initGraph();
+  initFloatingChat();
+  initStickyProductCta();
   renderProductPage();
   resetChat();
+  initMailtoForms();
 });
-
 

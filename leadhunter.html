@@ -1,60 +1,31 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru" data-lang="ru">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <title>LeadHunter Bot · Nodalio</title>
-  <meta name="description" content="LeadHunter Bot monitors Telegram chats and channels, catches hot leads, and sends a ready response in seconds.">
+  <title>LeadHunter · Nodalio</title>
+  <meta name="description" content="LeadHunter monitors Telegram chats, finds hot requests, qualifies them, and helps the team reply before competitors do.">
   <link rel="stylesheet" href="preview.css">
   <script defer src="preview.js"></script>
-  <style>
-    .product-hero{padding-top:78px}
-    .product-hero .hero-grid{align-items:start}
-    .product-hero .hero-visual-stats .stat{min-height:92px}
-    .product-section .section-head{margin-bottom:18px}
-    .product-panel{padding:22px}
-    .product-note{color:var(--muted);font-size:14px;line-height:1.7}
-    .problem-panel{padding:24px;border-left:3px solid rgba(36,231,208,.45)}
-    .problem-list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-    .problem-list li{padding:12px 14px 12px 22px;position:relative;color:var(--text);border:1px solid rgba(255,255,255,.05);border-radius:16px;background:rgba(255,255,255,.03)}
-    .problem-list li::before{content:"•";position:absolute;left:0;color:var(--accent)}
-    .flow-wrap{display:grid;gap:14px}
-    .flow-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-    .flow-card{padding:14px;border-radius:18px;border:1px solid rgba(36,231,208,.12);background:linear-gradient(180deg, rgba(36,231,208,.06), rgba(255,255,255,.02));font-size:13px;color:var(--muted)}
-    .flow-card strong{display:block;color:var(--text);margin-bottom:4px;font-size:14px}
-    .comparison-table{overflow:hidden;border-radius:18px}
-    .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .pricing-card{padding:22px}
-    .pricing-card h3{margin-top:4px}
-    .trust-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-    .trust-box{padding:20px;border-radius:24px;border:1px solid rgba(36,231,208,.10);background:linear-gradient(180deg, rgba(16,19,32,.94), rgba(12,15,24,.92))}
-    .trust-box h3{margin:0 0 10px;font-family:'Syne',sans-serif;letter-spacing:-.04em}
-    .niche-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .niche-card{padding:18px;border-radius:22px;border:1px solid rgba(36,231,208,.12);background:rgba(255,255,255,.03)}
-    .niche-card h3{margin:0 0 8px;font-family:'Syne',sans-serif;letter-spacing:-.04em}
-    .final-cta{padding:26px;border-radius:28px;border:1px solid rgba(36,231,208,.18);background:linear-gradient(135deg, rgba(36,231,208,.12), rgba(111,124,255,.10));box-shadow:0 24px 56px rgba(0,0,0,.24)}
-    .final-cta h2{margin:0 0 10px;font-family:'Syne',sans-serif;letter-spacing:-.05em}
-    @media (max-width: 1024px){
-      .flow-row,.trust-strip,.niche-grid,.pricing-grid{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width: 720px){
-      .product-hero{padding-top:76px}
-      .flow-row,.trust-strip,.niche-grid,.pricing-grid{grid-template-columns:1fr}
-    }
-  </style>
 </head>
-<body>
+<body data-product="leadhunter" class="product-page">
   <header class="nav">
     <div class="container">
- <a class="brand" href="index.html">Nodalio</a>
+      <a class="brand" href="index.html">Noda<span class="brand-accent">lio</span></a>
+      <nav class="top-rail" aria-label="LeadHunter sections">
+        <a href="#lh-problem"><span data-ru>Боль</span><span data-en>Problem</span></a>
+        <a href="#lh-proof"><span data-ru>Как это выглядит</span><span data-en>How it looks</span></a>
+        <a href="#lh-pricing"><span data-ru>Стоимость</span><span data-en>Pricing</span></a>
+        <a href="#lh-faq"><span data-ru>FAQ</span><span data-en>FAQ</span></a>
+      </nav>
       <div class="nav-actions">
         <div class="lang">
           <button type="button" class="active" data-lang="ru" onclick="setLang('ru')">RU</button>
           <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
         </div>
- <a class="ghost" href="index.html">
+        <a class="ghost" href="index.html">
           <span data-ru>Назад на главную</span>
           <span data-en>Back to home</span>
         </a>
@@ -71,77 +42,88 @@
   </header>
 
   <main>
-    <section class="hero product-hero">
-      <div class="container hero-grid">
+    <section class="hero product-hero product-hero--lh">
+      <div class="container hero-grid hero-grid--product">
         <div class="hero-copy" data-aos>
-          <div class="hero-kicker"><span data-ru>AI-автоматизация для бизнеса</span><span data-en>AI automation for business</span></div>
-          <h1 class="hero-title">
-            <span data-ru>LeadHunter Bot<br><span class="accent">Автоматический поиск клиентов</span><br>в Telegram</span>
-            <span data-en>LeadHunter Bot<br><span class="accent">Automatic client search</span><br>in Telegram</span>
-          </h1>
-          <p class="hero-sub">
-            <span data-ru>Бот мониторит нужные чаты, находит сообщения потенциальных клиентов и мгновенно уведомляет вас с готовым ответом от AI.</span>
-            <span data-en>The bot monitors relevant chats, finds potential clients, and instantly alerts you with an AI-generated reply.</span>
-          </p>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
-            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
+          <div class="label">
+            <span data-ru>Готовый продукт для входящих в Telegram</span>
+            <span data-en>Ready-made product for Telegram inbound demand</span>
           </div>
-          <div class="hero-meta">
-            <span class="chip"><b>24/7</b> <span data-ru>мониторинг</span><span data-en>monitoring</span></span>
-            <span class="chip"><b>&lt; 3 сек</b> <span data-ru>скорость реакции</span><span data-en>response speed</span></span>
-            <span class="chip"><b>∞</b> <span data-ru>чатов и каналов</span><span data-en>chats and channels</span></span>
+          <h1 class="hero-title">
+            <span data-ru>LeadHunter<br><span class="accent">находит горячие запросы</span><br>в Telegram раньше конкурентов</span>
+            <span data-en>LeadHunter<br><span class="accent">finds hot requests</span><br>in Telegram before competitors do</span>
+          </h1>
+          <p class="hero-line">
+            <span data-ru>Мониторит чаты, отсеивает шум, квалифицирует запрос и помогает ответить первым — пока другие ещё не увидели сообщение.</span>
+            <span data-en>Monitors chats, filters noise, qualifies the request, and helps your team reply first before anyone else even sees it.</span>
+          </p>
+          <div class="product-strip">
+            <span class="sales-pill">24/7</span>
+            <span class="sales-pill"><span data-ru>Отбор живых запросов</span><span data-en>Live request filtering</span></span>
+            <span class="sales-pill"><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></span>
+            <span class="sales-pill sales-pill--soft"><span data-ru>Telegram-first</span><span data-en>Telegram-first</span></span>
+          </div>
+          <div class="hero-actions">
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+              <span class="btn-icon" aria-hidden="true">✈</span>
+              <span data-ru>Показать, как это сработает</span>
+              <span data-en>Show how it would work</span>
+            </a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
+              <span class="btn-icon" aria-hidden="true">✉</span>
+              <span data-ru>Email</span>
+              <span data-en>Email</span>
+            </a>
           </div>
         </div>
 
         <div class="hero-visual" data-aos>
-          <div class="hero-visual-top panel">
-            <div class="label">
-              <span data-ru>Как работает система</span>
-              <span data-en>How the system works</span>
-            </div>
-            <div class="flow-wrap" style="margin-top:12px">
-              <div class="flow-row">
-                <div class="flow-card"><strong>01</strong><span data-ru>Чаты и каналы</span><span data-en>Chats and channels</span></div>
-                <div class="flow-card"><strong>02</strong><span data-ru>Ключевые слова</span><span data-en>Keywords</span></div>
-                <div class="flow-card"><strong>03</strong><span data-ru>AI-квалификация</span><span data-en>AI qualification</span></div>
-                <div class="flow-card"><strong>04</strong><span data-ru>Уведомление</span><span data-en>Notification</span></div>
-                <div class="flow-card"><strong>05</strong><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></div>
+          <div class="lh-mock panel">
+            <div class="lh-mock-head">
+              <div>
+                <span class="label"><span data-ru>Что получает менеджер</span><span data-en>What the manager gets</span></span>
+                <h3><span data-ru>Понятную сводку и готовый ответ вместо сырого потока сообщений</span><span data-en>A clear summary and ready reply instead of a raw message stream</span></h3>
               </div>
-              <div class="flow-card">
-                <strong><span data-ru>Польза</span><span data-en>Impact</span></strong>
-                <span data-ru>Вы отвечаете первым, не теряете горячие запросы и собираете лиды быстрее конкурентов.</span>
-                <span data-en>You reply first, avoid losing hot requests, and capture leads faster than competitors.</span>
+              <div class="lh-dot"></div>
+            </div>
+            <div class="lh-thread">
+              <div class="lh-bubble lh-bubble--source">
+                <small><span data-ru>Чат “Аренда Москва”</span><span data-en>Chat “Rent Moscow”</span></small>
+                <p><span data-ru>Ищу 2-комнатную квартиру до 180к рядом с Белорусской, переезд в мае.</span><span data-en>Looking for a 2-bedroom apartment up to 180k near Belorusskaya, moving in May.</span></p>
+              </div>
+              <div class="lh-brief">
+                <strong><span data-ru>Сводка по лиду</span><span data-en>Lead summary</span></strong>
+                <ul>
+                  <li><span data-ru>Ниша: недвижимость / аренда</span><span data-en>Niche: real estate / rent</span></li>
+                  <li><span data-ru>Приоритет: высокий</span><span data-en>Priority: high</span></li>
+                  <li><span data-ru>Контекст: понятный бюджет и локация</span><span data-en>Context: clear budget and location</span></li>
+                </ul>
+              </div>
+              <div class="lh-bubble lh-bubble--reply">
+                <small><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></small>
+                <p><span data-ru>Добрый день! Есть несколько вариантов под ваш бюджет в районе Белорусской. Могу сразу отправить подборку и договориться о просмотре.</span><span data-en>Hello! I have several options within your budget near Belorusskaya. I can send a shortlist right away and arrange a viewing.</span></p>
               </div>
             </div>
           </div>
           <div class="hero-visual-stats">
-            <div class="stat"><b>24/7</b><span data-ru>без ручного режима</span><span data-en>no manual mode</span></div>
-            <div class="stat"><b>&lt; 3 сек</b><span data-ru>до сигнала</span><span data-en>to signal</span></div>
-            <div class="stat"><b>∞</b><span data-ru>чаты и каналы</span><span data-en>unlimited sources</span></div>
+            <div class="stat"><b>&lt; 3 сек</b><span data-ru>от сообщения до сигнала</span><span data-en>from message to signal</span></div>
+            <div class="stat"><b>24/7</b><span data-ru>мониторинг без ручного режима</span><span data-en>monitoring without manual mode</span></div>
+            <div class="stat"><b>1 card</b><span data-ru>вся суть запроса в одной карточке</span><span data-en>the whole request in one card</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section compact product-section">
+    <section class="section compact product-section" id="lh-problem">
       <div class="container">
-        <div class="problem-panel panel" data-aos>
-          <span class="label"><span data-ru>Знакомая ситуация?</span><span data-en>Sound familiar?</span></span>
-          <h2 class="offer-title" style="margin-top:10px">
-            <span data-ru>Потенциальные клиенты уже пишут в Telegram, но вы видите их слишком поздно</span>
-            <span data-en>Potential clients are already writing in Telegram, but you see them too late</span>
-          </h2>
-          <p class="offer-copy">
-            <span data-ru>В профильных Telegram-чатах постоянно появляются потенциальные клиенты. Но:</span>
-            <span data-en>Potential clients constantly appear in niche Telegram chats. But:</span>
-          </p>
-          <ul class="problem-list">
-            <li><span data-ru>Физически невозможно следить за 10-20 чатами одновременно</span><span data-en>It is impossible to watch 10-20 chats at once</span></li>
-            <li><span data-ru>Вы видите запрос через 3 часа - когда конкурент уже ответил</span><span data-en>You see a request 3 hours later - when a competitor already answered</span></li>
-            <li><span data-ru>Пока вы спите, лиды уходят к другим</span><span data-en>While you sleep, leads go to someone else</span></li>
-            <li><span data-ru>Ручной мониторинг отнимает 2-4 часа в день</span><span data-en>Manual monitoring takes 2-4 hours a day</span></li>
-          </ul>
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Знакомая боль</span><span data-en>Familiar pain</span></span>
+          <h2><span data-ru>Потенциальные клиенты уже пишут в Telegram. Проблема в том, что вы видите их слишком поздно.</span><span data-en>Potential clients are already writing in Telegram. The problem is that you see them too late.</span></h2>
+        </div>
+        <div class="problem-grid">
+          <article class="memo-card" data-aos><p><span data-ru>Физически невозможно следить за десятками чатов, каналов и комментариев одновременно.</span><span data-en>It is impossible to monitor dozens of chats, channels, and comments at once.</span></p></article>
+          <article class="memo-card" data-aos><p><span data-ru>Пока менеджер замечает запрос, кто-то уже ответил первым и забрал диалог себе.</span><span data-en>By the time a manager notices the request, someone else has already answered first.</span></p></article>
+          <article class="memo-card" data-aos><p><span data-ru>Ручной мониторинг съедает часы, но всё равно не даёт стабильного контроля и скорости.</span><span data-en>Manual monitoring eats hours and still does not give consistent control or speed.</span></p></article>
         </div>
       </div>
     </section>
@@ -149,16 +131,16 @@
     <section class="section compact product-section">
       <div class="container">
         <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Что умеет бот</span><span data-en>What the bot does</span></span>
-          <h2><span data-ru>Полностью автоматизированная система, которая работает за вас</span><span data-en>A fully automated system that works for you</span></h2>
+          <span class="label"><span data-ru>Что получает команда</span><span data-en>What your team gets</span></span>
+          <h2><span data-ru>Не просто мониторинг чатов, а готовый сценарий до первого ответа</span><span data-en>Not just chat monitoring, but a ready path to the first reply</span></h2>
         </div>
-        <div class="impl-grid">
-          <article class="impl-card" data-aos><h3><span data-ru>Умный мониторинг</span><span data-en>Smart monitoring</span></h3><p><span data-ru>Отслеживает неограниченное количество чатов и каналов, включая комментарии к постам.</span><span data-en>Tracks unlimited chats and channels, including post comments.</span></p></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Фильтр по ключевым словам</span><span data-en>Keyword filter</span></h3><p><span data-ru>Реагирует только на целевые сообщения. Точное совпадение - без ложных срабатываний.</span><span data-en>Responds only to target messages. Exact matching with no false positives.</span></p></article>
-          <article class="impl-card" data-aos><h3><span data-ru>AI-квалификация</span><span data-en>AI qualification</span></h3><p><span data-ru>Нейросеть анализирует сообщение и определяет: реальный клиент или нет.</span><span data-en>The AI analyzes the message and decides whether it is a real client or not.</span></p></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></h3><p><span data-ru>AI формирует персонализированный ответ в вашем стиле. Копируете - отправляете - получаете клиента.</span><span data-en>The AI drafts a personalized reply in your style. Copy - send - win the client.</span></p></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Уведомления</span><span data-en>Notifications</span></h3><p><span data-ru>Мгновенное push-уведомление в Telegram с текстом, автором и прямой ссылкой на сообщение.</span><span data-en>Instant Telegram push notification with the message text, author, and direct link.</span></p></article>
-          <article class="impl-card" data-aos><h3><span data-ru>Простое управление</span><span data-en>Simple management</span></h3><p><span data-ru>Всё настраивается через удобное меню в Telegram - без доступа к серверу и коду.</span><span data-en>Everything is configured through a convenient Telegram menu - no server or code access required.</span></p></article>
+        <div class="impl-grid impl-grid--wide">
+          <article class="impl-card" data-aos><h3>🛰 <span data-ru>Следит за входящими</span><span data-en>Tracks inbound demand</span></h3><p><span data-ru>Следит за чатами, каналами и комментариями без ручного дежурства.</span><span data-en>Tracks chats, channels, and comments without manual watch duty.</span></p></article>
+          <article class="impl-card" data-aos><h3>🎯 <span data-ru>Отделяет живой запрос от шума</span><span data-en>Separates demand from noise</span></h3><p><span data-ru>Реагирует только на сообщения, которые похожи на реальную задачу, а не на обсуждение.</span><span data-en>Reacts only to messages that look like a real need, not random discussion.</span></p></article>
+          <article class="impl-card" data-aos><h3>🧾 <span data-ru>Собирает короткую сводку</span><span data-en>Builds a short summary</span></h3><p><span data-ru>Даёт менеджеру сжатый контекст вместо длинной ручной пересылки.</span><span data-en>Gives the manager a compressed summary instead of a long manual forward.</span></p></article>
+          <article class="impl-card" data-aos><h3>✉️ <span data-ru>Подсказывает первый ответ</span><span data-en>Suggests the first reply</span></h3><p><span data-ru>Помогает быстро ответить в вашем стиле, не теряя скорость первого касания.</span><span data-en>Helps your team reply fast in your tone without losing first-touch speed.</span></p></article>
+          <article class="impl-card" data-aos><h3>📬 <span data-ru>Отдаёт лид нужному человеку</span><span data-en>Sends the lead to the right person</span></h3><p><span data-ru>Передаёт только релевантные запросы, чтобы команда включалась в нужный момент.</span><span data-en>Passes on only relevant requests so the team steps in at the right moment.</span></p></article>
+          <article class="impl-card" data-aos><h3>🔧 <span data-ru>Остаётся под контролем</span><span data-en>Stays under control</span></h3><p><span data-ru>Источники, правила и фильтры остаются понятными, а не превращаются в чёрный ящик.</span><span data-en>Sources, rules, and filters stay understandable instead of becoming a black box.</span></p></article>
         </div>
       </div>
     </section>
@@ -166,101 +148,47 @@
     <section class="section compact product-section">
       <div class="container">
         <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Как это работает</span><span data-en>How it works</span></span>
-          <p><span data-ru>От сообщения в чате до уведомления - меньше 3 секунд.</span><span data-en>From message to notification - under 3 seconds.</span></p>
+          <span class="label"><span data-ru>Как проходит первый ответ</span><span data-en>How the first reply happens</span></span>
+          <h2><span data-ru>Пять шагов от сообщения в чате до реакции команды</span><span data-en>Five steps from a chat message to a team response</span></h2>
         </div>
-        <div class="steps-grid">
-          <article class="step-card" data-aos><div class="step-num">01</div><h3><span data-ru>Кто-то пишет в чате</span><span data-en>Someone posts in a chat</span></h3><p><span data-ru>В одном из отслеживаемых чатов появляется новое сообщение.</span><span data-en>A new message appears in one of the monitored chats.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">02</div><h3><span data-ru>Бот проверяет ключевые слова</span><span data-en>The bot checks keywords</span></h3><p><span data-ru>Если сообщение содержит ваши ключевые слова - продолжается обработка.</span><span data-en>If the message contains your keywords, it continues processing.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">03</div><h3><span data-ru>AI анализирует контекст</span><span data-en>AI analyzes context</span></h3><p><span data-ru>Нейросеть определяет: это реальный запрос или просто обсуждение.</span><span data-en>The AI decides whether it is a real request or just a discussion.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">04</div><h3><span data-ru>Вы получаете уведомление</span><span data-en>You get a notification</span></h3><p><span data-ru>Push-уведомление с текстом сообщения, ссылкой на оригинал и готовым ответом от AI.</span><span data-en>A push notification with the message, original link, and ready AI reply.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">05</div><h3><span data-ru>Вы отвечаете первым</span><span data-en>You reply first</span></h3><p><span data-ru>Копируете ответ AI и отвечаете - пока конкуренты ещё не видели сообщение.</span><span data-en>You copy the AI reply and answer before competitors even see the message.</span></p></article>
+        <div class="steps-grid steps-grid--lh">
+          <article class="step-card" data-aos><div class="step-num">01</div><h3><span data-ru>Кто-то пишет в чате</span><span data-en>Someone posts in a chat</span></h3><p><span data-ru>В одном из подключённых чатов появляется новый запрос.</span><span data-en>A new request appears in one of the connected chats.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">02</div><h3><span data-ru>Система проверяет сообщение</span><span data-en>The system checks the message</span></h3><p><span data-ru>Сравнивает текст с ключевыми словами, контекстом и правилами отбора.</span><span data-en>Matches the text against keywords, context, and filtering rules.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">03</div><h3><span data-ru>AI оценивает релевантность</span><span data-en>AI evaluates relevance</span></h3><p><span data-ru>Определяет, насколько это похоже на реальный лид, а не просто обсуждение.</span><span data-en>Determines whether it looks like a real lead rather than a discussion.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">04</div><h3><span data-ru>Менеджер получает сводку</span><span data-en>The manager gets a summary</span></h3><p><span data-ru>Вместе с уведомлением приходит короткая выжимка и готовый ответ.</span><span data-en>The notification includes a short summary and a ready reply.</span></p></article>
+          <article class="step-card" data-aos><div class="step-num">05</div><h3><span data-ru>Команда отвечает первой</span><span data-en>The team replies first</span></h3><p><span data-ru>Вы перехватываете диалог до того, как конкурент вообще заметит сообщение.</span><span data-en>You capture the conversation before a competitor even notices it.</span></p></article>
         </div>
       </div>
     </section>
 
-    <section class="section compact product-section">
+    <section class="section compact product-section" id="lh-proof">
       <div class="container">
-        <div class="panel product-panel" data-aos>
-          <span class="label"><span data-ru>Пример</span><span data-en>Use case</span></span>
-          <h2 class="offer-title" style="margin-top:10px">
-            <span data-ru>Брокер недвижимости</span>
-            <span data-en>Real estate broker</span>
-          </h2>
-          <div class="flow-wrap">
-            <div class="flow-row">
-              <div class="flow-card"><strong><span data-ru>20 чатов</span><span data-en>20 chats</span></strong><span data-ru>про недвижимость</span><span data-en>about real estate</span></div>
-              <div class="flow-card"><strong><span data-ru>Слова</span><span data-en>Keywords</span></strong><span data-ru>квартира, аренда, ищу жильё</span><span data-en>apartment, rent, looking for housing</span></div>
-              <div class="flow-card"><strong><span data-ru>AI</span><span data-en>AI</span></strong><span data-ru>отсеивает нецелевые</span><span data-en>filters non-target leads</span></div>
-              <div class="flow-card"><strong><span data-ru>Сигнал</span><span data-en>Signal</span></strong><span data-ru>уведомление + ответ</span><span data-en>notification + reply</span></div>
-              <div class="flow-card"><strong><span data-ru>Результат</span><span data-en>Result</span></strong><span data-ru>5-15 целевых лидов из 500 сообщений/день</span><span data-en>5-15 qualified leads from 500 messages/day</span></div>
-            </div>
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Как это выглядит</span><span data-en>How it looks</span></span>
+          <h2><span data-ru>Что именно видит команда в реальной работе</span><span data-en>What the team actually sees in daily work</span></h2>
+        </div>
+        <div class="trust-strip trust-strip--proof">
+          <div class="trust-box" data-aos>
+            <span class="label"><span data-ru>Уведомление</span><span data-en>Notification</span></span>
+            <h3><span data-ru>Короткая карточка вместо долгого ручного разбора</span><span data-en>A short signal card instead of long manual triage</span></h3>
+            <p class="product-note"><span data-ru>Менеджер получает не сырой поток сообщений, а приоритет, краткий контекст и прямую ссылку на источник.</span><span data-en>The manager receives priority, short context, and a direct source link instead of a raw message stream.</span></p>
+          </div>
+          <div class="trust-box" data-aos>
+            <span class="label"><span data-ru>Ответ</span><span data-en>Reply</span></span>
+            <h3><span data-ru>Первое касание идёт быстрее и звучит осмысленно</span><span data-en>The first touch happens faster and sounds intentional</span></h3>
+            <p class="product-note"><span data-ru>Готовый ответ ускоряет реакцию, но оставляет человеку контроль над финальной отправкой и тоном.</span><span data-en>The ready reply speeds up reaction time while keeping final control and tone with a human.</span></p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Сравнение подходов</span><span data-en>Comparison</span></span>
-          <h2><span data-ru>Почему автоматизация выигрывает</span><span data-en>Why automation wins</span></h2>
-        </div>
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th><span data-ru>Параметр</span><span data-en>Parameter</span></th>
-              <th><span data-ru>Вручную</span><span data-en>Manual</span></th>
-              <th>LeadHunter Bot</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><span data-ru>Скорость реакции</span><span data-en>Response speed</span></td><td>10 мин - 3 часа</td><td><span class="check">✓</span> 3 секунды</td></tr>
-            <tr><td><span data-ru>Работа 24/7</span><span data-en>Works 24/7</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
-            <tr><td><span data-ru>Количество чатов</span><span data-en>Number of chats</span></td><td>3-5 максимум</td><td><span class="check">✓</span> Без ограничений</td></tr>
-            <tr><td><span data-ru>Время на мониторинг</span><span data-en>Monitoring time</span></td><td>2-4 часа/день</td><td><span class="check">✓</span> 0 минут</td></tr>
-            <tr><td><span data-ru>AI-квалификация</span><span data-en>AI qualification</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
-            <tr><td><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></td><td><span class="cross">✗</span> Писать самому</td><td><span class="check">✓</span> AI генерирует</td></tr>
-            <tr><td><span data-ru>Пропущенные лиды</span><span data-en>Missed leads</span></td><td>До 70%</td><td><span class="check">✓</span> 0%</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section compact product-section">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Два формата работы</span><span data-en>Two delivery modes</span></span>
-          <h2><span data-ru>Выберите удобный вариант</span><span data-en>Choose the format that fits</span></h2>
-        </div>
-        <div class="pricing-grid">
-          <article class="pricing-card popular" data-aos>
-            <div class="pricing-label">Популярное</div>
-            <h3>Аренда</h3>
-            <p class="pricing-period"><span data-ru>Оплата: 7 дней или 30 дней</span><span data-en>Payment: 7 days or 30 days</span></p>
-            <ul class="pricing-includes">
-              <li><span data-ru>Вы создаёте бота через BotFather за 2 минуты</span><span data-en>Create a bot via BotFather in 2 minutes</span></li>
-              <li><span data-ru>Передаёте токен - мы всё подключаем</span><span data-en>Share the token - we connect everything</span></li>
-              <li><span data-ru>Настройка AI-промпта под вашу нишу</span><span data-en>AI prompt setup for your niche</span></li>
-              <li><span data-ru>Добавление чатов и ключевых слов</span><span data-en>Add chats and keywords</span></li>
-              <li><span data-ru>Управление через Telegram-меню</span><span data-en>Manage through Telegram menu</span></li>
-              <li><span data-ru>Техподдержка на весь период</span><span data-en>Support for the full period</span></li>
-            </ul>
-            <p class="pricing-note"><span data-ru>Никаких технических знаний не нужно. У каждого клиента отдельная БД. Можно отменить в любой момент.</span><span data-en>No technical knowledge needed. Each client has a separate database. You can cancel anytime.</span></p>
+        <div class="quote-grid quote-grid--mini">
+          <article class="quote-card panel" data-aos>
+            <span class="quote-mark">“</span>
+            <p><span data-ru>Раньше менеджер просто не успевал просматривать поток. Теперь видит только те сообщения, на которые действительно нужно отвечать.</span><span data-en>The manager used to miss the flow. Now they only see the messages that actually deserve a reply.</span></p>
+            <small><span data-ru>Сервисный бизнес · NDA</span><span data-en>Service business · NDA</span></small>
           </article>
-          <article class="pricing-card" data-aos>
-            <div class="pricing-label">Под ключ</div>
-            <h3>На вашем сервере</h3>
-            <p class="pricing-period"><span data-ru>Настройка за 3 дня · разовая оплата</span><span data-en>Setup in 3 days · one-time payment</span></p>
-            <ul class="pricing-includes">
-              <li><span data-ru>Установка на ваш VPS/сервер</span><span data-en>Install on your VPS/server</span></li>
-              <li><span data-ru>Настройка AI-промпта под нишу</span><span data-en>Set up the AI prompt for your niche</span></li>
-              <li><span data-ru>Обучение AI вашему стилю общения</span><span data-en>Train the AI to match your tone</span></li>
-              <li><span data-ru>Добавление чатов и ключевых слов</span><span data-en>Add chats and keywords</span></li>
-              <li><span data-ru>Инструкция по управлению</span><span data-en>Usage instructions</span></li>
-              <li><span data-ru>Техподдержка первые 14 дней</span><span data-en>14 days of support</span></li>
-            </ul>
-            <p class="pricing-note"><span data-ru>Полная автономность - данные только у вас. Расходы на AI: ~$0.10/день. Сервер: от $5/мес.</span><span data-en>Full autonomy - data stays with you. AI costs: about $0.10/day. Server: from $5/month.</span></p>
+          <article class="quote-card panel" data-aos>
+            <span class="quote-mark">“</span>
+            <p><span data-ru>Скорость первого ответа выросла, а ручной разбор чатов почти исчез из ежедневной рутины.</span><span data-en>First-response speed improved, while manual chat scanning almost disappeared from the daily routine.</span></p>
+            <small><span data-ru>Агентство / продажи · NDA</span><span data-en>Agency / sales · NDA</span></small>
           </article>
         </div>
       </div>
@@ -268,22 +196,143 @@
 
     <section class="section compact product-section">
       <div class="container">
-        <div class="trust-strip" data-aos>
-          <div class="trust-box">
-            <span class="label"><span data-ru>Безопасность данных</span><span data-en>Data security</span></span>
-            <h3><span data-ru>Каждый клиент работает в изолированной среде</span><span data-en>Each client works in an isolated environment</span></h3>
-            <p class="product-note"><span data-ru>Своя база данных, свои настройки, свой bot-token. Никто не видит чужие данные. При аренде - всё на нашем защищённом сервере. При установке под ключ - данные только у вас.</span><span data-en>Own database, own settings, own bot token. Nobody sees anyone else’s data. With rental, everything stays on our secure server. With dedicated setup, data stays only with you.</span></p>
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Пример сценария</span><span data-en>Use case</span></span>
+          <h2><span data-ru>Как LeadHunter выглядит в реальной нише</span><span data-en>How LeadHunter looks in a real niche</span></h2>
+        </div>
+        <div class="cases-grid">
+          <article class="case-card" data-aos>
+            <div class="case-meta"><span>Use case 01</span><span data-ru>Недвижимость</span><span data-en>Real estate</span></div>
+            <h3><span data-ru>Брокер по аренде</span><span data-en>Rental broker</span></h3>
+            <p><span data-ru>Подключаем тематические чаты, выделяем сигналы по бюджету, району и типу объекта, а менеджер получает только релевантные запросы.</span><span data-en>We connect niche chats, detect signals by budget, area, and property type, and the manager sees only relevant requests.</span></p>
+          </article>
+          <article class="case-card" data-aos>
+            <div class="case-meta"><span>Use case 02</span><span data-ru>B2B / услуги</span><span data-en>B2B / services</span></div>
+            <h3><span data-ru>Агентство или подрядчик</span><span data-en>Agency or contractor</span></h3>
+            <p><span data-ru>Система вылавливает запросы на разработку, дизайн, интеграции и автоматизацию, чтобы команда отвечала первой на горячий спрос.</span><span data-en>The system captures requests for development, design, integrations, and automation, so the team can reply first to hot demand.</span></p>
+          </article>
+          <article class="case-card" data-aos>
+            <div class="case-meta"><span>Use case 03</span><span data-ru>Эксперты / образование</span><span data-en>Experts / education</span></div>
+            <h3><span data-ru>Курсы и консультации</span><span data-en>Courses and consulting</span></h3>
+            <p><span data-ru>LeadHunter отсеивает шум и выводит только целевые запросы от людей, которые уже формулируют задачу и готовы продолжить диалог.</span><span data-en>LeadHunter filters out noise and surfaces only target requests from people already stating a concrete need.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Сравнение</span><span data-en>Comparison</span></span>
+          <h2><span data-ru>Почему LeadHunter выигрывает ручной поиск</span><span data-en>Why LeadHunter beats manual monitoring</span></h2>
+        </div>
+        <div class="comparison-table panel" data-aos>
+          <div class="comparison-head">
+            <span><span data-ru>Параметр</span><span data-en>Parameter</span></span>
+            <span><span data-ru>Вручную</span><span data-en>Manual</span></span>
+            <span>LeadHunter</span>
           </div>
-          <div class="trust-box">
+          <div class="comparison-row"><strong><span data-ru>Скорость реакции</span><span data-en>Response speed</span></strong><span><span data-ru>Минуты или часы, если сообщение вообще заметили</span><span data-en>Minutes or hours if the message is noticed at all</span></span><span><span data-ru>Уведомление приходит почти сразу</span><span data-en>The notification arrives almost instantly</span></span></div>
+          <div class="comparison-row"><strong><span data-ru>Объём мониторинга</span><span data-en>Monitoring capacity</span></strong><span><span data-ru>Ограничен вниманием одного человека</span><span data-en>Limited by one person’s attention</span></span><span><span data-ru>Параллельная работа с множеством источников</span><span data-en>Parallel work across many sources</span></span></div>
+          <div class="comparison-row"><strong><span data-ru>Качество передачи</span><span data-en>Handoff quality</span></strong><span><span data-ru>Контекст теряется в пересылках</span><span data-en>Context gets lost in forwarding</span></span><span><span data-ru>Сводка и готовый ответ уже собраны</span><span data-en>The summary and ready reply are already prepared</span></span></div>
+          <div class="comparison-row"><strong><span data-ru>Нагрузка на команду</span><span data-en>Team load</span></strong><span><span data-ru>Ручной разбор съедает часы каждый день</span><span data-en>Manual triage eats hours every day</span></span><span><span data-ru>Команда включается только на релевантных сигналах</span><span data-en>The team engages only on relevant signals</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section" id="lh-pricing">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label"><span data-ru>Стоимость и запуск</span><span data-en>Pricing and rollout</span></span>
+          <h2><span data-ru>Можно начать с пилота, а затем перейти в рабочий режим</span><span data-en>Start with a pilot and then move into live operation</span></h2>
+        </div>
+        <div class="pricing-grid pricing-grid--three">
+          <article class="pricing-card panel" data-aos>
+            <div class="pricing-label"><span data-ru>Старт</span><span data-en>Start</span></div>
+            <h3><span data-ru>Пилот / trial</span><span data-en>Pilot / trial</span></h3>
+            <div class="price-value"><span data-ru>от 39 000 ₽</span><span data-en>from $490</span></div>
+            <p class="pricing-note"><span data-ru>Проверяем, что ваши чаты, сигналы и сценарий действительно дают релевантные лиды.</span><span data-en>We validate that your chats, signals, and scenario actually produce relevant leads.</span></p>
+          </article>
+          <article class="pricing-card panel popular" data-aos>
+            <div class="pricing-label"><span data-ru>Основной</span><span data-en>Main</span></div>
+            <h3><span data-ru>Настройка под ключ</span><span data-en>Managed setup</span></h3>
+            <div class="price-value"><span data-ru>от 89 000 ₽</span><span data-en>from $1,090</span></div>
+            <p class="pricing-note"><span data-ru>Подключаем источники, настраиваем фильтры, отбор запросов и быстрый ответ под вашу нишу.</span><span data-en>We connect sources, configure filters, request qualification, and fast replies for your niche.</span></p>
+          </article>
+          <article class="pricing-card panel" data-aos>
+            <div class="pricing-label"><span data-ru>Выделенный запуск</span><span data-en>Dedicated rollout</span></div>
+            <h3><span data-ru>Отдельная среда</span><span data-en>Dedicated environment</span></h3>
+            <div class="price-value"><span data-ru>от 159 000 ₽</span><span data-en>from $1,950</span></div>
+            <p class="pricing-note"><span data-ru>Если нужен отдельный запуск, изоляция данных и более глубокий контроль над системой.</span><span data-en>When you need a dedicated environment, stronger data isolation, and deeper control over the system.</span></p>
+          </article>
+        </div>
+        <div class="lead-form-card panel" data-aos>
+          <div class="lead-form-copy">
+            <span class="label"><span data-ru>Получить сценарий и диапазон стоимости</span><span data-en>Get the rollout outline and price range</span></span>
+            <h3><span data-ru>Оставьте нишу и контакт, и мы вернёмся с коротким разбором под ваш случай.</span><span data-en>Leave your niche and contact, and we’ll come back with a short rollout outline for your case.</span></h3>
+          </div>
+          <form class="lead-mail-form" data-mailto-form data-subject-ru="LeadHunter: запрос с сайта" data-subject-en="LeadHunter: website inquiry">
+            <input type="hidden" name="product" value="LeadHunter">
+            <input type="text" name="name" required placeholder="Имя / Name">
+            <input type="text" name="niche" required placeholder="Ниша / Niche">
+            <input type="email" name="contact" required placeholder="Email">
+            <button type="submit" class="cta">
+              <span class="btn-icon" aria-hidden="true">✉</span>
+              <span data-ru>Отправить запрос</span>
+              <span data-en>Send inquiry</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section">
+      <div class="container">
+        <div class="trust-strip">
+          <div class="trust-box" data-aos>
+            <span class="label"><span data-ru>Где работает и как запускается</span><span data-en>Where it works and how it launches</span></span>
+            <h3><span data-ru>Сценарий проверяем на реальной логике, а не на общих обещаниях</span><span data-en>We validate the setup against a real workflow, not generic claims</span></h3>
+            <p class="product-note"><span data-ru>Подключение источников, правила отбора и доступы остаются прозрачными. Если продукт не подходит вашей нише или типу запросов, это видно ещё на этапе пилота.</span><span data-en>Source connections, filtering rules, and access stay transparent. If the product does not fit your niche or type of demand, this becomes clear during the pilot.</span></p>
+          </div>
+          <div class="trust-box" data-aos>
             <span class="label"><span data-ru>Кому подходит</span><span data-en>Who it fits</span></span>
-            <h3><span data-ru>Любой бизнес, где клиенты общаются в Telegram</span><span data-en>Any business where clients communicate in Telegram</span></h3>
-            <div class="niche-grid" style="margin-top:14px">
-              <div class="niche-card"><h3>Недвижимость</h3><p class="product-note"><span data-ru>Квартиры, аренда, коммерческая недвижимость.</span><span data-en>Apartments, rent, commercial real estate.</span></p></div>
-              <div class="niche-card"><h3>IT и разработка</h3><p class="product-note"><span data-ru>Заказы на разработку, интеграции, автоматизацию.</span><span data-en>Development, integrations, automation requests.</span></p></div>
-              <div class="niche-card"><h3>Образование</h3><p class="product-note"><span data-ru>Курсы, репетиторство, менторство.</span><span data-en>Courses, tutoring, mentoring.</span></p></div>
-              <div class="niche-card"><h3>Услуги</h3><p class="product-note"><span data-ru>Ремонт, дизайн, юристы, бухгалтеры.</span><span data-en>Repairs, design, legal, accounting.</span></p></div>
+            <div class="niche-grid niche-grid--stacked">
+              <div class="niche-card"><h3><span data-ru>Недвижимость</span><span data-en>Real estate</span></h3><p class="product-note"><span data-ru>Аренда, покупка, подбор объектов.</span><span data-en>Rent, buying, property search.</span></p></div>
+              <div class="niche-card"><h3><span data-ru>B2B / подрядчики</span><span data-en>B2B / contractors</span></h3><p class="product-note"><span data-ru>Разработка, дизайн, интеграции, автоматизация.</span><span data-en>Development, design, integrations, automation.</span></p></div>
+              <div class="niche-card"><h3><span data-ru>Эксперты и курсы</span><span data-en>Experts and education</span></h3><p class="product-note"><span data-ru>Консультации, менторство, обучение.</span><span data-en>Consulting, mentoring, education.</span></p></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact product-section" id="lh-faq">
+      <div class="container">
+        <div class="section-head" data-aos>
+          <span class="label">FAQ</span>
+          <h2><span data-ru>Короткие ответы на вопросы до первого контакта</span><span data-en>Short answers to the most common questions before the first call</span></h2>
+        </div>
+        <div class="faq-grid faq-grid--single">
+          <details class="faq-item panel" data-aos>
+            <summary><h3><span data-ru>Как быстро можно запустить LeadHunter?</span><span data-en>How quickly can LeadHunter go live?</span></h3></summary>
+            <p><span data-ru>Если сценарий понятен, можно быстро стартовать с пилота, а затем перевести систему в рабочий режим.</span><span data-en>If the scenario is clear, we can start quickly with a pilot and then move the system into live operation.</span></p>
+          </details>
+          <details class="faq-item panel" data-aos>
+            <summary><h3><span data-ru>Подходит ли продукт для любой ниши?</span><span data-en>Does it fit every niche?</span></h3></summary>
+            <p><span data-ru>Нет. Он лучше всего работает там, где в Telegram реально живёт входящий спрос и сообщение можно быстро квалифицировать.</span><span data-en>No. It works best where inbound demand actually lives in Telegram and the message can be qualified quickly.</span></p>
+          </details>
+          <details class="faq-item panel" data-aos>
+            <summary><h3><span data-ru>Нужен ли отдельный сервер?</span><span data-en>Do I need a dedicated server?</span></h3></summary>
+            <p><span data-ru>Не всегда. Это зависит от выбранного формата работы, требований к изоляции данных и желаемого уровня контроля.</span><span data-en>Not always. It depends on the chosen delivery format, data-isolation requirements, and the level of control you need.</span></p>
+          </details>
+          <details class="faq-item panel" data-aos>
+            <summary><h3><span data-ru>Можно ли подключить CRM или другие уведомления?</span><span data-en>Can it be connected to a CRM or other notifications?</span></h3></summary>
+            <p><span data-ru>Да, если сценарий этого требует. Мы смотрим, как лучше встроить передачу лида в ваш текущий стек.</span><span data-en>Yes, if the scenario requires it. We decide how best to fit lead delivery into your current stack.</span></p>
+          </details>
+          <details class="faq-item panel" data-aos>
+            <summary><h3><span data-ru>Что считается успехом пилота?</span><span data-en>What counts as a successful pilot?</span></h3></summary>
+            <p><span data-ru>Когда система стабильно выделяет релевантные сигналы, а команда получает ощутимую экономию времени и более быстрый первый ответ.</span><span data-en>When the system consistently detects relevant signals and the team feels clear time savings with a faster first reply.</span></p>
+          </details>
         </div>
       </div>
     </section>
@@ -291,20 +340,38 @@
     <section class="section compact product-section">
       <div class="container">
         <div class="final-cta panel" data-aos>
-          <span class="label"><span data-ru>Готовы получать клиентов на автопилоте?</span><span data-en>Ready to get clients on autopilot?</span></span>
-          <h2>
-            <span data-ru>Попробуйте бесплатный 7-дневный триал или закажите установку под ключ</span>
-            <span data-en>Try a free 7-day trial or order a turnkey installation</span>
-          </h2>
+          <span class="label"><span data-ru>Покажем на ваших чатах</span><span data-en>See it on your chats</span></span>
+          <h2><span data-ru>Покажем, где LeadHunter действительно даст результат в вашей нише и с каких чатов лучше начать.</span><span data-en>We’ll show where LeadHunter can actually deliver results in your niche and which chats are the right place to start.</span></h2>
           <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
-            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
- <a class="ghost" href="index.html"><span data-ru>Назад на главную</span><span data-en>Back to home</span></a>
+            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+              <span class="btn-icon" aria-hidden="true">✈</span>
+              <span data-ru>Написать в Telegram</span>
+              <span data-en>Contact via Telegram</span>
+            </a>
+            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
+              <span class="btn-icon" aria-hidden="true">✉</span>
+              <span data-ru>Email</span>
+              <span data-en>Email</span>
+            </a>
+            <a class="ghost" href="index.html"><span data-ru>Назад на главную</span><span data-en>Back to home</span></a>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="sticky-cta-bar" id="stickyLeadhunterCta" hidden>
+    <div class="sticky-cta-inner">
+      <strong>LeadHunter</strong>
+      <span data-ru>Горячие лиды из Telegram</span>
+      <span data-en>Hot leads from Telegram</span>
+      <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+        <span class="btn-icon" aria-hidden="true">✈</span>
+        <span data-ru>Написать в Telegram</span>
+        <span data-en>Contact via Telegram</span>
+      </a>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-inner">
