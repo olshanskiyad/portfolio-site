@@ -347,6 +347,38 @@ button,input,textarea{font:inherit}
 .product-strip{
   display:flex;flex-wrap:wrap;gap:8px;margin-top:6px
 }
+.hero-offer-strip{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:6px;
+}
+.hero-offer-card{
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));
+  display:grid;
+  gap:6px;
+}
+.hero-offer-card strong{
+  font-family:'Syne',sans-serif;
+  font-size:1.2rem;
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--text);
+}
+.hero-offer-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.hero-offer-card--accent{
+  border-color:rgba(37,99,235,.18);
+  background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(59,130,246,.06));
+  box-shadow:0 20px 38px rgba(37,99,235,.10);
+}
 .sales-pill{
   display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;
   border:1px solid rgba(36,231,208,.16);background:rgba(36,231,208,.08);
@@ -962,6 +994,17 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .steps-grid--lh{
   grid-template-columns:repeat(4,1fr);
 }
+.impl-grid--lh-benefits .impl-card{
+  min-height:0;
+  padding:20px;
+}
+.impl-grid--lh-benefits .impl-card h3{
+  font-size:1.05rem;
+}
+.impl-grid--lh-benefits .impl-card p{
+  font-size:14px;
+  line-height:1.55;
+}
 .pricing-grid--three{
   grid-template-columns:repeat(3,1fr);
 }
@@ -1048,6 +1091,12 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .price-note{
   margin:0 0 2px;
 }
+.pricing-fit{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.55;
+}
 
 .email-capture{
   margin-top:22px;
@@ -1100,6 +1149,12 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
   margin:10px 0 0;
   color:var(--muted-2);
   font-size:.84rem;
+}
+.email-capture-benefits{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
 }
 .section-final-cta .final-cta{
   border-color:rgba(37,99,235,.18);
@@ -1180,6 +1235,7 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 
 @media (max-width: 1180px){
   .top-rail{display:none}
+  .hero-offer-strip,
   .hero-board-grid,
   .impl-grid--wide,
   .products-grid--featured{grid-template-columns:repeat(2,1fr)}
@@ -1206,6 +1262,7 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 
 @media (max-width: 720px){
   .hero-title--wide{max-width:none}
+  .hero-offer-strip,
   .hero-board-grid,
   .impl-grid--wide,
   .cases-grid--featured,
@@ -1252,15 +1309,92 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .section#cases .case-card--featured{box-shadow:0 24px 50px rgba(15,23,42,.08)}
 .result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
 .result-card{display:grid;gap:12px;padding:22px;border-color:rgba(37,99,235,.12);background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));}
-.result-card strong{font-size:15px;line-height:1.5;color:var(--text)}
 .result-card p{margin:0;color:var(--muted);line-height:1.65}
+.result-stat{
+  display:inline-flex;
+  width:fit-content;
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid rgba(37,99,235,.14);
+  background:rgba(37,99,235,.06);
+  color:var(--accent-2);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.mini-before-after{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.mini-before-after > div{
+  padding:12px 14px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.86);
+}
+.mini-before-after p{
+  font-size:14px;
+  line-height:1.55;
+}
+.result-chip{
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(37,99,235,.08);
+  border:1px solid rgba(37,99,235,.14);
+  color:var(--text);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+}
 .pricing-list{display:grid;gap:10px;margin:14px 0 0;padding-left:18px;color:var(--text)}
 .pricing-list li{line-height:1.55;color:var(--muted)}
+.pricing-outcome{
+  margin-top:14px;
+  padding:12px 14px;
+  border-radius:16px;
+  background:rgba(37,99,235,.06);
+  border:1px solid rgba(37,99,235,.12);
+  color:var(--text);
+  font-size:14px;
+  line-height:1.55;
+}
 .pilot-band{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:18px;border-color:rgba(37,99,235,.14);background:linear-gradient(180deg, rgba(248,250,252,.98), rgba(241,245,249,.98));}
 .pilot-item{padding:16px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.92);display:grid;gap:10px}
 .pilot-item p{margin:0;color:var(--muted);line-height:1.6}
+.proof-metric-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.proof-metric{
+  padding:16px 18px;
+  border-radius:20px;
+  border:1px solid rgba(37,99,235,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));
+  box-shadow:0 18px 36px rgba(15,23,42,.05);
+}
+.proof-metric strong{
+  display:block;
+  margin-bottom:6px;
+  font-family:'Syne',sans-serif;
+  font-size:1.35rem;
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--accent-2);
+}
+.proof-metric p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
 .pricing-card{display:grid;align-content:start}
-.pricing-card.popular{border-color:rgba(37,99,235,.24);background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(241,245,249,.98));box-shadow:0 20px 60px rgba(37,99,235,.08)}
+.pricing-card.popular{border-color:rgba(37,99,235,.30);background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(239,246,255,.98));box-shadow:0 24px 68px rgba(37,99,235,.12)}
 .pricing-card{
   padding:22px;
 }
@@ -1272,14 +1406,22 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .steps-grid--lh{grid-template-columns:repeat(4,1fr)}
 .product-page .impl-grid--wide{grid-template-columns:repeat(2,1fr)}
 .product-page .impl-card{padding:22px;min-height:0}
+.price-value--custom{
+  color:var(--accent-2);
+  font-size:clamp(24px,3vw,34px);
+  line-height:1.05;
+}
 
 @media (max-width: 1024px){
   .result-grid,
-  .pilot-band{grid-template-columns:1fr}
+  .pilot-band,
+  .proof-metric-row{grid-template-columns:1fr}
 }
 @media (max-width: 720px){
   .result-grid,
-  .pilot-band{grid-template-columns:1fr}
+  .pilot-band,
+  .proof-metric-row,
+  .mini-before-after{grid-template-columns:1fr}
 }
 
 /* 2026-04-09 light theme pass */
