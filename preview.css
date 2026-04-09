@@ -1310,6 +1310,14 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
 .result-card{display:grid;gap:12px;padding:22px;border-color:rgba(37,99,235,.12);background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));}
 .result-card p{margin:0;color:var(--muted);line-height:1.65}
+.result-card--featured{
+  border-color:rgba(37,99,235,.22);
+  background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(255,255,255,.98) 34%, rgba(239,246,255,.98));
+  box-shadow:0 28px 70px rgba(37,99,235,.12);
+}
+.product-section--proof .section-head{margin-bottom:24px}
+.product-section--proof .trust-strip--proof{margin-bottom:18px}
+.product-section--proof .result-grid{margin-top:0}
 .result-stat{
   display:inline-flex;
   width:fit-content;
@@ -1349,6 +1357,13 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
   font-size:13px;
   font-weight:700;
   line-height:1.45;
+}
+.pricing-grid--hero{
+  padding:18px;
+  border-radius:26px;
+  background:linear-gradient(180deg, rgba(239,246,255,.92), rgba(248,250,252,.98));
+  border:1px solid rgba(37,99,235,.10);
+  box-shadow:0 22px 52px rgba(37,99,235,.08);
 }
 .pricing-list{display:grid;gap:10px;margin:14px 0 0;padding-left:18px;color:var(--text)}
 .pricing-list li{line-height:1.55;color:var(--muted)}
@@ -1406,6 +1421,26 @@ body.lang-fade{opacity:.6;transition:opacity .14s ease}
 .steps-grid--lh{grid-template-columns:repeat(4,1fr)}
 .product-page .impl-grid--wide{grid-template-columns:repeat(2,1fr)}
 .product-page .impl-card{padding:22px;min-height:0}
+.email-capture--subtle{
+  border-style:dashed;
+  box-shadow:none;
+  background:linear-gradient(180deg, rgba(255,255,255,.90), rgba(248,250,252,.92));
+}
+.pilot-band--subtle{
+  box-shadow:none;
+  border-color:rgba(15,23,42,.08);
+  background:linear-gradient(180deg, rgba(248,250,252,.80), rgba(241,245,249,.88));
+}
+.comparison-table--muted{
+  box-shadow:none;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(248,250,252,.96));
+}
+.product-section--usecase .case-card:not(.case-card--featured){
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(248,250,252,.96));
+  box-shadow:none;
+}
+.product-section--comparison .section-head,
+.product-section--usecase .section-head{margin-bottom:18px}
 .price-value--custom{
   color:var(--accent-2);
   font-size:clamp(24px,3vw,34px);
