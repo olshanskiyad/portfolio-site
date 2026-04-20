@@ -1,346 +1,908 @@
-﻿<!doctype html>
-<html lang="ru" data-lang="ru">
+<!doctype html>
+<html lang="ru" data-lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <title>Nodalio · AI Automation Agency</title>
-  <meta name="description" content="Nodalio analyzes workflows and builds AI automation for B2B teams, agencies, and operationally heavy businesses.">
-  <link rel="stylesheet" href="preview.css">
-  <script defer src="preview.js"></script>
+  <title>Nodalio · AI Automation</title>
+  <meta name="description" content="Nodalio — анализируем бизнес-процессы, проектируем AI-стратегию и обучаем команду работать по-новому.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --bg:       #f6f5f1;
+    --bg2:      #edecea;
+    --card:     #ffffff;
+    --text:     #110f0b;
+    --muted:    #6b6860;
+    --border:   rgba(17,15,11,.09);
+    --accent:   oklch(0.54 0.175 253);
+    --accent-h: oklch(0.48 0.175 253);
+    --accent-s: oklch(0.97 0.022 253);
+    --sh-s: 0 1px 3px rgba(17,15,11,.06),0 4px 12px rgba(17,15,11,.05);
+    --sh-m: 0 2px 8px rgba(17,15,11,.06),0 10px 36px rgba(17,15,11,.08);
+    --r:        14px;
+    --cont:     1160px;
+    --nav:      60px;
+    --tr:       color .2s,background .2s,border-color .2s,opacity .2s,box-shadow .2s;
+  }
+  [data-theme="dark"] {
+    --bg:       #0d0c0a;
+    --bg2:      #161411;
+    --card:     #1a1815;
+    --text:     #edece5;
+    --muted:    #8a8780;
+    --border:   rgba(237,236,229,.08);
+    --accent:   oklch(0.65 0.17 253);
+    --accent-h: oklch(0.72 0.17 253);
+    --accent-s: oklch(0.20 0.04 253);
+    --sh-s: 0 1px 4px rgba(0,0,0,.22),0 4px 16px rgba(0,0,0,.18);
+    --sh-m: 0 2px 8px rgba(0,0,0,.28),0 10px 40px rgba(0,0,0,.30);
+  }
+  [data-accent="green"]                   { --accent:oklch(0.54 0.17 150);--accent-h:oklch(0.48 0.17 150);--accent-s:oklch(0.97 0.022 150); }
+  [data-theme="dark"][data-accent="green"]{ --accent:oklch(0.65 0.17 150);--accent-h:oklch(0.72 0.17 150);--accent-s:oklch(0.20 0.04 150); }
+  [data-accent="amber"]                   { --accent:oklch(0.57 0.15 58); --accent-h:oklch(0.50 0.15 58); --accent-s:oklch(0.97 0.022 58);  }
+  [data-theme="dark"][data-accent="amber"]{ --accent:oklch(0.72 0.15 58); --accent-h:oklch(0.78 0.15 58); --accent-s:oklch(0.22 0.04 58);   }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--text);background:var(--bg);transition:background .35s,color .35s;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  button{font:inherit;cursor:pointer}
+  [hidden]{display:none!important}
+  section[id]{scroll-margin-top:calc(var(--nav) + 12px)}
+
+  /* lang */
+  [data-lang="ru"] [data-en]{display:none}
+  [data-lang="en"] [data-ru]{display:none}
+
+  /* type */
+  .t-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+  .t-h1{font-size:clamp(40px,7vw,84px);font-weight:800;line-height:1.02;letter-spacing:-.04em}
+  .t-h2{font-size:clamp(24px,3.6vw,42px);font-weight:800;line-height:1.1;letter-spacing:-.03em}
+  .accent-word{color:var(--accent)}
+
+  /* layout */
+  .container{width:min(var(--cont),calc(100% - 48px));margin:0 auto}
+  .section{padding:64px 0}
+  .section-sm{padding:40px 0}
+  hr.div{border:none;border-top:1px solid var(--border)}
+  .section-head{margin-bottom:40px}
+  .section-head .t-label{display:block;margin-bottom:10px}
+  .section-head .t-h2{margin-bottom:12px}
+  .section-head p{font-size:16px;color:var(--muted);max-width:58ch;line-height:1.7}
+
+  /* nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav);background:color-mix(in oklab,var(--bg) 86%,transparent);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{font-size:20px;font-weight:800;letter-spacing:-.06em;color:var(--text)}
+  .brand span{color:var(--accent)}
+  .top-rail{display:flex;align-items:center;gap:2px}
+  .top-rail a{font-size:13px;font-weight:600;color:var(--muted);padding:5px 11px;border-radius:7px;transition:var(--tr)}
+  .top-rail a:hover{color:var(--text);background:var(--bg2)}
+  .nav-right{display:flex;align-items:center;gap:8px}
+  .theme-btn{width:34px;height:34px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:14px;transition:var(--tr)}
+  .theme-btn:hover{color:var(--text);box-shadow:var(--sh-s)}
+  .theme-icon-dark{display:none}
+  [data-theme="dark"] .theme-icon-light{display:none}
+  [data-theme="dark"] .theme-icon-dark{display:block}
+  .lang{display:inline-flex;padding:3px;border-radius:7px;background:var(--bg2);border:1px solid var(--border)}
+  .lang button{border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:700;padding:4px 10px;border-radius:5px;transition:var(--tr)}
+  .lang button.active{background:var(--card);color:var(--text);box-shadow:var(--sh-s)}
+
+  /* buttons */
+  .cta{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:7px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+  .cta:hover{background:var(--accent-h);transform:translateY(-1px);box-shadow:0 6px 20px color-mix(in oklab,var(--accent) 28%,transparent)}
+  .ghost{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:7px;border:1.5px solid var(--border);color:var(--text);font-size:14px;font-weight:600;transition:var(--tr)}
+  .ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .mail-cta{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:7px;border:1.5px solid var(--border);color:var(--muted);transition:var(--tr)}
+  .mail-cta:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ── HERO ── */
+  .hero{padding-top:var(--nav);min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+
+  /* hero A */
+  .hero-a{padding:56px 0 72px}
+  .hero-a-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+  .hero-a-eyebrow::after{content:'';width:36px;height:1px;background:var(--border)}
+  .hero-a .t-h1{max-width:13ch;margin-bottom:22px}
+  .hero-sub{font-size:17px;color:var(--muted);max-width:52ch;margin-bottom:30px;line-height:1.7}
+  .hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .hero-a-stats{margin-top:52px;padding-top:32px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .stat-num{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
+  .stat-label{font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* hero B */
+  .hero-b{padding:56px 0 72px}
+  .hero-b-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+  .hero-b .t-h1{margin-bottom:20px}
+  .hero-b .hero-sub{margin-bottom:28px}
+  .outcome-list{padding-top:4px}
+  .outcome-item{display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:20px 0;border-bottom:1px solid var(--border)}
+  .outcome-item:first-child{border-top:1px solid var(--border)}
+  .outcome-num{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;padding-top:3px}
+  .outcome-content strong{display:block;font-size:15px;font-weight:700;margin-bottom:4px}
+  .outcome-content p{font-size:13px;color:var(--muted);line-height:1.6}
+
+  /* hero C */
+  .hero-c{padding:56px 0 72px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero-c .t-label{margin-bottom:20px}
+  .hero-c .t-h1{max-width:14ch;margin:0 auto 20px}
+  .hero-c .hero-sub{text-align:center;margin:0 auto 30px}
+  .hero-c .hero-actions{justify-content:center}
+
+  /* ── APPROACH ── */
+  .approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--border)}
+  .approach-step{padding:32px 28px;background:var(--card);transition:background .2s}
+  .approach-step:hover{background:color-mix(in oklab,var(--card) 93%,var(--accent))}
+  .approach-num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--accent);display:block;margin-bottom:16px}
+  .approach-step h3{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+  .approach-step p{font-size:13px;color:var(--muted);line-height:1.7}
+
+  /* ── CAPABILITIES ── */
+  .impl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--border)}
+  .impl-card{padding:32px;background:var(--card);transition:background .2s}
+  .impl-card:hover{background:color-mix(in oklab,var(--card) 93%,var(--accent))}
+  .impl-card-num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);display:block;margin-bottom:16px}
+  .impl-card h3{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+  .impl-card p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+  .tag-row{display:flex;gap:5px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+
+  /* ── CASES ── */
+  .cases-stack{display:flex;flex-direction:column;gap:10px}
+  .case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:36px;transition:box-shadow .2s}
+  .case-card:hover{box-shadow:var(--sh-m)}
+  .case-meta{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+  .case-num-badge{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .case-industry{font-size:12px;font-weight:600;color:var(--muted);padding:3px 8px;background:var(--bg2);border-radius:4px;border:1px solid var(--border)}
+  .case-card h3{font-size:clamp(17px,2.2vw,24px);font-weight:800;letter-spacing:-.03em;margin-bottom:22px}
+  .case-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:26px}
+  .case-col-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .case-col p{font-size:14px;color:var(--muted);line-height:1.75}
+  .case-metric-row{display:flex;align-items:baseline;gap:18px;padding-top:22px;border-top:1px solid var(--border)}
+  .case-metric{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1}
+  .case-metric-note{font-size:14px;color:var(--muted);max-width:28ch}
+
+  /* ── PRODUCTS ── */
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .product-card{display:flex;flex-direction:column;gap:9px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:border-color .2s,box-shadow .2s,transform .2s}
+  .product-card:hover{border-color:var(--accent);box-shadow:var(--sh-m);transform:translateY(-2px)}
+  .product-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .product-card h3{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
+  .product-card p{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
+  .product-card .tag-row{margin-top:auto}
+
+  /* ── CHAT ── */
+  .chat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
+  .chat-shell{display:flex;flex-direction:column;overflow:hidden}
+  .chat-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .chat-head h3{font-size:14px;font-weight:700}
+  .chat-head p{font-size:12px;color:var(--muted)}
+  .online{width:7px;height:7px;border-radius:50%;background:#22c55e;margin-left:auto;box-shadow:0 0 0 3px color-mix(in oklab,#22c55e 20%,transparent)}
+  .chat-body{flex:1;padding:18px 22px;display:flex;flex-direction:column;gap:9px;min-height:170px;max-height:280px;overflow-y:auto}
+  .msg{max-width:84%;padding:9px 13px;border-radius:10px;font-size:14px;line-height:1.5}
+  .msg.bot{background:var(--bg2);color:var(--text);align-self:flex-start}
+  .msg.user{background:var(--accent);color:#fff;align-self:flex-end}
+  .chat-actions{padding:12px 22px 18px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:7px}
+  .opt{background:var(--bg2);border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;padding:6px 12px;border-radius:7px;transition:var(--tr)}
+  .opt:hover{background:var(--accent-s);border-color:var(--accent);color:var(--accent)}
+  .chat-finish{font-size:13px;color:var(--muted);font-style:italic}
+  .typing{display:flex;gap:4px;align-items:center;padding:4px 0}
+  .typing span{width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.5;animation:td 1.2s infinite ease-in-out}
+  .typing span:nth-child(2){animation-delay:.2s}
+  .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes td{0%,80%,100%{transform:scale(.75);opacity:.35}40%{transform:scale(1.1);opacity:1}}
+  .chat-aside{padding:28px;display:flex;flex-direction:column;gap:24px}
+  .contact-stack{display:flex;flex-direction:column;gap:18px}
+  .contact-benefit{display:flex;gap:12px;align-items:flex-start}
+  .benefit-icon{font-size:13px;color:var(--accent);font-weight:700;flex-shrink:0;margin-top:3px}
+  .contact-benefit strong{display:block;font-size:14px;font-weight:700;margin-bottom:3px}
+  .contact-benefit p{font-size:13px;color:var(--muted);line-height:1.6}
+  .chat-contact-links{display:flex;gap:9px;flex-wrap:wrap}
+
+  /* ── CONTACT BAND ── */
+  .contact-band{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:44px;display:flex;align-items:center;justify-content:space-between;gap:36px}
+  .contact-band .t-label{display:block;margin-bottom:12px}
+  .contact-band .t-h2{max-width:34ch}
+  .contact-band-ctas{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+
+  /* ── FOOTER ── */
+  .footer{border-top:1px solid var(--border);padding:24px 0}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .footer-inner small{font-size:13px;color:var(--muted)}
+
+  /* ── FLOAT ── */
+  .float-chat{position:fixed;bottom:22px;right:22px;z-index:90;display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;border:none;border-radius:7px;padding:10px 18px;font-size:14px;font-weight:700;box-shadow:0 4px 20px color-mix(in oklab,var(--accent) 32%,transparent);transition:transform .2s,background .2s}
+  .float-chat:hover{transform:translateY(-2px);background:var(--accent-h)}
+  .float-chat-panel{position:fixed;bottom:68px;right:22px;z-index:89;min-width:210px;overflow:hidden}
+  .float-chat-panel a{display:block;padding:11px 16px;font-size:14px;font-weight:600;transition:background .15s}
+  .float-chat-panel a:hover{background:var(--bg2)}
+
+  /* ── AOS ── */
+  [data-aos]{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  [data-aos].aos-in{opacity:1;transform:none}
+
+  /* ── TWEAKS ── */
+  .tweaks-panel{position:fixed;bottom:22px;left:22px;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-m);padding:18px 20px;min-width:224px;display:none}
+  .tweaks-panel.active{display:block}
+  .tweaks-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .tweak-group{margin-bottom:12px}
+  .tweak-label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:7px}
+  .tweak-options{display:flex;gap:5px;flex-wrap:wrap}
+  .tweak-opt{padding:4px 10px;border-radius:5px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:var(--tr)}
+  .tweak-opt.selected{border-color:var(--accent);color:var(--accent);background:var(--accent-s)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:960px){
+    .top-rail{display:none}
+    .hero-b-grid{grid-template-columns:1fr;gap:40px}
+    .impl-grid{grid-template-columns:1fr}
+    .approach-grid{grid-template-columns:repeat(2,1fr)}
+    .case-cols{grid-template-columns:1fr;gap:20px}
+    .products-grid{grid-template-columns:repeat(2,1fr)}
+    .chat-grid{grid-template-columns:1fr}
+    .contact-band{flex-direction:column;align-items:flex-start}
+    .hero-a-stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:560px){
+    .container{width:calc(100% - 28px)}
+    .products-grid{grid-template-columns:1fr}
+    .approach-grid{grid-template-columns:1fr}
+    .hero-a-stats{grid-template-columns:1fr}
+    .case-card{padding:22px}
+    .contact-band{padding:24px}
+  }
+  </style>
 </head>
 <body>
-  <header class="nav">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#hero">Noda<span>lio</span></a>
+    <nav class="top-rail">
+      <a href="#approach"><span data-ru>Подход</span><span data-en>Approach</span></a>
+      <a href="#implement"><span data-ru>Направления</span><span data-en>Capabilities</span></a>
+      <a href="#cases"><span data-ru>Кейсы</span><span data-en>Cases</span></a>
+      <a href="#products"><span data-ru>Продукты</span><span data-en>Products</span></a>
+      <a href="#chat"><span data-ru>Контакт</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button type="button" class="active" data-lang-btn="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" data-lang-btn="en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">
+        <span class="theme-icon-light">☀</span>
+        <span class="theme-icon-dark">☽</span>
+      </button>
+      <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
+        <span data-ru>Написать</span><span data-en>Contact</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+
+  <!-- A: Full typographic -->
+  <div class="hero-variant hero-a" id="hero-a" hidden>
     <div class="container">
-      <a class="brand" href="#hero">Noda<span class="brand-accent">lio</span></a>
-      <nav class="top-rail" aria-label="Section navigation">
-        <a href="#implement"><span data-ru>Направления</span><span data-en>Capabilities</span></a>
-        <a href="#cases"><span data-ru>Кейсы</span><span data-en>Cases</span></a>
-        <a href="#products"><span data-ru>Продукты</span><span data-en>Products</span></a>
-        <a href="#chat"><span data-ru>Чат</span><span data-en>Chat</span></a>
-        <a href="#contact"><span data-ru>Контакт</span><span data-en>Contact</span></a>
-      </nav>
-      <div class="nav-actions">
-        <div class="lang">
-          <button type="button" class="active" data-lang="ru" onclick="setLang('ru')">RU</button>
-          <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
-        </div>
-        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-          <span class="btn-icon" aria-hidden="true">✈</span>
-          <span data-ru>Написать в Telegram</span>
-          <span data-en>Contact via Telegram</span>
-        </a>
-        <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">
-          <span class="btn-icon" aria-hidden="true">✉</span>
-        </a>
+      <div class="hero-a-eyebrow">
+        <span class="t-label"><span data-ru>Для B2B-команд и сервисных компаний</span><span data-en>For B2B teams and service companies</span></span>
+      </div>
+      <h1 class="t-h1">
+        <span data-ru>Убираем<br>потери в<br>продажах,<br>поддержке<br>и операциях.</span>
+        <span data-en>We eliminate<br>losses in<br>sales,<br>support<br>and operations.</span>
+      </h1>
+      <p class="hero-sub" style="margin-top:24px">
+        <span data-ru>Анализируем, где уходят лиды, время и контроль. Строим AI-систему под вашу компанию и обучаем команду работать по-новому.</span>
+        <span data-en>We find where leads, time, and control are leaking. Build an AI system tailored to your company and train the team to work differently.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="cta" href="#chat"><span data-ru>Обсудить задачу</span><span data-en>Discuss your challenge</span></a>
+        <a class="ghost" href="#approach"><span data-ru>Как работаем</span><span data-en>How we work</span></a>
+        <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">✉</a>
+      </div>
+      <div class="hero-a-stats">
+        <div><div class="stat-num">−68%</div><div class="stat-label"><span data-ru>к времени ответа на горячие лиды</span><span data-en>reduction in hot lead response time</span></div></div>
+        <div><div class="stat-num">80%</div><div class="stat-label"><span data-ru>типовых обращений без оператора</span><span data-en>of recurring requests handled automatically</span></div></div>
+        <div><div class="stat-num">2–4<span style="font-size:.45em;letter-spacing:0"> <span data-ru>нед</span><span data-en>wks</span></span></div><div class="stat-label"><span data-ru>до рабочего MVP</span><span data-en>to a working MVP</span></div></div>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero hero-home" id="hero">
-      <div class="container hero-stack">
-        <div class="hero-poster" data-aos>
-          <div class="label">
-            <span data-ru>Для B2B-команд, агентств и сервисных компаний</span>
-            <span data-en>For B2B teams, agencies, and service companies</span>
-          </div>
-          <h1 class="hero-title hero-title--wide">
-            <span data-ru>Убираем потери<br>в продажах, поддержке<br>и операциях с помощью<br><span class="accent accent-wide">AI-автоматизации</span></span>
-            <span data-en>We reduce losses<br>in sales, support,<br>and operations with<br><span class="accent accent-wide">AI automation</span></span>
-          </h1>
-          <p class="hero-line">
-            <span data-ru>Если команда теряет лиды, время и контроль в ручных процессах, мы собираем систему, которая снимает перегруз и ускоряет результат.</span>
-            <span data-en>If your team is losing leads, time, and control inside manual operations, we build a system that removes overload and speeds up results.</span>
-          </p>
-          <div class="hero-actions">
-            <a class="cta" href="#chat">
-              <span class="btn-icon" aria-hidden="true">✦</span>
-              <span data-ru>Получить короткий разбор</span>
-              <span data-en>Get a quick review</span>
-            </a>
-            <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">
-              <span class="btn-icon" aria-hidden="true">✉</span>
-            </a>
-            <a class="ghost" href="#products">
-              <span data-ru>Смотреть продукты</span>
-              <span data-en>See products</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-board panel" data-aos>
-          <div class="hero-board-head">
-            <div>
-              <span class="label">
-                <span data-ru>Маршрут запуска</span>
-                <span data-en>Launch path</span>
-              </span>
-              <h2>
-                <span data-ru>Быстро собираем рабочую систему и доводим её до реальной нагрузки</span>
-                <span data-en>We build a working system fast and take it to real traffic</span>
-              </h2>
-            </div>
-            <div class="hero-board-badge">
-              <span data-ru>2–4 недели до MVP</span>
-              <span data-en>2–4 weeks to MVP</span>
-            </div>
-          </div>
-          <div class="hero-board-grid">
-            <article class="hero-board-card">
-              <strong>01</strong>
-              <h3><span data-ru>Находим узкое место</span><span data-en>Find the bottleneck</span></h3>
-              <p><span data-ru>Понимаем, где сейчас уходит время, лиды и контроль.</span><span data-en>We identify where time, leads, and control are leaking.</span></p>
-            </article>
-            <article class="hero-board-card">
-              <strong>02</strong>
-              <h3><span data-ru>Собираем логику</span><span data-en>Build the logic</span></h3>
-              <p><span data-ru>Проектируем сценарий под ваш канал, команду и стек.</span><span data-en>We design the flow around your channel, team, and stack.</span></p>
-            </article>
-            <article class="hero-board-card">
-              <strong>03</strong>
-              <h3><span data-ru>Подключаем каналы</span><span data-en>Connect the channels</span></h3>
-              <p><span data-ru>Связываем Telegram, CRM, формы, таблицы и внутренние сервисы.</span><span data-en>We connect Telegram, CRM, forms, sheets, and internal services.</span></p>
-            </article>
-            <article class="hero-board-card">
-              <strong>04</strong>
-              <h3><span data-ru>Запускаем и доводим</span><span data-en>Launch and refine</span></h3>
-              <p><span data-ru>Проверяем на реальном потоке и оставляем понятный процесс.</span><span data-en>We validate it on real traffic and leave a clear operating flow.</span></p>
-            </article>
-          </div>
-          <div class="hero-board-outcomes">
-            <article class="hero-outcome-card">
-              <strong><span data-ru>Быстрый первый ответ</span><span data-en>Faster first reply</span></strong>
-              <p><span data-ru>Команда включается уже на релевантном сигнале, а не в сыром потоке сообщений.</span><span data-en>Your team steps in on a relevant signal instead of a raw stream of messages.</span></p>
-            </article>
-            <article class="hero-outcome-card">
-              <strong><span data-ru>Понятный handoff</span><span data-en>Clear handoff</span></strong>
-              <p><span data-ru>Менеджер или оператор получает контекст, приоритет и следующий шаг в одной точке.</span><span data-en>The manager or operator gets context, priority, and next step in one place.</span></p>
-            </article>
-            <article class="hero-outcome-card hero-outcome-card--accent">
-              <strong><span data-ru>Меньше потерь, больше контроля</span><span data-en>Less leakage, more control</span></strong>
-              <p><span data-ru>Становится видно, где процесс уже работает, а где ещё нужен пилот или доработка.</span><span data-en>You see what is already working and where a pilot or refinement is still needed.</span></p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="implement">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Где помогаем</span><span data-en>Where we help</span></span>
-          <h2><span data-ru>Четыре зоны, где AI-автоматизация быстрее всего даёт эффект</span><span data-en>Four zones where AI automation creates the fastest impact</span></h2>
-        </div>
-        <div class="impl-grid impl-grid--wide">
-          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">🎯</span><span data-ru>Продажи и входящий спрос</span><span data-en>Sales and inbound demand</span></h3><p><span data-ru>Ловим горячие запросы, фильтруем шум, подготавливаем сводку и ускоряем первый ответ по лидам.</span><span data-en>We catch hot requests, filter noise, prepare summaries, and speed up the first response on inbound leads.</span></p><div class="tag-row"><span class="tag">Leads</span><span class="tag">CRM</span><span class="tag">Telegram</span></div></article>
-          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">🤝</span><span data-ru>Поддержка и клиентский сервис</span><span data-en>Support and customer service</span></h3><p><span data-ru>Снимаем типовые ответы, добавляем базу знаний, маршрутизацию и эскалации без потери качества сервиса.</span><span data-en>We remove repetitive answers, add a knowledge base, routing, and escalation without losing service quality.</span></p><div class="tag-row"><span class="tag">Support</span><span class="tag">Knowledge base</span><span class="tag">Escalation</span></div></article>
-          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">⚙️</span><span data-ru>Операции и внутренние процессы</span><span data-en>Operations and internal workflows</span></h3><p><span data-ru>Соединяем документы, согласования, уведомления, отчётность и повторяющиеся задачи в единый рабочий маршрут.</span><span data-en>We connect documents, approvals, notifications, reporting, and repeatable tasks into one operating route.</span></p><div class="tag-row"><span class="tag">Ops</span><span class="tag">Approvals</span><span class="tag">Reporting</span></div></article>
-          <article class="impl-card" data-aos><h3><span class="card-emoji" aria-hidden="true">🧠</span><span data-ru>Маркетинг, контент и AI для команды</span><span data-en>Marketing, content, and AI enablement</span></h3><p><span data-ru>Строим контент-пайплайны, AI-сценарии для ролей и практики, которые реально входят в ежедневную работу команды.</span><span data-en>We build content pipelines, role-based AI workflows, and practices that actually become part of the team’s daily work.</span></p><div class="tag-row"><span class="tag">Content</span><span class="tag">Enablement</span><span class="tag">Playbooks</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact" id="cases">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Кейсы</span><span data-en>Cases</span></span>
-          <h2><span data-ru>Примеры того, как это выглядит в реальной работе команд</span><span data-en>Examples of how this looks in real team operations</span></h2>
-        </div>
-        <div class="cases-grid cases-grid--featured">
-          <article class="case-card case-card--featured" data-aos>
-            <div class="case-header">
-              <span class="case-num"><span data-ru>Кейс 01</span><span data-en>Case 01</span></span>
-              <span class="case-context"><span data-ru>B2B-агентство · 50+ входящих сообщений в день</span><span data-en>B2B agency · 50+ inbound messages per day</span></span>
-            </div>
-            <h3><span data-ru>Сократили время ответа на горячие лиды</span><span data-en>Cut response time for hot leads</span></h3>
-            <div class="case-ba">
-              <div class="case-before">
-                <span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span>
-                <p><span data-ru>Лиды терялись в ручном разборе Telegram-потока, а команда реагировала на запросы с заметной задержкой.</span><span data-en>Leads were getting buried inside manual Telegram triage, and the team replied with noticeable delay.</span></p>
-              </div>
-              <div class="case-after">
-                <span class="ba-label"><span data-ru>После</span><span data-en>After</span></span>
-                <p><span data-ru>Автоматический отбор входящих и короткая сводка для менеджера убрали ручной разбор с первой линии.</span><span data-en>Automated inbound filtering and a short manager summary removed manual triage from the first line.</span></p>
-              </div>
-            </div>
-            <div class="case-metric-wrap">
-              <div class="case-metric">-68%</div>
-              <div class="case-metric-note"><span data-ru>к времени ответа на горячие лиды</span><span data-en>in response time for hot leads</span></div>
-            </div>
-          </article>
-          <article class="case-card" data-aos>
-            <div class="case-header">
-              <span class="case-num"><span data-ru>Кейс 02</span><span data-en>Case 02</span></span>
-              <span class="case-context"><span data-ru>Сервисный бизнес · первая линия поддержки</span><span data-en>Service business · first-line support</span></span>
-            </div>
-            <h3><span data-ru>Автоматизировали типовые обращения</span><span data-en>Automated recurring support requests</span></h3>
-            <div class="case-ba">
-              <div class="case-before">
-                <span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span>
-                <p><span data-ru>Операторы тратили смену на одинаковые вопросы и ручной поиск нужного контекста в истории обращений.</span><span data-en>Operators spent full shifts answering the same questions and manually searching for context in the history.</span></p>
-              </div>
-              <div class="case-after">
-                <span class="ba-label"><span data-ru>После</span><span data-en>After</span></span>
-                <p><span data-ru>AI-агент закрыл типовые сценарии, а сложные кейсы начали уходить человеку уже с контекстом и историей.</span><span data-en>The AI agent closed common scenarios, while complex cases reached a human with context and history attached.</span></p>
-              </div>
-            </div>
-            <div class="case-metric-wrap">
-              <div class="case-metric">80%</div>
-              <div class="case-metric-note"><span data-ru>типовых обращений закрываются без первой линии</span><span data-en>of recurring requests handled without first-line load</span></div>
-            </div>
-          </article>
-          <article class="case-card" data-aos>
-            <div class="case-header">
-              <span class="case-num"><span data-ru>Кейс 03</span><span data-en>Case 03</span></span>
-              <span class="case-context"><span data-ru>Операционная команда · документы и согласования</span><span data-en>Operations team · documents and approvals</span></span>
-            </div>
-            <h3><span data-ru>Собрали внутренний процесс в один маршрут</span><span data-en>Connected internal operations into one route</span></h3>
-            <div class="case-ba">
-              <div class="case-before">
-                <span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span>
-                <p><span data-ru>Статусы и напоминания жили в чатах, таблицах и личных сообщениях, поэтому команда теряла контроль над процессом.</span><span data-en>Status updates and reminders were spread across chats, sheets, and DMs, so the team kept losing control of the process.</span></p>
-              </div>
-              <div class="case-after">
-                <span class="ba-label"><span data-ru>После</span><span data-en>After</span></span>
-                <p><span data-ru>Уведомления, согласования и отчётность ушли в единый рабочий маршрут с постоянным контролем состояния.</span><span data-en>Notifications, approvals, and reporting moved into one operating route with constant visibility over status.</span></p>
-              </div>
-            </div>
-            <div class="case-metric-wrap">
-              <div class="case-metric">24/7</div>
-              <div class="case-metric-note"><span data-ru>контроль маршрута, статусов и напоминаний</span><span data-en>visibility over route, status, and reminders</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- reserved slot for future #about section -->
-
-    <section class="section" id="products">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Готовые продукты</span><span data-en>Ready-made products</span></span>
-          <h2><span data-ru>8 продуктов, которые закрывают разные точки воронки и операций</span><span data-en>8 products that cover different points across demand, service, and operations</span></h2>
-          <p><span data-ru>Кастомная автоматизация остаётся основным маршрутом. Готовые продукты нужны там, где можно быстро включить уже понятный сценарий без дублирования функций.</span><span data-en>Custom automation remains the main route. Ready-made products are for cases where a proven workflow can be launched fast without overlapping responsibilities.</span></p>
-        </div>
-        <div class="products-grid products-grid--featured">
-          <a class="product-card" data-aos href="leadhunter.html">
-            <div class="eyebrow">LeadHunter</div>
-            <div class="product-emoji" aria-hidden="true">🎯</div>
-            <h3><span data-ru>Находит тех, кому уже пора купить</span><span data-en>Finds the buyers who are ready now</span></h3>
-            <p><span data-ru>Ловит живые запросы в Telegram и отдаёт команде только те сигналы, где уже есть спрос.</span><span data-en>Catches live Telegram demand and passes only the signals where real intent is already present.</span></p>
-            <div class="mini"><span class="tag">Demand</span><span class="tag">Telegram</span><span class="tag">Signal</span></div>
-          </a>
-          <a class="product-card" data-aos href="digital-broker.html">
-            <div class="eyebrow">Digital Broker</div>
-            <div class="product-emoji" aria-hidden="true">🤝</div>
-            <h3><span data-ru>Превращает интерес в сделку</span><span data-en>Turns interest into a deal</span></h3>
-            <p><span data-ru>Ведёт первый коммерческий диалог, собирает контекст и доводит лида до встречи или следующего шага.</span><span data-en>Handles the first commercial exchange, gathers context, and moves the lead toward a meeting or next step.</span></p>
-            <div class="mini"><span class="tag">Dialogue</span><span class="tag">Context</span><span class="tag">Deal</span></div>
-          </a>
-          <a class="product-card" data-aos href="lead-classifier.html"><div class="eyebrow">AI Lead Classifier</div><div class="product-emoji" aria-hidden="true">📊</div><h3><span data-ru>Сразу видно, на кого тратить сейлз-ресурс</span><span data-en>See instantly where sales time is worth spending</span></h3><p><span data-ru>Оценивает поток лидов, приоритизирует горячих и отделяет мусор от nurture-сценариев.</span><span data-en>Scores the lead stream, prioritizes hot demand, and separates noise from nurture scenarios.</span></p><div class="mini"><span class="tag">Scoring</span><span class="tag">Priority</span><span class="tag">Routing</span></div></a>
-          <a class="product-card" data-aos href="content-factory.html"><div class="eyebrow">AI Content Factory</div><div class="product-emoji" aria-hidden="true">✍️</div><h3><span data-ru>Контент-машина без ручной сборки</span><span data-en>A content machine without manual assembly</span></h3><p><span data-ru>Собирает поток статей, писем, постов и креативов с редакторским контролем и ритмом публикаций.</span><span data-en>Builds a steady flow of articles, emails, posts, and creative assets with editorial control.</span></p><div class="mini"><span class="tag">SEO</span><span class="tag">Editorial</span><span class="tag">Distribution</span></div></a>
-          <a class="product-card" data-aos href="ai-hr.html"><div class="eyebrow">AI HR</div><div class="product-emoji" aria-hidden="true">👤</div><h3><span data-ru>Найм быстрее, фильтр жёстче</span><span data-en>Faster hiring, tighter filtering</span></h3><p><span data-ru>Ищет, скринингует и сопровождает кандидатов через talent funnel до передачи в интервью.</span><span data-en>Searches, screens, and routes candidates through the talent funnel up to the interview stage.</span></p><div class="mini"><span class="tag">Hiring</span><span class="tag">Screening</span><span class="tag">Onboarding</span></div></a>
-          <a class="product-card" data-aos href="support-agent.html"><div class="eyebrow">AI Support Agent</div><div class="product-emoji" aria-hidden="true">🤖</div><h3><span data-ru>Поддержка, которая отвечает и доводит до решения</span><span data-en>Support that replies and closes the issue</span></h3><p><span data-ru>Берёт на себя типовые обращения, держит SLA и передаёт сложные кейсы уже с контекстом.</span><span data-en>Handles recurring support requests, protects SLA, and escalates complex cases with context attached.</span></p><div class="mini"><span class="tag">SLA</span><span class="tag">Support</span><span class="tag">Escalation</span></div></a>
-          <a class="product-card" data-aos href="backoffice.html"><div class="eyebrow">AI Backoffice</div><div class="product-emoji" aria-hidden="true">⚙️</div><h3><span data-ru>Рутина уходит в фон</span><span data-en>Routine work fades into the background</span></h3><p><span data-ru>Автоматизирует документы, статусы, сверки, уведомления и внутренние операционные маршруты.</span><span data-en>Automates documents, statuses, reconciliations, notifications, and internal operating workflows.</span></p><div class="mini"><span class="tag">Ops</span><span class="tag">Docs</span><span class="tag">Reporting</span></div></a>
-          <a class="product-card" data-aos href="ai-team-accelerator.html"><div class="eyebrow">AI Team Accelerator</div><div class="product-emoji" aria-hidden="true">🧠</div><h3><span data-ru>Каждый сотрудник работает как мини-команда</span><span data-en>Each employee operates like a mini-team</span></h3><p><span data-ru>Встраивает AI-инструменты и role-based workflows в ежедневную работу сотрудников и руководителей.</span><span data-en>Embeds AI tools and role-based workflows into the daily work of specialists and team leads.</span></p><div class="mini"><span class="tag">Enablement</span><span class="tag">Research</span><span class="tag">Drafts</span></div></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="chat">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Получить короткий разбор</span><span data-en>Get a quick review</span></span>
-          <h2><span data-ru>3 коротких ответа, чтобы понять, с чего лучше начать именно в вашем случае</span><span data-en>3 short answers to see where your best starting point actually is</span></h2>
-          <p><span data-ru>Без длинной формы и без отдельного созвона. Быстро отсекаем лишнее и понимаем, нужен кастомный сценарий или можно стартовать с готового продукта.</span><span data-en>No long form and no extra discovery call. We cut the noise fast and see whether you need a custom workflow or can start with a ready product.</span></p>
-        </div>
-        <div class="chat-grid chat-grid--balanced">
-          <article class="chat-shell panel" data-aos id="chatRoot">
-            <div class="chat-head">
-              <div class="avatar">N</div>
-              <div>
-                <h3>Nodalio AI</h3>
-                <p><span data-ru>Быстрая квалификация</span><span data-en>Quick qualification</span></p>
-              </div>
-              <div class="online" aria-label="online"></div>
-            </div>
-            <div class="chat-body" id="chatMessages">
-              <div class="msg" id="chatGreeting"></div>
-            </div>
-            <div class="chat-actions" id="chatActions"></div>
-          </article>
-          <aside class="chat-aside panel" data-aos>
-            <div class="contact-stack">
-              <div class="contact-benefit">
-                <span class="benefit-icon" aria-hidden="true">⚡</span>
-                <div><strong><span data-ru>Без длинной формы</span><span data-en>No long form</span></strong><p><span data-ru>Три ответа, чтобы сразу понять, с какого сценария стоит начинать.</span><span data-en>Three answers to see which workflow is the right place to start.</span></p></div>
-              </div>
-              <div class="contact-benefit">
-                <span class="benefit-icon" aria-hidden="true">🎯</span>
-                <div><strong><span data-ru>Сразу понятен маршрут</span><span data-en>Clear route right away</span></strong><p><span data-ru>Видно, нужен кастомный запуск или можно стартовать с готового продукта.</span><span data-en>You can see whether a custom rollout is needed or a ready-made product is enough.</span></p></div>
-              </div>
-              <div class="contact-benefit">
-                <span class="benefit-icon" aria-hidden="true">🔒</span>
-                <div><strong><span data-ru>Контакт без лишнего трения</span><span data-en>Low-friction contact</span></strong><p><span data-ru>Если не хотите проходить быстрый разбор, можно сразу перейти в Telegram или на email.</span><span data-en>If you prefer to skip the quick review, you can go straight to Telegram or email.</span></p></div>
-              </div>
-            </div>
-            <div class="chat-contact-links">
-              <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">✈</span><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
-              <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com"><span class="btn-icon" aria-hidden="true">✉</span></a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact" id="contact">
-      <div class="container">
-        <div class="contact-band panel" data-aos>
-          <div>
-            <span class="label"><span data-ru>Следующий шаг</span><span data-en>Next step</span></span>
-            <h2><span data-ru>Покажем, где именно AI-автоматизация даст самый быстрый эффект в вашем процессе.</span><span data-en>We’ll show where AI automation will create the fastest impact inside your process.</span></h2>
-          </div>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-              <span class="btn-icon" aria-hidden="true">✈</span>
-              <span data-ru>Написать в Telegram</span>
-              <span data-en>Contact via Telegram</span>
-            </a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
-              <span class="btn-icon" aria-hidden="true">✉</span>
-              <span data-ru>Email</span>
-              <span data-en>Email</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <button class="float-chat" id="floatChatButton" type="button" aria-expanded="false" aria-controls="floatChatPanel">
-    <span class="btn-icon" aria-hidden="true">✦</span>
-    <span data-ru>Получить короткий разбор</span>
-    <span data-en>Get a quick review</span>
-  </button>
-  <div class="float-chat-panel panel" id="floatChatPanel" hidden>
-    <a href="#chat">
-      <strong data-ru>Открыть быстрый разбор</strong>
-      <strong data-en>Open quick review</strong>
-    </a>
-    <a href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-      <strong data-ru>Написать в Telegram</strong>
-      <strong data-en>Contact via Telegram</strong>
-    </a>
   </div>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <small>Nodalio · <span data-ru>ИИ-автоматизация бизнеса</span><span data-en>AI automation for business</span></small>
-      <small><a href="mailto:olshanskiy.ad@gmail.com">olshanskiy.ad@gmail.com</a></small>
+  <!-- B: Split -->
+  <div class="hero-variant hero-b" id="hero-b" hidden>
+    <div class="container">
+      <div class="hero-b-grid">
+        <div>
+          <span class="t-label" style="display:block;margin-bottom:24px"><span data-ru>AI-автоматизация для B2B</span><span data-en>AI automation for B2B</span></span>
+          <h1 class="t-h1">
+            <span data-ru>Меньше потерь.<br>Больше контроля.</span>
+            <span data-en>Less leakage.<br>More control.</span>
+          </h1>
+          <p class="hero-sub" style="margin-top:20px">
+            <span data-ru>Анализируем процессы, строим AI-решения под вашу компанию и обучаем команду работать эффективнее.</span>
+            <span data-en>We analyse processes, build AI solutions tailored to your company, and train the team to work more effectively.</span>
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="#chat"><span data-ru>Обсудить задачу</span><span data-en>Discuss your challenge</span></a>
+            <a class="ghost" href="#cases"><span data-ru>Кейсы</span><span data-en>Cases</span></a>
+          </div>
+        </div>
+        <div class="outcome-list">
+          <div class="outcome-item"><span class="outcome-num">01</span><div class="outcome-content"><strong><span data-ru>Стратегия под вашу компанию</span><span data-en>Strategy tailored to you</span></strong><p><span data-ru>Не шаблонные решения, а AI-архитектура под вашу специфику, команду и процессы.</span><span data-en>Not templates — AI architecture built around your specifics, team, and processes.</span></p></div></div>
+          <div class="outcome-item"><span class="outcome-num">02</span><div class="outcome-content"><strong><span data-ru>Быстрый результат</span><span data-en>Fast results</span></strong><p><span data-ru>От анализа до рабочего MVP — 2–4 недели. Без лишних созвонов и долгих согласований.</span><span data-en>From analysis to a working MVP in 2–4 weeks. No unnecessary calls or slow approvals.</span></p></div></div>
+          <div class="outcome-item"><span class="outcome-num">03</span><div class="outcome-content"><strong><span data-ru>Команда, которая умеет</span><span data-en>A team that knows how</span></strong><p><span data-ru>Обучаем руководителей и сотрудников — AI встраивается в ежедневную работу, а не остаётся инструментом.</span><span data-en>We train leaders and staff so AI becomes part of daily work, not just another tool.</span></p></div></div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- C: Centered minimal (default) -->
+  <div class="hero-variant hero-c" id="hero-c">
+    <div class="container">
+      <span class="t-label"><span data-ru>AI-автоматизация для B2B</span><span data-en>AI automation for B2B</span></span>
+      <h1 class="t-h1" style="margin:18px auto 18px;max-width:16ch">
+        <span data-ru>Меньше ручного.<br>Больше <span class="accent-word">результата.</span></span>
+        <span data-en>Less manual work.<br>More <span class="accent-word">results.</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span data-ru>Строим AI-системы, которые убирают перегруз и ускоряют B2B-команды — от продаж до операций.</span>
+        <span data-en>We build AI systems that remove overload and accelerate B2B teams — from sales to operations.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="cta" href="#chat"><span data-ru>Получить разбор</span><span data-en>Get a quick review</span></a>
+        <a class="ghost" href="#products"><span data-ru>Продукты</span><span data-en>Products</span></a>
+        <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">✉</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ── APPROACH (main service) ── -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-head" data-aos>
+      <span class="t-label"><span data-ru>Как работаем</span><span data-en>How we work</span></span>
+      <h2 class="t-h2"><span data-ru>Не просто инструменты — стратегия и внедрение под ваш бизнес</span><span data-en>Not just tools — strategy and implementation tailored to your business</span></h2>
+      <p><span data-ru>Начинаем с диагностики процессов, проектируем решение под вашу специфику, реализуем и обучаем команду работать по-новому. Готовые продукты — там, где можно ускориться без лишней кастомизации.</span><span data-en>We start with process diagnostics, design a solution around your specifics, implement it, and train the team to operate differently. Off-the-shelf products are where you can accelerate without unnecessary customisation.</span></p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-step" data-aos>
+        <span class="approach-num">01</span>
+        <h3><span data-ru>Диагностика</span><span data-en>Diagnostics</span></h3>
+        <p><span data-ru>Анализируем процессы, находим где теряется выручка, время и контроль. Готовим карту узких мест и приоритеты.</span><span data-en>We analyse processes and find where revenue, time, and control are leaking. We map the bottlenecks and set priorities.</span></p>
+      </div>
+      <div class="approach-step" data-aos>
+        <span class="approach-num">02</span>
+        <h3><span data-ru>Стратегия</span><span data-en>Strategy</span></h3>
+        <p><span data-ru>Проектируем AI-архитектуру под вашу команду, стек и цели. Определяем, с чего начать и какой эффект ожидать на каждом шаге.</span><span data-en>We design the AI architecture around your team, stack, and goals — and define what results to expect at each step.</span></p>
+      </div>
+      <div class="approach-step" data-aos>
+        <span class="approach-num">03</span>
+        <h3><span data-ru>Внедрение</span><span data-en>Implementation</span></h3>
+        <p><span data-ru>Собираем и запускаем решение. Проверяем на реальном потоке, доводим до стабильного результата за 2–4 недели.</span><span data-en>We build and launch the solution. Validate it on real traffic and bring it to stable results in 2–4 weeks.</span></p>
+      </div>
+      <div class="approach-step" data-aos>
+        <span class="approach-num">04</span>
+        <h3><span data-ru>Обучение</span><span data-en>Training</span></h3>
+        <p><span data-ru>Обучаем руководителей и сотрудников. Встраиваем AI в ежедневную работу так, чтобы это работало без нас.</span><span data-en>We train managers and staff. AI becomes part of daily operations — not a one-off project that fades.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ── CAPABILITIES ── -->
+<section class="section" id="implement">
+  <div class="container">
+    <div class="section-head" data-aos>
+      <span class="t-label"><span data-ru>Где помогаем</span><span data-en>Where we help</span></span>
+      <h2 class="t-h2"><span data-ru>Четыре зоны с самым быстрым эффектом от AI</span><span data-en>Four zones where AI creates the fastest impact</span></h2>
+    </div>
+    <div class="impl-grid">
+      <article class="impl-card" data-aos>
+        <span class="impl-card-num">01</span>
+        <h3><span data-ru>Продажи и входящий спрос</span><span data-en>Sales and inbound demand</span></h3>
+        <p><span data-ru>Лиды перестают теряться: горячие запросы отделяются от шума, менеджер видит только то, на что стоит тратить время.</span><span data-en>Leads stop getting lost: hot requests are separated from noise, and the manager sees only what's worth their time.</span></p>
+        <div class="tag-row"><span class="tag">Leads</span><span class="tag">CRM</span><span class="tag">Telegram</span></div>
+      </article>
+      <article class="impl-card" data-aos>
+        <span class="impl-card-num">02</span>
+        <h3><span data-ru>Поддержка и клиентский сервис</span><span data-en>Support and customer service</span></h3>
+        <p><span data-ru>Операторы занимаются сложными кейсами, а не одинаковыми вопросами. SLA держится без расширения штата.</span><span data-en>Operators handle complex cases, not repetitive questions. SLA holds without adding headcount.</span></p>
+        <div class="tag-row"><span class="tag">Support</span><span class="tag">Knowledge base</span><span class="tag">SLA</span></div>
+      </article>
+      <article class="impl-card" data-aos>
+        <span class="impl-card-num">03</span>
+        <h3><span data-ru>Операции и внутренние процессы</span><span data-en>Operations and internal workflows</span></h3>
+        <p><span data-ru>Документы, согласования и статусы идут по единому маршруту. Руководитель видит, где что находится, без созвонов.</span><span data-en>Documents, approvals, and statuses move through one route. Leadership sees what's where — without calls.</span></p>
+        <div class="tag-row"><span class="tag">Ops</span><span class="tag">Approvals</span><span class="tag">Reporting</span></div>
+      </article>
+      <article class="impl-card" data-aos>
+        <span class="impl-card-num">04</span>
+        <h3><span data-ru>AI для команды и руководства</span><span data-en>AI enablement for teams</span></h3>
+        <p><span data-ru>Каждый сотрудник работает как мини-команда. Обучаем практике: от role-based workflows до контент-пайплайнов.</span><span data-en>Each employee operates like a mini-team. We train hands-on: from role-based workflows to content pipelines.</span></p>
+        <div class="tag-row"><span class="tag">Training</span><span class="tag">Enablement</span><span class="tag">Playbooks</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ── CASES ── -->
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-head" data-aos>
+      <span class="t-label"><span data-ru>Кейсы</span><span data-en>Cases</span></span>
+      <h2 class="t-h2"><span data-ru>Реальные задачи, измеримые результаты</span><span data-en>Real problems, measurable results</span></h2>
+    </div>
+    <div class="cases-stack">
+
+      <article class="case-card" data-aos>
+        <div class="case-meta">
+          <span class="case-num-badge"><span data-ru>Кейс 01</span><span data-en>Case 01</span></span>
+          <span class="case-industry"><span data-ru>B2B-агентство · диджитал-маркетинг</span><span data-en>B2B agency · digital marketing</span></span>
+        </div>
+        <h3><span data-ru>Сократили время ответа на горячие лиды на 68%</span><span data-en>Cut hot lead response time by 68%</span></h3>
+        <div class="case-cols">
+          <div>
+            <div class="case-col-label"><span data-ru>Проблема</span><span data-en>Problem</span></div>
+            <p><span data-ru>50+ входящих сообщений в Telegram ежедневно. Менеджеры тратили до двух часов на ручной разбор — горячие лиды терялись среди спама, первые ответы уходили с заметной задержкой.</span><span data-en>50+ inbound Telegram messages daily. Managers spent up to two hours on manual triage — hot leads were buried in spam, and first responses were significantly delayed.</span></p>
+          </div>
+          <div>
+            <div class="case-col-label"><span data-ru>Что было сделано</span><span data-en>What was built</span></div>
+            <p><span data-ru>AI-агент мониторит входящий поток, классифицирует сообщения по приоритету и формирует короткую сводку для менеджера. Горячий лид — мгновенное уведомление, никакого ручного разбора на первой линии.</span><span data-en>An AI agent monitors the inbound stream, classifies messages by priority, and generates a short manager summary. A hot lead triggers an instant notification — no manual triage on the first line.</span></p>
+          </div>
+        </div>
+        <div class="case-metric-row">
+          <div class="case-metric">−68%</div>
+          <div class="case-metric-note"><span data-ru>к времени ответа на горячие лиды</span><span data-en>reduction in response time for hot leads</span></div>
+        </div>
+      </article>
+
+      <article class="case-card" data-aos>
+        <div class="case-meta">
+          <span class="case-num-badge"><span data-ru>Кейс 02</span><span data-en>Case 02</span></span>
+          <span class="case-industry"><span data-ru>Сервисный бизнес · первая линия поддержки</span><span data-en>Service business · first-line support</span></span>
+        </div>
+        <h3><span data-ru>80% типовых обращений — без участия оператора</span><span data-en>80% of recurring requests handled without an operator</span></h3>
+        <div class="case-cols">
+          <div>
+            <div class="case-col-label"><span data-ru>Проблема</span><span data-en>Problem</span></div>
+            <p><span data-ru>Команда поддержки из 4 человек тратила смены на одинаковые вопросы. Ручной поиск контекста в истории обращений — до 15 минут на тикет. Расширять штат не хотели.</span><span data-en>A 4-person support team spent shifts on the same questions. Manual context search in ticket history took up to 15 minutes per ticket. They didn't want to hire more people.</span></p>
+          </div>
+          <div>
+            <div class="case-col-label"><span data-ru>Что было сделано</span><span data-en>What was built</span></div>
+            <p><span data-ru>AI-агент поверх базы знаний закрывает типовые сценарии самостоятельно. Сложные кейсы передаёт человеку уже с готовым контекстом и предложенным следующим шагом.</span><span data-en>An AI agent over the knowledge base handles common scenarios independently. Complex cases are escalated with full context and a suggested next step already prepared.</span></p>
+          </div>
+        </div>
+        <div class="case-metric-row">
+          <div class="case-metric">80%</div>
+          <div class="case-metric-note"><span data-ru>типовых обращений закрывается без первой линии</span><span data-en>of recurring requests handled without first-line load</span></div>
+        </div>
+      </article>
+
+      <article class="case-card" data-aos>
+        <div class="case-meta">
+          <span class="case-num-badge"><span data-ru>Кейс 03</span><span data-en>Case 03</span></span>
+          <span class="case-industry"><span data-ru>Операционная команда · документы и согласования</span><span data-en>Operations team · documents and approvals</span></span>
+        </div>
+        <h3><span data-ru>Единый маршрут для документов, статусов и согласований</span><span data-en>One route for documents, statuses, and approvals</span></h3>
+        <div class="case-cols">
+          <div>
+            <div class="case-col-label"><span data-ru>Проблема</span><span data-en>Problem</span></div>
+            <p><span data-ru>Команда из 8 человек теряла контроль над статусами: напоминания в личных сообщениях, документы в таблицах, согласования в разных чатах. Процесс регулярно ломался и требовал ручного отслеживания.</span><span data-en>An 8-person team was losing control of statuses: reminders in DMs, documents in spreadsheets, approvals scattered across chats. The process broke regularly and required manual tracking.</span></p>
+          </div>
+          <div>
+            <div class="case-col-label"><span data-ru>Что было сделано</span><span data-en>What was built</span></div>
+            <p><span data-ru>Единый операционный маршрут через Telegram-бот: документы, согласования и напоминания — с чётким статусом на каждом шаге. Руководитель видит, где что находится, без созвонов и ручных пересылок.</span><span data-en>A single operational route via Telegram bot: documents, approvals, and reminders — with a clear status at each step. Leadership sees what's where — no calls, no manual forwarding.</span></p>
+          </div>
+        </div>
+        <div class="case-metric-row">
+          <div class="case-metric">24/7</div>
+          <div class="case-metric-note"><span data-ru>контроль статусов без ручного трекинга</span><span data-en>status visibility without manual tracking</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ── PRODUCTS ── -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head" data-aos>
+      <span class="t-label"><span data-ru>Готовые инструменты</span><span data-en>Ready-made tools</span></span>
+      <h2 class="t-h2"><span data-ru>8 продуктов — там, где можно запуститься быстро</span><span data-en>8 products — where you can launch without delay</span></h2>
+      <p><span data-ru>Кастомная разработка под бизнес-процессы остаётся основным маршрутом. Готовые продукты — для задач, где сценарий уже понятен и нет смысла строить с нуля.</span><span data-en>Custom development around business processes remains the main route. Ready-made products are for tasks where the scenario is clear and building from scratch adds no value.</span></p>
+    </div>
+    <div class="products-grid">
+      <a class="product-card" data-aos href="leadhunter.html">
+        <div class="product-eyebrow">LeadHunter</div>
+        <h3><span data-ru>Находит тех, кому уже пора купить</span><span data-en>Finds buyers who are ready now</span></h3>
+        <p><span data-ru>Ловит живые запросы в Telegram, отдаёт команде только горячие сигналы.</span><span data-en>Catches live Telegram demand and passes only hot signals to the team.</span></p>
+        <div class="tag-row"><span class="tag">Demand</span><span class="tag">Telegram</span></div>
+      </a>
+      <a class="product-card" data-aos href="digital-broker.html">
+        <div class="product-eyebrow">Digital Broker</div>
+        <h3><span data-ru>Превращает интерес в сделку</span><span data-en>Turns interest into a deal</span></h3>
+        <p><span data-ru>Ведёт первый диалог, собирает контекст и доводит лида до следующего шага.</span><span data-en>Handles the first exchange, gathers context, and moves the lead to the next step.</span></p>
+        <div class="tag-row"><span class="tag">Dialogue</span><span class="tag">Deal</span></div>
+      </a>
+      <a class="product-card" data-aos href="lead-classifier.html">
+        <div class="product-eyebrow">AI Lead Classifier</div>
+        <h3><span data-ru>Видно, на кого тратить сейлз-ресурс</span><span data-en>See where sales time is worth spending</span></h3>
+        <p><span data-ru>Оценивает лиды, приоритизирует горячих и отделяет мусор от nurture-сценариев.</span><span data-en>Scores leads, prioritises hot demand, and filters noise from nurture scenarios.</span></p>
+        <div class="tag-row"><span class="tag">Scoring</span><span class="tag">Routing</span></div>
+      </a>
+      <a class="product-card" data-aos href="content-factory.html">
+        <div class="product-eyebrow">AI Content Factory</div>
+        <h3><span data-ru>Контент-поток без ручной сборки</span><span data-en>Content flow without manual assembly</span></h3>
+        <p><span data-ru>Статьи, письма и посты с редакторским контролем и ритмом публикаций.</span><span data-en>Articles, emails, and posts with editorial control and a publication rhythm.</span></p>
+        <div class="tag-row"><span class="tag">SEO</span><span class="tag">Editorial</span></div>
+      </a>
+      <a class="product-card" data-aos href="ai-hr.html">
+        <div class="product-eyebrow">AI HR</div>
+        <h3><span data-ru>Найм быстрее, фильтр жёстче</span><span data-en>Faster hiring, tighter filtering</span></h3>
+        <p><span data-ru>Поиск, скрининг и сопровождение кандидатов до передачи в интервью.</span><span data-en>Search, screening, and routing of candidates up to the interview stage.</span></p>
+        <div class="tag-row"><span class="tag">Hiring</span><span class="tag">Screening</span></div>
+      </a>
+      <a class="product-card" data-aos href="support-agent.html">
+        <div class="product-eyebrow">AI Support Agent</div>
+        <h3><span data-ru>Поддержка, которая доводит до решения</span><span data-en>Support that closes the issue</span></h3>
+        <p><span data-ru>Типовые обращения, SLA и эскалация сложных кейсов с контекстом.</span><span data-en>Handles recurring requests, protects SLA, and escalates complex cases with context.</span></p>
+        <div class="tag-row"><span class="tag">SLA</span><span class="tag">Support</span></div>
+      </a>
+      <a class="product-card" data-aos href="backoffice.html">
+        <div class="product-eyebrow">AI Backoffice</div>
+        <h3><span data-ru>Рутина уходит в фон</span><span data-en>Routine work fades into the background</span></h3>
+        <p><span data-ru>Документы, статусы, сверки, уведомления и внутренние маршруты.</span><span data-en>Documents, statuses, reconciliations, notifications, and internal workflows.</span></p>
+        <div class="tag-row"><span class="tag">Ops</span><span class="tag">Docs</span></div>
+      </a>
+      <a class="product-card" data-aos href="ai-team-accelerator.html">
+        <div class="product-eyebrow">AI Team Accelerator</div>
+        <h3><span data-ru>Каждый сотрудник — как мини-команда</span><span data-en>Each employee like a mini-team</span></h3>
+        <p><span data-ru>AI-инструменты и role-based workflows в ежедневной работе сотрудников.</span><span data-en>AI tools and role-based workflows embedded in daily team work.</span></p>
+        <div class="tag-row"><span class="tag">Enablement</span><span class="tag">Playbooks</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ── CHAT ── -->
+<section class="section" id="chat">
+  <div class="container">
+    <div class="section-head" data-aos>
+      <span class="t-label"><span data-ru>Обсудить задачу</span><span data-en>Discuss your challenge</span></span>
+      <h2 class="t-h2"><span data-ru>3 вопроса, чтобы понять, с чего начать именно вам</span><span data-en>3 questions to find your best starting point</span></h2>
+      <p><span data-ru>Без длинной формы. Быстро определим — нужна кастомная разработка и стратегия, обучение команды или достаточно готового продукта.</span><span data-en>No long form. We'll quickly determine whether you need custom development, team training, or a ready-made product is enough.</span></p>
+    </div>
+    <div class="chat-grid">
+      <article class="chat-shell panel" data-aos id="chatRoot">
+        <div class="chat-head">
+          <div class="avatar">N</div>
+          <div>
+            <h3>Nodalio AI</h3>
+            <p><span data-ru>Быстрая квалификация</span><span data-en>Quick qualification</span></p>
+          </div>
+          <div class="online"></div>
+        </div>
+        <div class="chat-body" id="chatMessages">
+          <div class="msg bot" id="chatGreeting"></div>
+        </div>
+        <div class="chat-actions" id="chatActions"></div>
+      </article>
+      <aside class="chat-aside panel" data-aos>
+        <div class="contact-stack">
+          <div class="contact-benefit">
+            <span class="benefit-icon">→</span>
+            <div>
+              <strong><span data-ru>Без длинной формы</span><span data-en>No long form</span></strong>
+              <p><span data-ru>Три ответа — и сразу понятно, с чего лучше начинать в вашем случае.</span><span data-en>Three answers — and it's clear where your best starting point is.</span></p>
+            </div>
+          </div>
+          <div class="contact-benefit">
+            <span class="benefit-icon">→</span>
+            <div>
+              <strong><span data-ru>Стратегия или продукт?</span><span data-en>Strategy or product?</span></strong>
+              <p><span data-ru>Видно сразу: нужна кастомная разработка, обучение команды — или достаточно готового решения.</span><span data-en>Immediately clear: custom development, team training, or a ready-made solution is enough.</span></p>
+            </div>
+          </div>
+          <div class="contact-benefit">
+            <span class="benefit-icon">→</span>
+            <div>
+              <strong><span data-ru>Прямой контакт</span><span data-en>Direct contact</span></strong>
+              <p><span data-ru>Предпочитаете без опросника — сразу в Telegram или на email.</span><span data-en>Prefer to skip the questionnaire — straight to Telegram or email.</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="chat-contact-links">
+          <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
+          <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">✉</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT BAND ── -->
+<section class="section-sm" id="contact">
+  <div class="container">
+    <div class="contact-band" data-aos>
+      <div>
+        <span class="t-label"><span data-ru>Следующий шаг</span><span data-en>Next step</span></span>
+        <h2 class="t-h2" style="margin-top:12px"><span data-ru>Покажем, где AI-автоматизация даст самый быстрый эффект в вашем бизнесе</span><span data-en>We'll show where AI automation creates the fastest impact in your business</span></h2>
+      </div>
+      <div class="contact-band-ctas">
+        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
+        <a class="ghost" href="mailto:olshanskiy.ad@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FLOAT -->
+<button class="float-chat" id="floatChatButton" type="button" hidden>
+  <span data-ru>Обсудить задачу</span><span data-en>Discuss challenge</span>
+</button>
+<div class="float-chat-panel panel" id="floatChatPanel" hidden>
+  <a href="#chat"><strong data-ru>Пройти быстрый разбор</strong><strong data-en>Quick review</strong></a>
+  <a href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><strong data-ru>Написать в Telegram</strong><strong data-en>Message on Telegram</strong></a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <small>Nodalio · <span data-ru>AI-автоматизация бизнеса</span><span data-en>AI automation for business</span></small>
+    <small><a href="mailto:olshanskiy.ad@gmail.com" style="color:var(--muted)">olshanskiy.ad@gmail.com</a></small>
+  </div>
+</footer>
+
+<!-- TWEAKS -->
+<div class="tweaks-panel" id="tweaksPanel">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-group">
+    <span class="tweak-label">Hero</span>
+    <div class="tweak-options">
+      <button class="tweak-opt" data-tv="hero" data-val="a" onclick="setHero('a')">A</button>
+      <button class="tweak-opt" data-tv="hero" data-val="b" onclick="setHero('b')">B</button>
+      <button class="tweak-opt" data-tv="hero" data-val="c" onclick="setHero('c')">C</button>
+    </div>
+  </div>
+  <div class="tweak-group">
+    <span class="tweak-label"><span data-ru>Акцент</span><span data-en>Accent</span></span>
+    <div class="tweak-options">
+      <button class="tweak-opt" data-tv="accent" data-val="blue"  onclick="setAccent('blue')">Blue</button>
+      <button class="tweak-opt" data-tv="accent" data-val="green" onclick="setAccent('green')">Green</button>
+      <button class="tweak-opt" data-tv="accent" data-val="amber" onclick="setAccent('amber')">Amber</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "heroVariant": "c",
+  "accentColor": "blue"
+}/*EDITMODE-END*/;
+let cStep = 0, cNiche = '';
+
+// ── THEME ──
+const H = document.documentElement;
+H.setAttribute('data-theme', localStorage.getItem('nd-theme') || 'light');
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const n = H.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  H.setAttribute('data-theme', n);
+  localStorage.setItem('nd-theme', n);
+});
+
+// ── LANG ──
+function setLang(l) {
+  H.setAttribute('data-lang', l);
+  H.setAttribute('lang', l);
+  document.querySelectorAll('[data-lang-btn]').forEach(b =>
+    b.classList.toggle('active', b.getAttribute('data-lang-btn') === l)
+  );
+  localStorage.setItem('nd-lang', l);
+  resetChat();
+}
+const savedLang = localStorage.getItem('nd-lang') || 'ru';
+setLang(savedLang);
+
+// ── HERO ──
+function setHero(v) {
+  ['a','b','c'].forEach(id => {
+    const el = document.getElementById('hero-' + id);
+    if (el) el.hidden = id !== v;
+  });
+  document.querySelectorAll('[data-tv="hero"]').forEach(b =>
+    b.classList.toggle('selected', b.dataset.val === v)
+  );
+  localStorage.setItem('nd-hero', v);
+  try { window.parent.postMessage({type:'__edit_mode_set_keys',edits:{heroVariant:v}},'*'); } catch(e){}
+}
+
+// ── ACCENT ──
+function setAccent(a) {
+  H.setAttribute('data-accent', a === 'blue' ? '' : a);
+  document.querySelectorAll('[data-tv="accent"]').forEach(b =>
+    b.classList.toggle('selected', b.dataset.val === a)
+  );
+  localStorage.setItem('nd-accent', a);
+  try { window.parent.postMessage({type:'__edit_mode_set_keys',edits:{accentColor:a}},'*'); } catch(e){}
+}
+
+// restore
+const rH = localStorage.getItem('nd-hero')   || TWEAK_DEFAULTS.heroVariant || 'c';
+const rA = localStorage.getItem('nd-accent') || TWEAK_DEFAULTS.accentColor || 'blue';
+setHero(rH); setAccent(rA);
+
+// ── TWEAKS PROTOCOL ──
+window.addEventListener('message', e => {
+  if (!e.data?.type) return;
+  if (e.data.type === '__activate_edit_mode')   document.getElementById('tweaksPanel').classList.add('active');
+  if (e.data.type === '__deactivate_edit_mode') document.getElementById('tweaksPanel').classList.remove('active');
+});
+try { window.parent.postMessage({type:'__edit_mode_available'},'*'); } catch(e){}
+
+// ── AOS ──
+document.addEventListener('DOMContentLoaded', () => {
+  const els = Array.from(document.querySelectorAll('[data-aos]'));
+  if (!els.length) return;
+  const show = el => el.classList.add('aos-in');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { rootMargin:'0px 0px -32px 0px', threshold:0.05 });
+  requestAnimationFrame(() => {
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) show(el);
+      else io.observe(el);
+    });
+  });
+  setTimeout(() => els.forEach(show), 1000);
+});
+
+// ── FLOAT BUTTON ──
+(function() {
+  const btn = document.getElementById('floatChatButton');
+  const panel = document.getElementById('floatChatPanel');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    panel.hidden = !panel.hidden;
+  });
+  function syncFloat() {
+    const y = window.scrollY;
+    const contact = document.getElementById('contact');
+    const footer = document.querySelector('.footer');
+    const cR = contact ? contact.getBoundingClientRect() : null;
+    const fR = footer  ? footer.getBoundingClientRect()  : null;
+    const nearEnd = (cR && cR.top < window.innerHeight * 0.85) || (fR && fR.top < window.innerHeight);
+    btn.hidden = y < 320 || nearEnd;
+    if (btn.hidden) panel.hidden = true;
+  }
+  window.addEventListener('scroll', syncFloat, {passive:true});
+  syncFloat();
+})();
+
+// ── CHAT ──
+var CHAT_DATA = {
+  ru: {
+    greet: 'Привет. Быстро определим, с чего лучше начать именно в вашем случае. Какая задача сейчас актуальнее?',
+    q2: 'Понял. Что сильнее всего мешает прямо сейчас?',
+    q3: 'Хорошо. Сколько человек в команде?',
+    rec: (n) => {
+      const m = {
+        'Ускорить продажи и лиды':      'LeadHunter + Digital Broker — быстрый старт для входящего потока',
+        'Снять нагрузку с команды':      'AI Support Agent + AI Backoffice — автоматизация первой линии',
+        'Навести порядок в операциях':   'AI Backoffice + кастомный операционный маршрут',
+        'Обучить команду работе с AI':   'AI Team Accelerator + стратегическая сессия для руководства',
+      };
+      return `Рекомендация: ${m[n] || 'кастомная разработка под вашу задачу'}.`;
+    },
+    recEn: null,
+    final: 'Готово. Разберём детали — напишите в Telegram или на email.',
+    opts1: ['Ускорить продажи и лиды','Снять нагрузку с команды','Навести порядок в операциях','Обучить команду работе с AI'],
+    opts2: {
+      'Ускорить продажи и лиды':    ['Лиды теряются','Медленно отвечаем','Нет понимания воронки','Другое'],
+      'Снять нагрузку с команды':   ['Операторы перегружены','Много ручной рутины','Долгие согласования','Другое'],
+      'Навести порядок в операциях':['Хаос в статусах','Документы везде','Нет прозрачности','Другое'],
+      'Обучить команду работе с AI':['Команда не знает с чего начать','Нужна AI-стратегия','Хотим практику','Другое'],
+    },
+    opts3: ['1–15 человек','15–50 человек','50–200 человек','200+ человек'],
+  },
+  en: {
+    greet: "Hi. Let's quickly find the best starting point for your situation. What's most relevant right now?",
+    q2: "Got it. What's the biggest friction point at the moment?",
+    q3: 'Good. How large is your team?',
+    rec: (n) => {
+      const m = {
+        'Speed up sales & leads':  'LeadHunter + Digital Broker — fast start for inbound demand',
+        'Reduce team load':        'AI Support Agent + AI Backoffice — automate the first line',
+        'Fix operations':          'AI Backoffice + a custom operational route',
+        'Train the team on AI':    'AI Team Accelerator + a strategy session for leadership',
+      };
+      return `Recommendation: ${m[n] || 'a custom solution tailored to your challenge'}.`;
+    },
+    final: 'Done. Let\'s discuss the details — reach out on Telegram or by email.',
+    opts1: ['Speed up sales & leads','Reduce team load','Fix operations','Train the team on AI'],
+    opts2: {
+      'Speed up sales & leads': ['Leads are lost','Slow responses','No pipeline visibility','Other'],
+      'Reduce team load':       ['Operators overwhelmed','Too much manual work','Slow approvals','Other'],
+      'Fix operations':         ['Status chaos','Documents scattered','No visibility','Other'],
+      'Train the team on AI':   ["Don't know where to start",'Need an AI strategy','Want hands-on practice','Other'],
+    },
+    opts3: ['1–15 people','15–50 people','50–200 people','200+ people'],
+  }
+};
+
+function cLang(){return H.getAttribute('data-lang')==='en'?'en':'ru'}
+function cd(){return CHAT_DATA[cLang()]}
+function cMsgs(){return document.getElementById('chatMessages')}
+function cActs(){return document.getElementById('chatActions')}
+
+function addMsg(text,role='bot'){
+  const el=document.createElement('div');
+  el.className='msg '+role;el.textContent=text;
+  cMsgs().appendChild(el);cMsgs().scrollTop=cMsgs().scrollHeight;
+}
+function showOpts(items){
+  const w=cActs();w.innerHTML='';
+  items.forEach(item=>{
+    const btn=document.createElement('button');
+    btn.className='opt';btn.type='button';btn.textContent=item;
+    btn.addEventListener('click',()=>handleChat(item));
+    w.appendChild(btn);
+  });
+}
+function botReply(text,opts,done=false){
+  const typing=document.createElement('div');
+  typing.className='msg bot typing-msg';
+  typing.innerHTML='<span class="typing"><span></span><span></span><span></span></span>';
+  cMsgs().appendChild(typing);cMsgs().scrollTop=cMsgs().scrollHeight;
+  setTimeout(()=>{
+    typing.remove();addMsg(text,'bot');
+    const w=cActs();w.innerHTML='';
+    if(done){
+      const n=document.createElement('div');n.className='chat-finish';n.textContent=cd().final;w.appendChild(n);
+    } else showOpts(opts);
+  },300);
+}
+function handleChat(val){
+  addMsg(val,'user');cActs().innerHTML='';
+  const c=cd();
+  if(cStep===0){cNiche=val;cStep=1;botReply(c.q2,c.opts2[val]||c.opts1);}
+  else if(cStep===1){cStep=2;botReply(c.q3,c.opts3);}
+  else if(cStep===2){cStep=3;botReply(c.rec(cNiche),[],true);}
+}
+function resetChat(){
+  cStep=0;cNiche='';
+  if(typeof CHAT_DATA==='undefined') return;
+  const g=document.getElementById('chatGreeting');
+  if(g)g.textContent=cd().greet;
+  cMsgs()?.querySelectorAll('.msg:not(#chatGreeting)').forEach(el=>el.remove());
+  showOpts(cd().opts1);
+}
+document.addEventListener('DOMContentLoaded', resetChat);
+</script>
 </body>
 </html>
