@@ -1,467 +1,394 @@
 <!doctype html>
-<html lang="ru" data-lang="ru">
+<html lang="ru" data-lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
   <title>LeadHunter · Nodalio</title>
-  <meta name="description" content="LeadHunter monitors Telegram chats, finds hot requests, qualifies them, and helps the team reply before competitors do.">
-  <link rel="stylesheet" href="preview.css">
-  <script defer src="preview.js"></script>
+  <meta name="description" content="LeadHunter мониторит Telegram-чаты, находит горячие запросы и помогает команде ответить первым — раньше конкурентов.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+  :root{--bg:#f6f5f1;--bg2:#edecea;--card:#ffffff;--text:#110f0b;--muted:#6b6860;--border:rgba(17,15,11,.09);--accent:oklch(0.54 0.175 253);--accent-h:oklch(0.48 0.175 253);--accent-s:oklch(0.97 0.022 253);--sh-s:0 1px 3px rgba(17,15,11,.06),0 4px 12px rgba(17,15,11,.05);--sh-m:0 2px 8px rgba(17,15,11,.06),0 10px 36px rgba(17,15,11,.08);--r:14px;--cont:1100px;--nav:60px;--tr:color .2s,background .2s,border-color .2s,opacity .2s,box-shadow .2s}
+  [data-theme="dark"]{--bg:#0d0c0a;--bg2:#161411;--card:#1a1815;--text:#edece5;--muted:#8a8780;--border:rgba(237,236,229,.08);--accent:oklch(0.65 0.17 253);--accent-h:oklch(0.72 0.17 253);--accent-s:oklch(0.20 0.04 253);--sh-s:0 1px 4px rgba(0,0,0,.22),0 4px 16px rgba(0,0,0,.18);--sh-m:0 2px 8px rgba(0,0,0,.28),0 10px 40px rgba(0,0,0,.30)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:15px;line-height:1.6;background:var(--bg);color:var(--text);transition:var(--tr);overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:none;background:none}
+  details>summary{list-style:none;cursor:pointer}
+  details>summary::-webkit-details-marker{display:none}
+  .container{width:min(var(--cont),calc(100% - 40px));margin:0 auto}
+  .section{padding:64px 0}.tight{padding:48px 0}
+  hr.div{border:none;border-top:1px solid var(--border);margin:0}
+  .t-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .t-h1{font-size:clamp(36px,6vw,70px);font-weight:800;line-height:1.04;letter-spacing:-.04em}
+  .t-h2{font-size:clamp(24px,3.5vw,40px);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+  .t-h3{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+  .t-sub{font-size:17px;color:var(--muted);line-height:1.7;max-width:54ch}
+  .aw{color:var(--accent)}
+  .cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;padding:11px 22px;border-radius:8px;transition:var(--tr);white-space:nowrap}
+  .cta:hover{background:var(--accent-h)}
+  .ghost{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--text);font-size:14px;font-weight:600;padding:10px 18px;border-radius:8px;border:1px solid var(--border);transition:var(--tr);white-space:nowrap}
+  .ghost:hover{border-color:color-mix(in oklab,var(--border) 50%,var(--text))}
+  .btn-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .nav{position:sticky;top:0;z-index:50;height:var(--nav);background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav .container{height:100%;display:flex;align-items:center;gap:16px}
+  .brand{font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text);margin-right:auto}
+  .brand span{color:var(--accent)}
+  .top-rail{display:flex;align-items:center;gap:2px}
+  .top-rail a{font-size:13px;font-weight:500;color:var(--muted);padding:6px 10px;border-radius:7px;transition:var(--tr)}
+  .top-rail a:hover{color:var(--text);background:var(--bg2)}
+  .nav-r{display:flex;align-items:center;gap:8px}
+  .lang{display:flex;background:var(--bg2);border-radius:7px;padding:2px}
+  .lang button{font-size:12px;font-weight:700;padding:4px 8px;border-radius:5px;color:var(--muted);transition:var(--tr)}
+  .lang button.active{background:var(--card);color:var(--text);box-shadow:var(--sh-s)}
+  #tt{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);font-size:15px;color:var(--muted);transition:var(--tr);display:flex;align-items:center;justify-content:center}
+  #tt:hover{color:var(--text)}
+  .phero{padding:56px 0 64px}
+  .phero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .ptag{display:inline-flex;font-size:12px;font-weight:700;padding:5px 12px;border-radius:6px;background:var(--accent-s);color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+  .hstats{display:flex;gap:28px;margin-top:30px;padding-top:22px;border-top:1px solid var(--border)}
+  .hstat strong{display:block;font-size:22px;font-weight:800;letter-spacing:-.04em}
+  .hstat span{font-size:12px;color:var(--muted);line-height:1.4}
+  .demo{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-m);border:1px solid var(--border)}
+  .demo-hd{background:var(--accent);padding:12px 18px;display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4)}
+  .demo-hd span{font-size:12px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.04em;text-transform:uppercase}
+  .demo-bd{background:var(--card);padding:18px;display:flex;flex-direction:column;gap:10px}
+  .dmsg{background:var(--bg2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);line-height:1.6}
+  .dmsg strong{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+  .dsum{background:var(--accent-s);border:1px solid color-mix(in oklab,var(--accent) 20%,transparent);border-radius:10px;padding:12px 14px}
+  .dsum-hd{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .dsum ul{list-style:none;display:flex;flex-direction:column;gap:3px}
+  .dsum li{font-size:13px;color:var(--text);display:flex;gap:5px}
+  .dsum li::before{content:"—";color:var(--accent);flex-shrink:0}
+  .drep{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+  .drep-hd{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .drep p{font-size:13px;color:var(--text);line-height:1.6}
+  .sh{margin-bottom:36px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-s);padding:26px 22px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card p{font-size:14px;color:var(--muted);line-height:1.7;margin-top:6px}
+  .num{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+  .sn{font-size:30px;font-weight:800;letter-spacing:-.04em;color:var(--border);margin-bottom:14px;line-height:1}
+  .mrow{display:flex;gap:32px;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
+  .mi strong{font-size:26px;font-weight:800;letter-spacing:-.04em;color:var(--text);display:block}
+  .mi span{font-size:13px;color:var(--muted)}
+  .ctag{display:flex;flex-direction:column;gap:3px;margin-bottom:12px}
+  .ctag .ni{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+  .ctag .me{font-size:13px;font-weight:600;color:var(--text)}
+  .ba-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+  .ba{padding:11px 13px;border-radius:9px;background:var(--bg2)}
+  .bal{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+  .bal.af{color:var(--accent)}
+  .ba p{font-size:13px;color:var(--muted);line-height:1.55}
+  .chip{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-s);border-radius:6px;padding:5px 11px;display:inline-block}
+  .ctable{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--card)}
+  .crow,.chdr{display:grid;grid-template-columns:1.6fr 1fr 1fr}
+  .chdr{background:var(--bg2);border-bottom:1px solid var(--border)}
+  .chdr span{padding:11px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .chdr span:last-child{color:var(--accent)}
+  .crow{border-bottom:1px solid var(--border)}
+  .crow:last-child{border-bottom:none}
+  .crow>*{padding:13px 14px;font-size:13px;line-height:1.5}
+  .crow strong{font-weight:600;color:var(--text);display:flex;align-items:center}
+  .crow .mn{color:var(--muted)}
+  .crow .lh{color:var(--text);font-weight:500}
+  .cnote{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6}
+  .pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:30px 26px;box-shadow:var(--sh-s);display:flex;flex-direction:column;gap:14px}
+  .pc.ft{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--sh-m)}
+  .pb{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+  .pbadge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+  .pfrom,.pper{font-size:13px;color:var(--muted)}
+  .pval{font-size:22px;font-weight:800;letter-spacing:-.04em}
+  .pfit{font-size:13px;color:var(--muted);line-height:1.65}
+  .pfeats{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .pfeats li{font-size:13px;color:var(--muted);padding-left:15px;position:relative;line-height:1.6}
+  .pfeats li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .pnote{font-size:12px;color:var(--muted);padding-top:10px;border-top:1px solid var(--border)}
+  .pout{font-size:13px;color:var(--text);background:var(--bg2);border-radius:8px;padding:11px 13px;line-height:1.6}
+  .pilot{background:var(--bg2);border-radius:var(--r);padding:26px 22px;margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pi p{font-size:13px;color:var(--muted);line-height:1.6;margin-top:5px}
+  .faqlist{display:flex;flex-direction:column;gap:7px}
+  .fqi{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-s)}
+  .fqi summary{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;gap:14px}
+  .fqi summary h3{font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.4}
+  .fchev{font-size:18px;color:var(--muted);transition:transform .2s;flex-shrink:0;line-height:1}
+  details[open] .fchev{transform:rotate(180deg)}
+  .fqi p{padding:0 20px 16px;font-size:14px;color:var(--muted);line-height:1.7}
+  .fcta{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:52px 48px;text-align:center;box-shadow:var(--sh-m)}
+  .fcta .t-label{margin-bottom:12px}
+  .fcta .t-h2{max-width:22ch;margin:0 auto 12px}
+  .fcta .t-sub{margin:0 auto 28px;text-align:center}
+  .fcta .btn-row{justify-content:center}
+  .footer{padding:26px 0;border-top:1px solid var(--border)}
+  .footer .container{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .footer small{font-size:12px;color:var(--muted)}
+  .footer a{color:var(--muted);transition:color .2s}
+  .footer a:hover{color:var(--text)}
+  @media(max-width:880px){.phero-grid{grid-template-columns:1fr;gap:36px}.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr}.pilot{grid-template-columns:1fr}.top-rail{display:none}.fcta{padding:36px 22px}}
+  @media(max-width:640px){.g2,.g4{grid-template-columns:1fr}.hstats,.mrow{flex-wrap:wrap;gap:18px}.ba-row{grid-template-columns:1fr}.crow,.chdr{grid-template-columns:1fr 1fr}.chdr span:nth-child(2),.crow .mn{display:none}}
+  [data-lang="ru"] [data-en]{display:none}
+  [data-lang="en"] [data-ru]{display:none}
+  .fade{opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease}
+  .fade.in{opacity:1;transform:translateY(0)}
+  </style>
 </head>
-<body data-product="leadhunter" class="product-page">
-  <header class="nav">
-    <div class="container">
-      <a class="brand" href="index.html">Noda<span class="brand-accent">lio</span></a>
-      <nav class="top-rail" aria-label="LeadHunter sections">
-        <a href="#lh-problem"><span data-ru>Боль</span><span data-en>Problem</span></a>
-        <a href="#lh-proof"><span data-ru>Как это выглядит</span><span data-en>How it looks</span></a>
-        <a href="#lh-pricing"><span data-ru>Стоимость</span><span data-en>Pricing</span></a>
-        <a href="#lh-faq"><span data-ru>FAQ</span><span data-en>FAQ</span></a>
-      </nav>
-      <div class="nav-actions">
-        <div class="lang">
-          <button type="button" class="active" data-lang="ru" onclick="setLang('ru')">RU</button>
-          <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
-        </div>
-        <a class="ghost" href="index.html">
-          <span data-ru>Назад на главную</span>
-          <span data-en>Back to home</span>
-        </a>
-        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-          <span class="btn-icon" aria-hidden="true">✈</span>
-          <span data-ru>Написать в Telegram</span>
-          <span data-en>Contact via Telegram</span>
-        </a>
-        <a class="mail-cta icon-only" href="mailto:olshanskiy.ad@gmail.com" aria-label="olshanskiy.ad@gmail.com" title="olshanskiy.ad@gmail.com">
-          <span class="btn-icon" aria-hidden="true">✉</span>
-        </a>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <a class="brand" href="index.html">Noda<span>lio</span></a>
+    <nav class="top-rail">
+      <a href="#problem"><span data-ru>Боль</span><span data-en>Problem</span></a>
+      <a href="#how"><span data-ru>Как работает</span><span data-en>How it works</span></a>
+      <a href="#pricing"><span data-ru>Стоимость</span><span data-en>Pricing</span></a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-r">
+      <div class="lang">
+        <button type="button" class="active" data-lb="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" data-lb="en" onclick="setLang('en')">EN</button>
       </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero product-hero product-hero--lh">
-      <div class="container hero-grid hero-grid--product">
-        <div class="hero-copy" data-aos>
-          <div class="label">
-            <span data-ru>Готовый продукт для входящих в Telegram</span>
-            <span data-en>Ready-made product for Telegram inbound demand</span>
-          </div>
-          <h1 class="hero-title">
-            <span data-ru>LeadHunter<br><span class="accent">находит горячие запросы</span><br>в Telegram раньше конкурентов</span>
-            <span data-en>LeadHunter<br><span class="accent">finds hot requests</span><br>in Telegram before competitors do</span>
-          </h1>
-          <p class="hero-line">
-            <span data-ru>Мониторит чаты, отсеивает шум, квалифицирует запрос и помогает ответить первым — пока другие ещё не увидели сообщение.</span>
-            <span data-en>Monitors chats, filters noise, qualifies the request, and helps your team reply first before anyone else even sees it.</span>
-          </p>
-          <div class="hero-offer-strip">
-            <article class="hero-offer-card">
-              <strong><span data-ru>7 дней</span><span data-en>7 days</span></strong>
-              <p><span data-ru>бесплатный тест на ваших чатах</span><span data-en>free trial on your live chats</span></p>
-            </article>
-            <article class="hero-offer-card hero-offer-card--accent">
-              <strong class="price-value--custom"><span data-ru>Стоимость по запросу</span><span data-en>Pricing on request</span></strong>
-              <p><span data-ru>сразу понятно, как стартуем и что обсуждаем по бюджету</span><span data-en>you immediately see how we start and what budget we discuss</span></p>
-            </article>
-            <article class="hero-offer-card">
-              <strong><span data-ru>2–4 дня</span><span data-en>2–4 days</span></strong>
-              <p><span data-ru>чтобы быстро проверить продукт на ваших реальных чатах</span><span data-en>to quickly validate the product on your real chats</span></p>
-            </article>
-          </div>
-          <div class="product-strip">
-            <span class="sales-pill">24/7</span>
-            <span class="sales-pill"><span data-ru>Отбор живых запросов</span><span data-en>Live request filtering</span></span>
-            <span class="sales-pill"><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></span>
-            <span class="sales-pill sales-pill--soft"><span data-ru>Telegram-first</span><span data-en>Telegram-first</span></span>
-          </div>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-              <span class="btn-icon" aria-hidden="true">✈</span>
-              <span data-ru>Запустить 7-дневный триал</span>
-              <span data-en>Start the 7-day trial</span>
-            </a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
-              <span class="btn-icon" aria-hidden="true">✉</span>
-              <span data-ru>Получить детали</span>
-              <span data-en>Get details</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-visual" data-aos>
-          <div class="lh-mock panel">
-            <div class="lh-mock-head">
-              <div>
-                <span class="label"><span data-ru>Что получает менеджер</span><span data-en>What the manager gets</span></span>
-                <h3><span data-ru>Понятную сводку и готовый ответ вместо сырого потока сообщений</span><span data-en>A clear summary and ready reply instead of a raw message stream</span></h3>
-              </div>
-              <div class="lh-dot"></div>
-            </div>
-            <div class="lh-thread">
-              <div class="lh-bubble lh-bubble--source">
-                <small><span data-ru>Чат “Аренда Москва”</span><span data-en>Chat “Rent Moscow”</span></small>
-                <p><span data-ru>Ищу 2-комнатную квартиру до 180к рядом с Белорусской, переезд в мае.</span><span data-en>Looking for a 2-bedroom apartment up to 180k near Belorusskaya, moving in May.</span></p>
-              </div>
-              <div class="lh-brief">
-                <strong><span data-ru>Сводка по лиду</span><span data-en>Lead summary</span></strong>
-                <ul>
-                  <li><span data-ru>Ниша: недвижимость / аренда</span><span data-en>Niche: real estate / rent</span></li>
-                  <li><span data-ru>Приоритет: высокий</span><span data-en>Priority: high</span></li>
-                  <li><span data-ru>Контекст: понятный бюджет и локация</span><span data-en>Context: clear budget and location</span></li>
-                </ul>
-              </div>
-              <div class="lh-bubble lh-bubble--reply">
-                <small><span data-ru>Готовый ответ</span><span data-en>Ready reply</span></small>
-                <p><span data-ru>Добрый день! Есть несколько вариантов под ваш бюджет в районе Белорусской. Могу сразу отправить подборку и договориться о просмотре.</span><span data-en>Hello! I have several options within your budget near Belorusskaya. I can send a shortlist right away and arrange a viewing.</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="hero-visual-stats">
-            <div class="stat"><b>&lt; 3 сек</b><span data-ru>от сообщения до сигнала</span><span data-en>from message to signal</span></div>
-            <div class="stat"><b>24/7</b><span data-ru>мониторинг без ручного режима</span><span data-en>monitoring without manual mode</span></div>
-            <div class="stat"><b>1 card</b><span data-ru>вся суть запроса в одной карточке</span><span data-en>the whole request in one card</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section" id="lh-problem">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Знакомая боль</span><span data-en>Familiar pain</span></span>
-          <h2><span data-ru>Лиды уже появляются в Telegram. Вы просто видите их слишком поздно.</span><span data-en>Leads are already appearing in Telegram. You just see them too late.</span></h2>
-        </div>
-        <div class="problem-grid">
-          <article class="memo-card" data-aos><p><span data-ru>Физически невозможно следить за десятками чатов, каналов и комментариев одновременно.</span><span data-en>It is impossible to monitor dozens of chats, channels, and comments at once.</span></p></article>
-          <article class="memo-card" data-aos><p><span data-ru>Пока менеджер замечает запрос, кто-то уже ответил первым и забрал диалог себе.</span><span data-en>By the time a manager notices the request, someone else has already answered first.</span></p></article>
-          <article class="memo-card" data-aos><p><span data-ru>Ручной мониторинг съедает часы, но всё равно не даёт стабильного контроля и скорости.</span><span data-en>Manual monitoring eats hours and still does not give consistent control or speed.</span></p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Что получает команда</span><span data-en>What your team gets</span></span>
-          <h2><span data-ru>Четыре понятных результата вместо ручного мониторинга</span><span data-en>Four clear outcomes instead of manual monitoring</span></h2>
-        </div>
-        <div class="impl-grid impl-grid--wide impl-grid--lh-benefits">
-          <article class="impl-card" data-aos><h3>🛰 <span data-ru>Следит за входящими</span><span data-en>Tracks inbound demand</span></h3><p><span data-ru>Следит за чатами, каналами и комментариями без ручного дежурства.</span><span data-en>Tracks chats, channels, and comments without manual watch duty.</span></p></article>
-          <article class="impl-card" data-aos><h3>🎯 <span data-ru>Отделяет живой запрос от шума</span><span data-en>Separates demand from noise</span></h3><p><span data-ru>Реагирует только на сообщения, которые похожи на реальную задачу, а не на обсуждение.</span><span data-en>Reacts only to messages that look like a real need, not random discussion.</span></p></article>
-          <article class="impl-card" data-aos><h3>🧾 <span data-ru>Собирает суть запроса</span><span data-en>Extracts the request essentials</span></h3><p><span data-ru>Менеджер сразу видит главное, а не разбирает длинные пересылки вручную.</span><span data-en>The manager sees the essential details immediately instead of untangling long forwards by hand.</span></p></article>
-          <article class="impl-card" data-aos><h3>✉️ <span data-ru>Подсказывает первый ответ</span><span data-en>Suggests the first reply</span></h3><p><span data-ru>Помогает быстро ответить в вашем стиле и не потерять скорость первого касания.</span><span data-en>Helps your team reply fast in your tone without losing first-touch speed.</span></p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Как это работает в потоке</span><span data-en>How it works in the flow</span></span>
-          <h2><span data-ru>Четыре коротких шага от сообщения в чате до первого ответа</span><span data-en>Four short steps from a chat message to the first reply</span></h2>
-        </div>
-        <div class="steps-grid steps-grid--lh">
-          <article class="step-card" data-aos><div class="step-num">01</div><h3><span data-ru>Кто-то пишет в чате</span><span data-en>Someone posts in a chat</span></h3><p><span data-ru>В одном из подключённых чатов появляется новый запрос.</span><span data-en>A new request appears in one of the connected chats.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">02</div><h3><span data-ru>Система отсеивает шум</span><span data-en>The system removes the noise</span></h3><p><span data-ru>Оставляет только сообщения, где действительно есть шанс на сделку или диалог.</span><span data-en>It keeps only the messages that actually look like a deal or a real conversation.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">03</div><h3><span data-ru>Менеджер получает готовую карточку</span><span data-en>The manager gets a ready card</span></h3><p><span data-ru>Сразу видны приоритет, детали запроса и первый вариант ответа.</span><span data-en>Priority, request details, and the first reply option are visible right away.</span></p></article>
-          <article class="step-card" data-aos><div class="step-num">04</div><h3><span data-ru>Команда отвечает раньше других</span><span data-en>The team replies before others</span></h3><p><span data-ru>Вы подключаетесь только к релевантным сигналам и не упускаете живой спрос.</span><span data-en>You step in only on relevant signals and stop missing live demand.</span></p></article>
-        </div>
-        <div class="proof-metric-row" data-aos>
-          <article class="proof-metric">
-            <strong>&lt; 3 <span data-ru>мин</span><span data-en>min</span></strong>
-            <p><span data-ru>от релевантного сообщения до первого сигнала</span><span data-en>from a relevant message to the first signal</span></p>
-          </article>
-          <article class="proof-metric">
-            <strong>24/7</strong>
-            <p><span data-ru>мониторинг без ручного дежурства в чатах</span><span data-en>monitoring without manual watch duty in chats</span></p>
-          </article>
-          <article class="proof-metric">
-            <strong>1 <span data-ru>карточка</span><span data-en>card</span></strong>
-            <p><span data-ru>вместо длинных пересылок и ручного разбора</span><span data-en>instead of long forwards and manual triage</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section product-section--proof" id="lh-proof">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Как это выглядит</span><span data-en>How it looks</span></span>
-          <h2><span data-ru>Что команда видит вместо хаотичного потока сообщений</span><span data-en>What the team sees instead of a chaotic message stream</span></h2>
-        </div>
-        <div class="trust-strip trust-strip--proof">
-          <div class="trust-box" data-aos>
-            <span class="label"><span data-ru>Уведомление</span><span data-en>Notification</span></span>
-            <h3><span data-ru>Короткая карточка вместо долгого ручного разбора</span><span data-en>A short signal card instead of long manual triage</span></h3>
-            <p class="product-note"><span data-ru>Приоритет, детали запроса и прямая ссылка на источник уже собраны в одной карточке.</span><span data-en>Priority, request details, and the direct source link are already packed into one card.</span></p>
-          </div>
-          <div class="trust-box" data-aos>
-            <span class="label"><span data-ru>Ответ</span><span data-en>Reply</span></span>
-            <h3><span data-ru>Первое касание идёт быстрее и звучит осмысленно</span><span data-en>The first touch happens faster and sounds intentional</span></h3>
-            <p class="product-note"><span data-ru>Черновик ответа ускоряет реакцию, а финальное решение и тон остаются у человека.</span><span data-en>A reply draft speeds up reaction time, while the final decision and tone stay with a human.</span></p>
-          </div>
-        </div>
-        <div class="result-grid">
-          <article class="result-card result-card--featured panel" data-aos>
-            <div class="case-meta"><span data-ru>Ниша</span><span data-en>Niche</span><span data-ru>B2B-услуги / агентство</span><span data-en>B2B services / agency</span></div>
-            <div class="result-stat"><span data-ru>50+ чатов в одном потоке</span><span data-en>50+ chats in one flow</span></div>
-            <h3><span data-ru>Убрали ручной мониторинг десятков Telegram-чатов</span><span data-en>Removed manual monitoring across dozens of Telegram chats</span></h3>
-            <div class="mini-before-after">
-              <div><span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span><p><span data-ru>Постоянное ручное дежурство в Telegram-чатах.</span><span data-en>Constant manual watch duty across Telegram chats.</span></p></div>
-              <div><span class="ba-label"><span data-ru>После</span><span data-en>After</span></span><p><span data-ru>Команда видит только релевантные сигналы и включается в нужный момент.</span><span data-en>The team sees only relevant signals and steps in at the right moment.</span></p></div>
-            </div>
-            <div class="result-chip"><span data-ru>Результат: быстрее первый ответ и чище передача в продажи</span><span data-en>Result: faster first reply and cleaner handoff into sales</span></div>
-          </article>
-          <article class="result-card panel" data-aos>
-            <div class="case-meta"><span data-ru>Ниша</span><span data-en>Niche</span><span data-ru>Недвижимость / аренда</span><span data-en>Real estate / rentals</span></div>
-            <div class="result-stat"><span data-ru>&lt; 3 минуты до первого ответа</span><span data-en>&lt; 3 minutes to the first reply</span></div>
-            <h3><span data-ru>Собрали лид в одну карточку вместо переписок и пересылок</span><span data-en>Turned raw chat traffic into one clear lead card</span></h3>
-            <div class="mini-before-after">
-              <div><span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span><p><span data-ru>Контекст терялся в пересылках и длинных сообщениях.</span><span data-en>Context was lost in forwards and long message threads.</span></p></div>
-              <div><span class="ba-label"><span data-ru>После</span><span data-en>After</span></span><p><span data-ru>Менеджер сразу получает бюджет, локацию и черновик ответа.</span><span data-en>The manager immediately gets budget, location, and a reply draft.</span></p></div>
-            </div>
-            <div class="result-chip"><span data-ru>Результат: меньше потерь на первом касании и выше скорость реакции</span><span data-en>Result: fewer missed first touches and faster response speed</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section product-section--usecase">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Пример сценария</span><span data-en>Use case</span></span>
-          <h2><span data-ru>Где LeadHunter чаще всего даёт быстрый результат</span><span data-en>Where LeadHunter usually creates the fastest result</span></h2>
-        </div>
-        <div class="cases-grid cases-grid--lh">
-          <article class="case-card case-card--featured" data-aos>
-            <div class="case-meta"><span>Use case 01</span><span data-ru>Недвижимость / аренда</span><span data-en>Real estate / rentals</span></div>
-            <h3><span data-ru>Брокер по аренде</span><span data-en>Rental broker</span></h3>
-            <div class="case-ba case-ba--compact">
-              <div class="case-before">
-                <span class="ba-label"><span data-ru>До</span><span data-en>Before</span></span>
-                <p><span data-ru>Менеджер вручную отсматривал десятки чатов и часто видел релевантный запрос слишком поздно.</span><span data-en>The manager manually watched dozens of chats and often saw relevant requests too late.</span></p>
-              </div>
-              <div class="case-after">
-                <span class="ba-label"><span data-ru>После</span><span data-en>After</span></span>
-                <p><span data-ru>LeadHunter выделяет сигналы по бюджету, району и типу объекта, а команда получает готовую карточку лида.</span><span data-en>LeadHunter detects signals by budget, area, and property type, while the team gets a ready lead card.</span></p>
-              </div>
-            </div>
-            <div class="case-metric-wrap">
-              <div class="case-metric">&lt; 3 мин</div>
-              <div class="case-metric-note"><span data-ru>от релевантного сообщения до первого ответа</span><span data-en>from relevant message to first reply</span></div>
-            </div>
-          </article>
-          <article class="case-card" data-aos>
-            <div class="case-meta"><span>Use case 02</span><span data-ru>B2B / услуги</span><span data-en>B2B / services</span></div>
-            <h3><span data-ru>Агентство или подрядчик</span><span data-en>Agency or contractor</span></h3>
-            <p><span data-ru>Система отлавливает запросы на разработку, дизайн, интеграции и автоматизацию, чтобы команда не пропускала горячий спрос.</span><span data-en>The system captures requests for development, design, integrations, and automation so the team does not miss hot demand.</span></p>
-          </article>
-          <article class="case-card" data-aos>
-            <div class="case-meta"><span>Use case 03</span><span data-ru>Эксперты / образование</span><span data-en>Experts / education</span></div>
-            <h3><span data-ru>Курсы и консультации</span><span data-en>Courses and consulting</span></h3>
-            <p><span data-ru>LeadHunter отсеивает шум и выводит только целевые запросы от людей, которые уже готовы продолжить диалог.</span><span data-en>LeadHunter filters out noise and surfaces only target requests from people already ready to continue the conversation.</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section product-section--comparison">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Сравнение</span><span data-en>Comparison</span></span>
-          <h2><span data-ru>Почему LeadHunter выигрывает ручной мониторинг</span><span data-en>Why LeadHunter beats manual monitoring</span></h2>
-        </div>
-        <div class="comparison-table comparison-table--muted panel" data-aos>
-          <div class="comparison-head">
-            <span><span data-ru>Параметр</span><span data-en>Parameter</span></span>
-            <span><span data-ru>Вручную</span><span data-en>Manual</span></span>
-            <span>LeadHunter</span>
-          </div>
-          <div class="comparison-row"><strong><span data-ru>Скорость реакции</span><span data-en>Response speed</span></strong><span><span data-ru>Минуты или часы, если сообщение вообще заметили</span><span data-en>Minutes or hours if the message is noticed at all</span></span><span><span data-ru>Уведомление приходит почти сразу</span><span data-en>The notification arrives almost instantly</span></span></div>
-          <div class="comparison-row"><strong><span data-ru>Качество передачи</span><span data-en>Handoff quality</span></strong><span><span data-ru>Контекст теряется в пересылках</span><span data-en>Context gets lost in forwarding</span></span><span><span data-ru>Сводка и готовый ответ уже собраны</span><span data-en>The summary and ready reply are already prepared</span></span></div>
-          <div class="comparison-row"><strong><span data-ru>Пропущенные горячие сигналы</span><span data-en>Missed hot signals</span></strong><span><span data-ru>Зависят от внимания и загрузки конкретного человека</span><span data-en>Depend on one person's attention and workload</span></span><span><span data-ru>Снижаются до минимума после пилота и калибровки правил</span><span data-en>Reduced to a minimum after the pilot and rule calibration</span></span></div>
-          <div class="comparison-row"><strong><span data-ru>Нагрузка на команду</span><span data-en>Team load</span></strong><span><span data-ru>Ручной разбор съедает часы каждый день</span><span data-en>Manual triage eats hours every day</span></span><span><span data-ru>Команда включается только на релевантных сигналах</span><span data-en>The team engages only on relevant signals</span></span></div>
-        </div>
-        <p class="comparison-note" data-aos><span data-ru>* Точный уровень пропусков зависит от ниши, качества источников и правил отбора. Поэтому сначала идём через пилот и смотрим реальный поток.</span><span data-en>* The exact miss rate depends on your niche, source quality, and filtering rules. That is why we start with a pilot on real traffic.</span></p>
-      </div>
-    </section>
-
-    <section class="section compact product-section product-section--pricing" id="lh-pricing">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label"><span data-ru>Стоимость и запуск</span><span data-en>Pricing and rollout</span></span>
-          <h2><span data-ru>Два понятных формата запуска: быстрый старт в аренде или отдельная среда под вас</span><span data-en>Two clear rollout options: start in a managed rental model or deploy a dedicated setup for your team</span></h2>
-        </div>
-        <div class="pricing-grid pricing-grid--two pricing-grid--hero">
-          <article class="pricing-card panel" data-aos>
-            <div class="pricing-label"><span data-ru>Аренда</span><span data-en>Rental</span></div>
-            <h3><span data-ru>Быстрый запуск</span><span data-en>Fast start</span></h3>
-            <p class="pricing-fit"><span data-ru>Для команд, которым нужно быстро проверить Telegram как источник живого спроса.</span><span data-en>For teams that want to validate Telegram as a live demand channel quickly.</span></p>
-            <div class="price-block">
-              <span class="price-from"><span data-ru>от</span><span data-en>from</span></span>
-              <span class="price-value price-value--custom"><span data-ru>по запросу</span><span data-en>on request</span></span>
-              <span class="price-period"><span data-ru>/ мес</span><span data-en>/ mo</span></span>
-            </div>
-            <p class="price-note"><span data-ru>Ценовой диапазон отправим вместе с условиями пилота</span><span data-en>We will send the pricing range together with the pilot terms</span></p>
-            <ul class="pricing-list">
-              <li><span data-ru>Подходит, если нужно быстро проверить Telegram как рабочий канал спроса</span><span data-en>Best if you want to validate Telegram as a live demand channel quickly</span></li>
-              <li><span data-ru>Входит подключение источников, фильтры и первая логика отбора запросов</span><span data-en>Includes source setup, filters, and the first qualification flow</span></li>
-              <li><span data-ru>На выходе команда получает рабочую механику и понятный сигнал, стоит ли масштабировать запуск</span><span data-en>You end up with a working setup and a clear signal on whether to scale</span></li>
-            </ul>
-            <div class="pricing-outcome"><span data-ru>Хороший выбор, если нужно быстро понять, стоит ли вообще масштабировать Telegram как канал входящих заявок.</span><span data-en>A good choice if you need to quickly understand whether Telegram is worth scaling as an inbound lead channel.</span></div>
-          </article>
-          <article class="pricing-card panel popular" data-aos>
-            <div class="pricing-label"><span data-ru>На вашем сервере</span><span data-en>On your server</span></div>
-            <h3><span data-ru>Отдельный запуск</span><span data-en>Dedicated rollout</span></h3>
-            <p class="pricing-fit"><span data-ru>Для команд, которым нужны свои доступы, больше контроля и запуск без зависимости от общей аренды.</span><span data-en>For teams that need their own access model, more control, and a rollout independent from a shared rental setup.</span></p>
-            <div class="price-block">
-              <span class="price-from"><span data-ru>от</span><span data-en>from</span></span>
-              <span class="price-value price-value--custom"><span data-ru>по запросу</span><span data-en>on request</span></span>
-              <span class="price-period"><span data-ru>разовый платёж</span><span data-en>one-time</span></span>
-            </div>
-            <p class="price-note"><span data-ru>Фиксируем стоимость после короткого разбора задачи и текущих инструментов</span><span data-en>We lock the price after a short review of your task and current tools</span></p>
-            <ul class="pricing-list">
-              <li><span data-ru>Подходит командам, которым нужен отдельный запуск и свои доступы</span><span data-en>Best for teams that need a separate rollout and their own access model</span></li>
-              <li><span data-ru>Входит отдельная инфраструктура, настройка источников и запуск под ваш стек</span><span data-en>Includes separate infrastructure, source setup, and a launch in your stack</span></li>
-              <li><span data-ru>На выходе — система, которой управляете вы, а не общая аренда</span><span data-en>You end up with a system you control, not a shared rental setup</span></li>
-            </ul>
-            <div class="pricing-outcome"><span data-ru>Подходит, если Telegram уже даёт результат и нужен отдельный запуск под ваши правила и доступы.</span><span data-en>Best if Telegram is already producing results and you need a separate rollout under your own rules and access model.</span></div>
-          </article>
-        </div>
-        <div class="email-capture email-capture--subtle panel" data-aos>
-          <p class="email-capture-title"><span data-ru>Получить пример сводки и условия пилота</span><span data-en>Get a sample summary and pilot terms</span></p>
-          <p class="email-capture-sub"><span data-ru>Если Telegram сейчас неудобен, откроем готовый email-запрос на тарифы, пример карточки лида и условия 7-дневного теста.</span><span data-en>If Telegram is not convenient right now, we will open a ready email request for pricing, a sample lead card, and 7-day pilot terms.</span></p>
-          <form class="email-capture-row" data-mailto-form data-subject-ru="LeadHunter — запрос деталей" data-subject-en="LeadHunter — request for details">
-            <input type="hidden" name="product" value="LeadHunter details">
-            <input type="email" name="contact" required placeholder="your@email.com" autocomplete="email">
-            <button type="submit">
-              <span data-ru>Получить детали</span>
-              <span data-en>Get details</span>
-            </button>
-          </form>
-          <div class="email-capture-benefits">
-            <span class="tag"><span data-ru>Тарифы</span><span data-en>Pricing</span></span>
-            <span class="tag"><span data-ru>Пример сводки</span><span data-en>Sample summary</span></span>
-            <span class="tag"><span data-ru>Условия пилота</span><span data-en>Pilot terms</span></span>
-          </div>
-          <p class="email-capture-note"><span data-ru>Откроется готовый черновик письма. Без подписок и спама.</span><span data-en>A ready email draft will open. No subscriptions or spam.</span></p>
-        </div>
-        <div class="pilot-band pilot-band--subtle panel" data-aos>
-          <article class="pilot-item">
-            <span class="label"><span data-ru>Что входит в пилот</span><span data-en>What is included in the pilot</span></span>
-            <p><span data-ru>Подключаем 1–2 источника, настраиваем отбор заявок, короткую карточку и первый ответ.</span><span data-en>We connect 1–2 sources and set up lead filtering, the short card, and the first reply.</span></p>
-          </article>
-          <article class="pilot-item">
-            <span class="label"><span data-ru>Что считаем успешным</span><span data-en>What counts as success</span></span>
-            <p><span data-ru>Команда действительно отвечает быстрее и видит только те заявки, с которыми есть смысл работать.</span><span data-en>The team actually replies faster and sees only the requests worth working on.</span></p>
-          </article>
-          <article class="pilot-item">
-            <span class="label"><span data-ru>Что дальше</span><span data-en>What happens next</span></span>
-            <p><span data-ru>После теста понятно, остаёмся на быстром запуске или собираем отдельную версию под вашу команду.</span><span data-en>After the trial, it becomes clear whether you stay on the fast-start model or move to a dedicated version for your team.</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section">
-      <div class="container">
-        <div class="trust-strip">
-          <div class="trust-box" data-aos>
-            <span class="label"><span data-ru>Где работает и как запускается</span><span data-en>Where it works and how it launches</span></span>
-            <h3><span data-ru>Понимаем это до большого запуска</span><span data-en>We see that before a large rollout</span></h3>
-            <p class="product-note"><span data-ru>Если Telegram не даёт нужного качества заявок именно в вашей нише, это видно ещё на тесте, а не после больших затрат.</span><span data-en>If Telegram does not bring the right quality of leads in your niche, you see it during the trial, not after a larger spend.</span></p>
-          </div>
-          <div class="trust-box" data-aos>
-            <span class="label"><span data-ru>Кому подходит</span><span data-en>Who it fits</span></span>
-            <div class="niche-grid niche-grid--stacked">
-              <div class="niche-card"><h3><span data-ru>Недвижимость</span><span data-en>Real estate</span></h3><p class="product-note"><span data-ru>Аренда, покупка, подбор объектов.</span><span data-en>Rent, buying, property search.</span></p></div>
-              <div class="niche-card"><h3><span data-ru>B2B / подрядчики</span><span data-en>B2B / contractors</span></h3><p class="product-note"><span data-ru>Разработка, дизайн, интеграции, автоматизация.</span><span data-en>Development, design, integrations, automation.</span></p></div>
-              <div class="niche-card"><h3><span data-ru>Эксперты и курсы</span><span data-en>Experts and education</span></h3><p class="product-note"><span data-ru>Консультации, менторство, обучение.</span><span data-en>Consulting, mentoring, education.</span></p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section" id="lh-faq">
-      <div class="container">
-        <div class="section-head" data-aos>
-          <span class="label">FAQ</span>
-          <h2><span data-ru>Короткие ответы до запуска пилота</span><span data-en>Short answers before the pilot starts</span></h2>
-        </div>
-        <div class="faq-grid faq-grid--single">
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Это нарушает правила Telegram?</span><span data-en>Does this violate Telegram rules?</span></h3></summary>
-            <p><span data-ru>LeadHunter не строится вокруг рассылок или спама. Мы настраиваем аккуратный мониторинг и быстрый ответ только там, где это допустимо для вашей рабочей модели.</span><span data-en>LeadHunter is not built around spam or mass outreach. We configure careful monitoring and fast response only where it fits your operating model.</span></p>
-          </details>
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Нужен ли отдельный аккаунт?</span><span data-en>Do I need a separate account?</span></h3></summary>
-            <p><span data-ru>Не всегда. В быстром запуске обычно можно стартовать без отдельной среды, а в выделенном варианте мы заранее фиксируем, где и под какими доступами всё будет работать.</span><span data-en>Not always. In the fast-start model you can usually begin without a separate environment, while a dedicated rollout defines in advance where everything runs and under which access model.</span></p>
-          </details>
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Какой процент ложных срабатываний?</span><span data-en>What is the false positive rate?</span></h3></summary>
-            <p><span data-ru>Он зависит от ниши, источников и качества правил. Мы не обещаем абстрактную цифру заранее: сначала запускаем пилот, калибруем отбор на вашем потоке и только потом масштабируем.</span><span data-en>It depends on your niche, sources, and rule quality. We do not promise an abstract number upfront: first we run a pilot, calibrate qualification on your traffic, and only then scale.</span></p>
-          </details>
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Можно подключить несколько ботов?</span><span data-en>Can I connect multiple bots?</span></h3></summary>
-            <p><span data-ru>Да, если нужно разделить поток по продуктам, командам или источникам. Это согласуем до старта.</span><span data-en>Yes, if you need to split the flow by product, team, or source. We define that before launch.</span></p>
-          </details>
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Сколько времени занимает настройка?</span><span data-en>How long does setup take?</span></h3></summary>
-            <p><span data-ru>Тест обычно запускается быстрее, чем отдельная версия под вашу команду. Срок зависит от числа источников и того, нужен ли отдельный запуск.</span><span data-en>A trial usually launches faster than a dedicated version for your team. Timing depends on the number of sources and whether you need a separate rollout.</span></p>
-          </details>
-          <details class="faq-item panel" data-aos>
-            <summary><h3><span data-ru>Как отменить аренду?</span><span data-en>How do I cancel the rental?</span></h3></summary>
-            <p><span data-ru>Порядок остановки и завершения аренды фиксируем до старта. Команда заранее понимает, как отключаются источники, что остаётся у вас на руках и в какой момент завершается обслуживание.</span><span data-en>We define the stop and offboarding process before launch. Your team knows in advance how sources are disconnected, what remains on your side, and when the service ends.</span></p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact product-section section-final-cta">
-      <div class="container">
-        <div class="final-cta panel" data-aos>
-          <span class="label"><span data-ru>Бесплатный 7-дневный триал</span><span data-en>Free 7-day trial</span></span>
-          <h2><span data-ru>Покажем на ваших чатах, где LeadHunter реально находит заявки, и запустим короткий тест без тяжёлого старта.</span><span data-en>We’ll show on your chats where LeadHunter actually finds leads and launch a short test without a heavy rollout.</span></h2>
-          <div class="hero-actions">
-            <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-              <span class="btn-icon" aria-hidden="true">✈</span>
-              <span data-ru>Попробовать 7 дней</span>
-              <span data-en>Try free for 7 days</span>
-            </a>
-            <a class="mail-cta" href="mailto:olshanskiy.ad@gmail.com">
-              <span class="btn-icon" aria-hidden="true">✉</span>
-              <span data-ru>Получить детали</span>
-              <span data-en>Get details</span>
-            </a>
-            <a class="ghost" href="index.html"><span data-ru>Назад на главную</span><span data-en>Back to home</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="sticky-cta-bar" id="stickyLeadhunterCta" hidden>
-    <div class="sticky-cta-inner">
-      <strong>LeadHunter</strong>
-      <span data-ru>Попробовать бесплатно 7 дней</span>
-      <span data-en>Try free for 7 days</span>
-      <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">
-        <span class="btn-icon" aria-hidden="true">✈</span>
-        <span data-ru>Запустить триал</span>
-        <span data-en>Start trial</span>
-      </a>
+      <button id="tt" aria-label="Toggle theme">☽</button>
+      <a class="ghost" href="index.html" style="padding:8px 14px;font-size:13px"><span data-ru>На главную</span><span data-en>Home</span></a>
+      <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Написать в Telegram</span><span data-en>Contact via Telegram</span></a>
     </div>
   </div>
+</header>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <small>Nodalio · <span data-ru>ИИ-автоматизация бизнеса</span><span data-en>AI automation for business</span></small>
-      <small><a href="mailto:olshanskiy.ad@gmail.com">olshanskiy.ad@gmail.com</a></small>
+<main>
+
+<!-- HERO -->
+<section class="phero">
+  <div class="container">
+    <div class="phero-grid">
+      <div>
+        <div class="ptag"><span data-ru>Готовый продукт · Telegram</span><span data-en>Ready product · Telegram</span></div>
+        <h1 class="t-h1" style="max-width:12ch;margin-bottom:18px">
+          <span data-ru>LeadHunter находит горячие запросы <span class="aw">раньше конкурентов</span></span>
+          <span data-en>LeadHunter finds hot requests <span class="aw">before competitors</span></span>
+        </h1>
+        <p class="t-sub" style="margin-bottom:26px">
+          <span data-ru>Мониторит чаты и каналы, отсеивает шум, квалифицирует запрос и помогает ответить первым — пока другие ещё не увидели сообщение.</span>
+          <span data-en>Monitors chats and channels, filters noise, qualifies the request, and helps you reply first — while others haven't even seen the message.</span>
+        </p>
+        <div class="btn-row">
+          <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Запустить 7-дневный триал</span><span data-en>Start 7-day trial</span></a>
+          <a class="ghost" href="#pricing"><span data-ru>Посмотреть стоимость</span><span data-en>See pricing</span></a>
+        </div>
+        <div class="hstats">
+          <div class="hstat"><strong>&lt;3 <span style="font-size:.5em" data-ru>сек</span><span style="font-size:.5em" data-en>sec</span></strong><span data-ru>от сообщения до сигнала</span><span data-en>from message to signal</span></div>
+          <div class="hstat"><strong>24/7</strong><span data-ru>без ручного дежурства</span><span data-en>no manual watch duty</span></div>
+          <div class="hstat"><strong>1 <span style="font-size:.5em" data-ru>карточка</span><span style="font-size:.5em" data-en>card</span></strong><span data-ru>вся суть запроса</span><span data-en>full request context</span></div>
+        </div>
+      </div>
+      <div class="demo">
+        <div class="demo-hd"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>LeadHunter · <span data-ru>Сигнал</span><span data-en>Signal</span></span></div>
+        <div class="demo-bd">
+          <div class="dmsg"><strong><span data-ru>Чат «Аренда Москва»</span><span data-en>Chat "Rent Moscow"</span></strong><span data-ru>Ищу 2-комнатную квартиру до 180к рядом с Белорусской, переезд в мае.</span><span data-en>Looking for a 2-bedroom up to 180k near Belorusskaya, moving in May.</span></div>
+          <div class="dsum"><div class="dsum-hd"><span data-ru>Сводка по лиду</span><span data-en>Lead summary</span></div><ul><li><span data-ru>Ниша: недвижимость / аренда</span><span data-en>Niche: real estate / rentals</span></li><li><span data-ru>Приоритет: высокий</span><span data-en>Priority: high</span></li><li><span data-ru>Бюджет и локация указаны явно</span><span data-en>Budget and location stated clearly</span></li></ul></div>
+          <div class="drep"><div class="drep-hd"><span data-ru>Готовый первый ответ</span><span data-en>Suggested first reply</span></div><p><span data-ru>Добрый день! Есть варианты под ваш бюджет рядом с Белорусской. Пришлю подборку и договоримся о просмотре.</span><span data-en>Hello! I have options within your budget near Belorusskaya. I'll send a shortlist and arrange a viewing.</span></p></div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PROBLEM -->
+<section class="section tight" id="problem">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Знакомая боль</span><span data-en>Familiar pain</span></p><h2 class="t-h2"><span data-ru>Лиды уже появляются в Telegram. Вы просто видите их слишком поздно.</span><span data-en>Leads are already in Telegram. You just see them too late.</span></h2></div>
+    <div class="g3">
+      <div class="card fade"><h3 class="t-h3"><span data-ru>Физически невозможно</span><span data-en>Physically impossible</span></h3><p><span data-ru>Следить за десятками чатов и каналов одновременно — нереально без выгорания команды.</span><span data-en>Monitoring dozens of chats and channels at once is impossible without burning out the team.</span></p></div>
+      <div class="card fade"><h3 class="t-h3"><span data-ru>Всегда опаздываете</span><span data-en>Always late</span></h3><p><span data-ru>Пока менеджер замечает запрос — кто-то уже ответил первым. Горячий лид не ждёт.</span><span data-en>By the time a manager notices the request, a competitor has already replied. Hot leads don't wait.</span></p></div>
+      <div class="card fade"><h3 class="t-h3"><span data-ru>Ручной разбор — это потери</span><span data-en>Manual triage means loss</span></h3><p><span data-ru>Мониторинг съедает часы, но всё равно даёт сбои — один занятой день, и важный запрос пропущен.</span><span data-en>Monitoring eats hours and still breaks down — one busy day and a valuable lead is gone.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- WHAT YOU GET -->
+<section class="section tight">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Что получает команда</span><span data-en>What your team gets</span></p><h2 class="t-h2"><span data-ru>Четыре конкретных результата вместо ручного мониторинга</span><span data-en>Four concrete outcomes instead of manual monitoring</span></h2></div>
+    <div class="g2">
+      <div class="card fade"><div class="num">01</div><h3 class="t-h3"><span data-ru>Следит за входящими 24/7</span><span data-en>Monitors inbound demand 24/7</span></h3><p><span data-ru>Отслеживает чаты, каналы и комментарии без ручного дежурства — непрерывно.</span><span data-en>Tracks chats, channels, and comments with no manual watch duty — continuously.</span></p></div>
+      <div class="card fade"><div class="num">02</div><h3 class="t-h3"><span data-ru>Отделяет живой запрос от шума</span><span data-en>Separates real demand from noise</span></h3><p><span data-ru>Реагирует только на сообщения с реальным шансом на сделку — не на обсуждения и флуд.</span><span data-en>Reacts only to messages with a real chance of a deal — not discussions or flood.</span></p></div>
+      <div class="card fade"><div class="num">03</div><h3 class="t-h3"><span data-ru>Собирает суть в одну карточку</span><span data-en>Extracts essentials into one card</span></h3><p><span data-ru>Менеджер видит приоритет и ключевые детали сразу — без разбора длинных пересылок.</span><span data-en>The manager sees priority and key details instantly — without untangling long forwards.</span></p></div>
+      <div class="card fade"><div class="num">04</div><h3 class="t-h3"><span data-ru>Подсказывает первый ответ</span><span data-en>Suggests the first reply</span></h3><p><span data-ru>Готовый черновик ускоряет реакцию и сохраняет тон команды. Финальное решение — за человеком.</span><span data-en>A ready draft speeds up reaction and keeps your team's tone. Final decision stays with the person.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- HOW IT WORKS -->
+<section class="section tight" id="how">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Как это работает</span><span data-en>How it works</span></p><h2 class="t-h2"><span data-ru>От сообщения до первого ответа — четыре шага</span><span data-en>From a message to the first reply — four steps</span></h2></div>
+    <div class="g4">
+      <div class="card fade"><div class="sn">01</div><h3 class="t-h3"><span data-ru>Кто-то пишет в чате</span><span data-en>Someone posts in a chat</span></h3><p><span data-ru>Новый запрос появляется в подключённом чате или канале.</span><span data-en>A new request appears in one of the connected chats or channels.</span></p></div>
+      <div class="card fade"><div class="sn">02</div><h3 class="t-h3"><span data-ru>Система отсеивает шум</span><span data-en>System removes noise</span></h3><p><span data-ru>Оставляет только сообщения с реальным шансом на сделку или диалог.</span><span data-en>Keeps only messages with a real chance of a deal or conversation.</span></p></div>
+      <div class="card fade"><div class="sn">03</div><h3 class="t-h3"><span data-ru>Менеджер получает карточку</span><span data-en>Manager gets a card</span></h3><p><span data-ru>Приоритет, детали и черновик ответа — всё сразу в одном месте.</span><span data-en>Priority, details, and a reply draft — all in one place, instantly.</span></p></div>
+      <div class="card fade"><div class="sn">04</div><h3 class="t-h3"><span data-ru>Команда отвечает первой</span><span data-en>Team replies first</span></h3><p><span data-ru>Включаетесь только на релевантных сигналах — горячий спрос больше не проходит мимо.</span><span data-en>You engage only on relevant signals — hot demand stops slipping through.</span></p></div>
+    </div>
+    <div class="mrow">
+      <div class="mi"><strong>&lt;3 <span style="font-size:.5em" data-ru>мин</span><span style="font-size:.5em" data-en>min</span></strong><span data-ru>от сообщения до первого сигнала</span><span data-en>from message to first signal</span></div>
+      <div class="mi"><strong>24/7</strong><span data-ru>мониторинг без ручного дежурства</span><span data-en>monitoring without manual watch</span></div>
+      <div class="mi"><strong>1</strong><span data-ru>карточка вместо пересылок и разбора</span><span data-en>card instead of forwards and triage</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CASES -->
+<section class="section tight">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>На практике</span><span data-en>Real-world results</span></p><h2 class="t-h2"><span data-ru>Два примера, где LeadHunter дал быстрый результат</span><span data-en>Two examples where LeadHunter delivered fast results</span></h2></div>
+    <div class="g2">
+      <div class="card fade">
+        <div class="ctag"><span class="ni"><span data-ru>Агентство / услуги</span><span data-en>Agency / services</span></span><span class="me"><span data-ru>50+ чатов в одном потоке</span><span data-en>50+ chats in one flow</span></span></div>
+        <h3 class="t-h3"><span data-ru>Убрали ручной мониторинг десятков Telegram-чатов</span><span data-en>Removed manual monitoring across dozens of Telegram chats</span></h3>
+        <div class="ba-row"><div class="ba"><span class="bal"><span data-ru>До</span><span data-en>Before</span></span><p><span data-ru>Постоянное дежурство в чатах. Часы уходят, а запросы всё равно пропускают.</span><span data-en>Constant watch duty. Hours spent — requests still missed.</span></p></div><div class="ba"><span class="bal af"><span data-ru>После</span><span data-en>After</span></span><p><span data-ru>Команда видит только релевантные сигналы и включается в нужный момент.</span><span data-en>The team sees only relevant signals and steps in at the right moment.</span></p></div></div>
+        <div class="chip"><span data-ru>Быстрее первый ответ, чище передача в продажи</span><span data-en>Faster first reply, cleaner handoff into sales</span></div>
+      </div>
+      <div class="card fade">
+        <div class="ctag"><span class="ni"><span data-ru>Недвижимость / аренда</span><span data-en>Real estate / rentals</span></span><span class="me"><span data-ru>&lt;3 минуты до первого ответа</span><span data-en>&lt;3 minutes to first reply</span></span></div>
+        <h3 class="t-h3"><span data-ru>Собрали лид в одну карточку вместо длинных пересылок</span><span data-en>Turned raw chat traffic into one clear lead card</span></h3>
+        <div class="ba-row"><div class="ba"><span class="bal"><span data-ru>До</span><span data-en>Before</span></span><p><span data-ru>Контекст терялся в пересылках. Менеджер разбирал запрос вместо ответа.</span><span data-en>Context lost in threads. Manager on triage instead of replying.</span></p></div><div class="ba"><span class="bal af"><span data-ru>После</span><span data-en>After</span></span><p><span data-ru>Бюджет, локация и черновик ответа — сразу в одной карточке.</span><span data-en>Budget, location, and reply draft — immediately in one card.</span></p></div></div>
+        <div class="chip"><span data-ru>Меньше потерь на первом касании, выше скорость реакции</span><span data-en>Fewer missed first touches, faster response speed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- USE CASES -->
+<section class="section tight">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Кому подходит</span><span data-en>Who it's for</span></p><h2 class="t-h2"><span data-ru>Где LeadHunter даёт результат быстрее всего</span><span data-en>Where LeadHunter creates results fastest</span></h2></div>
+    <div class="g3">
+      <div class="card fade"><div class="num">01</div><h3 class="t-h3"><span data-ru>Недвижимость и аренда</span><span data-en>Real estate &amp; rentals</span></h3><p><span data-ru>Выделяет сигналы по бюджету, районам и типу объекта. Команда получает готовую карточку вместо потока сообщений.</span><span data-en>Detects signals by budget, area, and property type. The team gets a ready card instead of a message flood.</span></p></div>
+      <div class="card fade"><div class="num">02</div><h3 class="t-h3"><span data-ru>Агентства и подрядчики</span><span data-en>Agencies &amp; contractors</span></h3><p><span data-ru>Отлавливает запросы на разработку, дизайн, интеграции, автоматизацию — команда не пропускает горячий спрос в профильных чатах.</span><span data-en>Captures requests for development, design, integrations, automation — no hot demand missed in niche chats.</span></p></div>
+      <div class="card fade"><div class="num">03</div><h3 class="t-h3"><span data-ru>Эксперты и образование</span><span data-en>Experts &amp; education</span></h3><p><span data-ru>Отсеивает шум и выводит только целевые запросы от людей, готовых говорить о консультации или курсе.</span><span data-en>Filters noise and surfaces only target requests from people ready to talk about a consultation or course.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMPARISON -->
+<section class="section tight">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Сравнение</span><span data-en>Comparison</span></p><h2 class="t-h2"><span data-ru>Ручной мониторинг против LeadHunter</span><span data-en>Manual monitoring vs LeadHunter</span></h2></div>
+    <div class="ctable">
+      <div class="chdr"><span><span data-ru>Параметр</span><span data-en>Parameter</span></span><span><span data-ru>Вручную</span><span data-en>Manual</span></span><span>LeadHunter</span></div>
+      <div class="crow"><strong><span data-ru>Скорость реакции</span><span data-en>Response speed</span></strong><span class="mn"><span data-ru>Минуты или часы — если заметили</span><span data-en>Minutes or hours — if noticed</span></span><span class="lh"><span data-ru>Уведомление почти мгновенно</span><span data-en>Notification almost instantly</span></span></div>
+      <div class="crow"><strong><span data-ru>Качество передачи</span><span data-en>Handoff quality</span></strong><span class="mn"><span data-ru>Контекст теряется в пересылках</span><span data-en>Context lost in forwarding</span></span><span class="lh"><span data-ru>Сводка и ответ уже собраны</span><span data-en>Summary and reply already prepared</span></span></div>
+      <div class="crow"><strong><span data-ru>Пропущенные сигналы</span><span data-en>Missed signals</span></strong><span class="mn"><span data-ru>Зависят от внимания и загрузки</span><span data-en>Depend on one person's attention</span></span><span class="lh"><span data-ru>Минимум после пилота и калибровки</span><span data-en>Minimised after pilot and calibration</span></span></div>
+      <div class="crow"><strong><span data-ru>Нагрузка на команду</span><span data-en>Team load</span></strong><span class="mn"><span data-ru>Ручной разбор — часы каждый день</span><span data-en>Manual triage eats hours daily</span></span><span class="lh"><span data-ru>Только на релевантных сигналах</span><span data-en>Only on relevant signals</span></span></div>
+    </div>
+    <p class="cnote">*&thinsp;<span data-ru>Точный уровень пропусков зависит от ниши, источников и правил. Поэтому сначала запускаем пилот и смотрим реальный поток.</span><span data-en>The exact miss rate depends on your niche, sources, and filtering rules. That's why we start with a pilot on real traffic.</span></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRICING -->
+<section class="section tight" id="pricing">
+  <div class="container">
+    <div class="sh"><p class="t-label" style="margin-bottom:10px"><span data-ru>Стоимость и запуск</span><span data-en>Pricing and rollout</span></p><h2 class="t-h2"><span data-ru>Два формата: быстрый старт или отдельная среда</span><span data-en>Two formats: fast start or a dedicated setup</span></h2></div>
+    <div class="g2">
+      <div class="pc fade">
+        <div><div class="pbadge"><span data-ru>Аренда</span><span data-en>Rental</span></div><h3 class="t-h3" style="margin-top:4px"><span data-ru>Быстрый запуск</span><span data-en>Fast start</span></h3></div>
+        <p class="pfit"><span data-ru>Для команд, которым нужно быстро проверить Telegram как источник живого спроса.</span><span data-en>For teams that want to validate Telegram as a live demand channel quickly.</span></p>
+        <div class="pb"><span class="pfrom"><span data-ru>от</span><span data-en>from</span></span><span class="pval"><span data-ru>по запросу</span><span data-en>on request</span></span><span class="pper"><span data-ru>/ мес</span><span data-en>/ mo</span></span></div>
+        <ul class="pfeats"><li><span data-ru>Подключение 1–2 источников, фильтры и первая логика отбора</span><span data-en>1–2 source connections, filters, and initial qualification flow</span></li><li><span data-ru>Быстро видно, стоит ли масштабировать Telegram как канал</span><span data-en>Quickly see whether to scale Telegram as a channel</span></li><li><span data-ru>Без отдельной инфраструктуры — стартуем быстро</span><span data-en>No separate infrastructure — launch fast</span></li></ul>
+        <div class="pout"><span data-ru>Хороший выбор, если нужно понять, есть ли смысл масштабировать Telegram как источник входящих заявок.</span><span data-en>Good choice if you need to understand whether Telegram is worth scaling as an inbound lead channel.</span></div>
+        <p class="pnote"><span data-ru>Ценовой диапазон отправим вместе с условиями пилота</span><span data-en>We'll send the price range together with pilot terms</span></p>
+        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer" style="align-self:flex-start"><span data-ru>Запустить 7-дневный триал</span><span data-en>Start 7-day trial</span></a>
+      </div>
+      <div class="pc ft fade">
+        <div><div class="pbadge"><span data-ru>На вашем сервере</span><span data-en>On your server</span></div><h3 class="t-h3" style="margin-top:4px"><span data-ru>Отдельный запуск</span><span data-en>Dedicated rollout</span></h3></div>
+        <p class="pfit"><span data-ru>Для команд, которым нужны свои доступы, больше контроля и независимость от общей аренды.</span><span data-en>For teams that need their own access model, more control, and independence from a shared rental setup.</span></p>
+        <div class="pb"><span class="pfrom"><span data-ru>от</span><span data-en>from</span></span><span class="pval"><span data-ru>по запросу</span><span data-en>on request</span></span><span class="pper"><span data-ru>разовый платёж</span><span data-en>one-time</span></span></div>
+        <ul class="pfeats"><li><span data-ru>Отдельная инфраструктура и свои доступы</span><span data-en>Separate infrastructure and your own access model</span></li><li><span data-ru>Настройка источников и запуск под ваш стек</span><span data-en>Source setup and launch in your stack</span></li><li><span data-ru>Система под вашим контролем</span><span data-en>A system you control — no dependency on shared rental</span></li></ul>
+        <div class="pout"><span data-ru>Подходит, если Telegram уже даёт результат и нужен запуск под ваши правила и доступы.</span><span data-en>Best if Telegram is already working and you need a rollout under your own rules.</span></div>
+        <p class="pnote"><span data-ru>Фиксируем стоимость после короткого разбора задачи</span><span data-en>We lock the price after a short review of your task</span></p>
+        <a class="ghost" href="mailto:olshanskiy.ad@gmail.com" style="align-self:flex-start"><span data-ru>Обсудить запуск</span><span data-en>Discuss rollout</span></a>
+      </div>
+    </div>
+    <div class="pilot">
+      <div class="pi"><p class="t-label" style="margin-bottom:7px"><span data-ru>Что входит в пилот</span><span data-en>What's in the pilot</span></p><p><span data-ru>Подключаем 1–2 источника, настраиваем отбор заявок, карточку и первый черновик ответа.</span><span data-en>We connect 1–2 sources and set up lead filtering, the card, and the first reply draft.</span></p></div>
+      <div class="pi"><p class="t-label" style="margin-bottom:7px"><span data-ru>Что считаем успехом</span><span data-en>What counts as success</span></p><p><span data-ru>Команда отвечает быстрее и видит только заявки, с которыми есть смысл работать.</span><span data-en>The team replies faster and sees only requests worth working on.</span></p></div>
+      <div class="pi"><p class="t-label" style="margin-bottom:7px"><span data-ru>Что дальше</span><span data-en>What happens next</span></p><p><span data-ru>После теста понятно: остаёмся на быстром запуске или собираем отдельную версию.</span><span data-en>After the trial it's clear: stay on fast-start or move to a dedicated version.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FAQ -->
+<section class="section tight" id="faq">
+  <div class="container">
+    <div class="sh"><h2 class="t-h2"><span data-ru>Короткие ответы до запуска пилота</span><span data-en>Short answers before the pilot starts</span></h2></div>
+    <div class="faqlist">
+      <details class="fqi fade"><summary><h3><span data-ru>Это нарушает правила Telegram?</span><span data-en>Does this violate Telegram rules?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>LeadHunter не строится вокруг рассылок или спама. Мы настраиваем аккуратный мониторинг только там, где это допустимо для вашей модели работы.</span><span data-en>LeadHunter is not built around spam or mass outreach. We configure careful monitoring only where it fits your operating model.</span></p></details>
+      <details class="fqi fade"><summary><h3><span data-ru>Нужен ли отдельный аккаунт?</span><span data-en>Do I need a separate account?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>Не всегда. В быстром запуске обычно можно стартовать без отдельной среды. В выделенном варианте фиксируем всё до старта.</span><span data-en>Not always. In the fast-start model you can usually begin without a separate environment. In the dedicated setup we define everything before launch.</span></p></details>
+      <details class="fqi fade"><summary><h3><span data-ru>Какой процент ложных срабатываний?</span><span data-en>What is the false positive rate?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>Зависит от ниши, источников и правил. Мы не обещаем абстрактную цифру: сначала пилот, калибровка на вашем потоке, потом масштаб.</span><span data-en>It depends on your niche, sources, and rules. We don't promise an abstract number: first pilot, calibrate on real traffic, then scale.</span></p></details>
+      <details class="fqi fade"><summary><h3><span data-ru>Можно подключить несколько чатов?</span><span data-en>Can I connect multiple chats?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>Да. Если нужно разделить поток по продуктам, командам или источникам — согласуем конфигурацию до старта.</span><span data-en>Yes. If you need to split the flow by product, team, or source — we define the configuration before launch.</span></p></details>
+      <details class="fqi fade"><summary><h3><span data-ru>Сколько времени занимает настройка?</span><span data-en>How long does setup take?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>Тест запускается быстрее отдельной версии. Срок зависит от числа источников и нужен ли выделенный запуск.</span><span data-en>A trial launches faster than a dedicated version. Timing depends on the number of sources and whether you need a separate rollout.</span></p></details>
+      <details class="fqi fade"><summary><h3><span data-ru>Как завершить аренду?</span><span data-en>How do I cancel the rental?</span></h3><span class="fchev">⌄</span></summary><p><span data-ru>Порядок завершения фиксируем до старта. Команда заранее знает, как отключаются источники и когда завершается обслуживание.</span><span data-en>We define the stop process before launch. Your team knows in advance how sources are disconnected and when the service ends.</span></p></details>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FINAL CTA -->
+<section class="section tight">
+  <div class="container">
+    <div class="fcta">
+      <p class="t-label"><span data-ru>Бесплатный 7-дневный триал</span><span data-en>Free 7-day trial</span></p>
+      <h2 class="t-h2"><span data-ru>Покажем на ваших чатах, где LeadHunter реально находит заявки</span><span data-en>We'll show on your chats where LeadHunter actually finds leads</span></h2>
+      <p class="t-sub"><span data-ru>Запускаем короткий тест без тяжёлого старта. После теста — понятно, есть ли смысл масштабировать.</span><span data-en>A short test with no heavy rollout. After the trial — you know whether it's worth scaling.</span></p>
+      <div class="btn-row">
+        <a class="cta" href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer"><span data-ru>Попробовать 7 дней бесплатно</span><span data-en>Try free for 7 days</span></a>
+        <a class="ghost" href="mailto:olshanskiy.ad@gmail.com"><span data-ru>Написать на email</span><span data-en>Send an email</span></a>
+        <a class="ghost" href="index.html"><span data-ru>На главную</span><span data-en>Back to home</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <small>Nodalio &middot; <span data-ru>AI-автоматизация бизнес-процессов</span><span data-en>AI automation for business operations</span></small>
+    <div style="display:flex;gap:16px"><a href="https://t.me/olshanskiy_ad" target="_blank" rel="noreferrer">Telegram</a><a href="mailto:olshanskiy.ad@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+const H=document.documentElement;
+function applyTheme(n){H.setAttribute('data-theme',n);document.getElementById('tt').textContent=n==='dark'?'☀':'☽';localStorage.setItem('nd-theme',n)}
+applyTheme(localStorage.getItem('nd-theme')||'light');
+document.getElementById('tt').addEventListener('click',()=>applyTheme(H.getAttribute('data-theme')==='dark'?'light':'dark'));
+function setLang(l){H.setAttribute('data-lang',l);H.setAttribute('lang',l);document.querySelectorAll('[data-lb]').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lb')===l));localStorage.setItem('nd-lang',l)}
+setLang(localStorage.getItem('nd-lang')||'ru');
+document.addEventListener('DOMContentLoaded',()=>{
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.07});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+});
+</script>
 </body>
 </html>
